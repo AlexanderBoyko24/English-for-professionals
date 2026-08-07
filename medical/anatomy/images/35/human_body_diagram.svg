@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="400" height="800">
+  <rect width="400" height="800" fill="#f8f9fa" stroke="#ccc" stroke-width="1"/>
+  
+  <!-- Голова -->
+  <circle cx="200" cy="80" r="45" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Глаза -->
+  <circle cx="180" cy="70" r="4" fill="#333"/>
+  <circle cx="220" cy="70" r="4" fill="#333"/>
+  <!-- Рот -->
+  <path d="M185 95 Q200 105 215 95" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Шея -->
+  <rect x="185" y="120" width="30" height="40" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Туловище -->
+  <path d="M130 160 L100 380 L150 380 L150 320 L250 320 L250 380 L300 380 L270 160 Z" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Грудная клетка (рёбра) -->
+  <path d="M130 200 Q165 220 200 200 Q235 220 270 200" fill="none" stroke="#333" stroke-width="1.5"/>
+  <path d="M125 230 Q165 250 200 230 Q235 250 275 230" fill="none" stroke="#333" stroke-width="1.5"/>
+  <path d="M120 260 Q165 280 200 260 Q235 280 280 260" fill="none" stroke="#333" stroke-width="1.5"/>
+  
+  <!-- Позвоночник (спина) — пунктир -->
+  <line x1="200" y1="160" x2="200" y2="380" stroke="#666" stroke-width="1.5" stroke-dasharray="4,3"/>
+  
+  <!-- Левая рука -->
+  <path d="M130 160 L90 220 L70 300 L85 380 L130 380" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Левая кисть -->
+  <circle cx="85" cy="390" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Правая рука -->
+  <path d="M270 160 L310 220 L330 300 L315 380 L270 380" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Правая кисть -->
+  <circle cx="315" cy="390" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Таз -->
+  <path d="M150 380 Q200 410 250 380" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Левая нога -->
+  <path d="M170 400 L160 520 L140 640 L140 700" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Левая стопа -->
+  <path d="M140 700 L120 720 L160 720 Z" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Правая нога -->
+  <path d="M230 400 L240 520 L260 640 L260 700" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Правая стопа -->
+  <path d="M260 700 L240 720 L280 720 Z" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Колени (кружочки) -->
+  <circle cx="150" cy="560" r="5" fill="#333"/>
+  <circle cx="250" cy="560" r="5" fill="#333"/>
+  
+  <!-- === МАРКЕРЫ С ЦИФРАМИ === -->
+  <!-- 1: brain -->
+  <circle cx="200" cy="60" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="200" y="65" text-anchor="middle" fill="white" font-size="14" font-weight="bold">1</text>
+  
+  <!-- 2: lungs (левый) -->
+  <circle cx="155" cy="240" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="155" y="245" text-anchor="middle" fill="white" font-size="14" font-weight="bold">2</text>
+  
+  <!-- 3: heart -->
+  <circle cx="230" cy="255" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="230" y="260" text-anchor="middle" fill="white" font-size="14" font-weight="bold">3</text>
+  
+  <!-- 4: stomach -->
+  <circle cx="200" cy="320" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="200" y="325" text-anchor="middle" fill="white" font-size="14" font-weight="bold">4</text>
+  
+  <!-- 5: bones (обобщённо — около бедра) -->
+  <circle cx="120" cy="500" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="120" y="505" text-anchor="middle" fill="white" font-size="14" font-weight="bold">5</text>
+  
+  <!-- 6: shoulder (левое плечо) -->
+  <circle cx="100" cy="175" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="100" y="180" text-anchor="middle" fill="white" font-size="14" font-weight="bold">6</text>
+  
+  <!-- 7: hand (левая кисть) -->
+  <circle cx="70" cy="400" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="70" y="405" text-anchor="middle" fill="white" font-size="14" font-weight="bold">7</text>
+  
+  <!-- 8: leg (правая нога, общее) -->
+  <circle cx="280" cy="580" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="280" y="585" text-anchor="middle" fill="white" font-size="14" font-weight="bold">8</text>
+  
+  <!-- 9: foot (правая стопа) -->
+  <circle cx="280" cy="710" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="280" y="715" text-anchor="middle" fill="white" font-size="14" font-weight="bold">9</text>
+  
+  <!-- 10: skin (внизу, подпись) -->
+  <circle cx="350" cy="750" r="14" fill="red" stroke="white" stroke-width="2"/>
+  <text x="350" y="755" text-anchor="middle" fill="white" font-size="14" font-weight="bold">10</text>
+</svg>

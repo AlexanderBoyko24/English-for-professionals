@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 32 </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <script>
+/* ================================================================
+   📝 LESSON DATA — EDIT ONLY THIS BLOCK
+   ================================================================ */
+
+    const LESSON = {
+
+     number:  "32",
+     title:   "The INTEGUMENTARY SYSTEM",
+     vocabulary:[
+  { "word": "integumentary system", "trans": "/ɪnˌteɡjʊˈmentəri ˈsɪstəm/", "ru": "покровная система" },
+  { "word": "skin", "trans": "/skɪn/", "ru": "кожа" },
+  { "word": "epidermis", "trans": "/ˌepɪˈdɜːmɪs/", "ru": "эпидермис (наружный слой кожи)" },
+  { "word": "dermis", "trans": "/ˈdɜːmɪs/", "ru": "дерма (собственно кожа)" },
+  { "word": "hypodermis (subcutaneous layer)", "trans": "/ˌhaɪpəˈdɜːmɪs (ˌsʌbkjʊˈteɪniəs ˈleɪə)/", "ru": "гиподермис (подкожная клетчатка)" },
+  { "word": "keratin", "trans": "/ˈkerətɪn/", "ru": "кератин" },
+  { "word": "melanin", "trans": "/ˈmelənɪn/", "ru": "меланин" },
+  { "word": "melanocyte", "trans": "/məˈlænəsaɪt/", "ru": "меланоцит" },
+  { "word": "stratum basale", "trans": "/ˈstrɑːtəm bəˈseɪli/", "ru": "базальный слой" },
+  { "word": "stratum spinosum", "trans": "/ˈstrɑːtəm spaɪˈnəʊsəm/", "ru": "шиповатый слой" },
+  { "word": "stratum granulosum", "trans": "/ˈstrɑːtəm ˌɡrænjʊˈləʊsəm/", "ru": "зернистый слой" },
+  { "word": "stratum lucidum", "trans": "/ˈstrɑːtəm ˈluːsɪdəm/", "ru": "блестящий слой (только в толстой коже)" },
+  { "word": "stratum corneum", "trans": "/ˈstrɑːtəm ˈkɔːniəm/", "ru": "роговой слой" },
+  { "word": "keratinocyte", "trans": "/kəˈrætɪnəsaɪt/", "ru": "кератиноцит" },
+  { "word": "Langerhans cell", "trans": "/ˈlæŋəhɑːnz sel/", "ru": "клетка Лангерганса" },
+  { "word": "Merkel cell", "trans": "/ˈmɜːkəl sel/", "ru": "клетка Меркеля" },
+  { "word": "hair", "trans": "/heə/", "ru": "волос" },
+  { "word": "hair follicle", "trans": "/heə ˈfɒlɪkl/", "ru": "волосяной фолликул" },
+  { "word": "hair shaft", "trans": "/heə ʃɑːft/", "ru": "стержень волоса" },
+  { "word": "hair root", "trans": "/heə ruːt/", "ru": "корень волоса" },
+  { "word": "sebaceous gland", "trans": "/sɪˈbeɪʃəs ɡlænd/", "ru": "сальная железа" },
+  { "word": "sebum", "trans": "/ˈsiːbəm/", "ru": "кожное сало" },
+  { "word": "sweat gland (sudoriferous gland)", "trans": "/swet ɡlænd (ˌsuːdəˈrɪfərəs ɡlænd)/", "ru": "потовая железа" },
+  { "word": "eccrine gland", "trans": "/ˈekrɪn ɡlænd/", "ru": "эккринная потовая железа" },
+  { "word": "apocrine gland", "trans": "/ˈæpəkrɪn ɡlænd/", "ru": "апокринная потовая железа" },
+  { "word": "nail", "trans": "/neɪl/", "ru": "ноготь" },
+  { "word": "nail bed", "trans": "/neɪl bed/", "ru": "ногтевое ложе" },
+  { "word": "nail plate", "trans": "/neɪl pleɪt/", "ru": "ногтевая пластинка" },
+  { "word": "cuticle", "trans": "/ˈkjuːtɪkl/", "ru": "кутикула (ногтевая)" },
+  { "word": "lunula", "trans": "/ˈluːnjʊlə/", "ru": "лунула (ногтевая)" },
+  { "word": "wound healing", "trans": "/wuːnd ˈhiːlɪŋ/", "ru": "заживление раны" },
+  { "word": "inflammation", "trans": "/ˌɪnfləˈmeɪʃn/", "ru": "воспаление" },
+  { "word": "dermatitis", "trans": "/ˌdɜːməˈtaɪtɪs/", "ru": "дерматит" },
+  { "word": "eczema", "trans": "/ˈeksɪmə/", "ru": "экзема" },
+  { "word": "psoriasis", "trans": "/səˈraɪəsɪs/", "ru": "псориаз" },
+  { "word": "melanoma", "trans": "/ˌmeləˈnəʊmə/", "ru": "меланома" },
+  { "word": "basal cell carcinoma", "trans": "/ˈbeɪsl sel ˌkɑːsɪˈnəʊmə/", "ru": "базальноклеточный рак" }
+],
+
+translatePhrases: [
+  { en: "protection of the body by the skin", ru: "защита тела кожей" },
+  { en: "cells in the epidermis", ru: "клетки в эпидермисе" },
+  { en: "production of melanin ", ru: "производство меланина " },
+  { en: "formation of keratin ", ru: "образование кератина " },
+  { en: "layers of the epidermis ", ru: "слои эпидермиса " },
+  { en: "function of the stratum corneum", ru: "функция рогового слоя" },
+  { en: "structure of a hair follicle", ru: "структура волосяного фолликула" },
+  { en: "growth of hair from the hair root", ru: "рост волоса из корня волоса" },
+  { en: "secretion of sebum ", ru: "секреция кожного сала " },
+  { en: "regulation of temperature by sweat glands", ru: "регуляция температуры потовыми железами" },
+  { en: "function of eccrine glands", ru: "функция эккринных желёз" },
+  { en: "apocrine glands in the armpits", ru: "апокринные железы в подмышечных впадинах" },
+  { en: "protection  by nails", ru: "защита  ногтями" },
+  { en: "structure of the nail plate", ru: "структура ногтевой пластинки" },
+  { en: "stages of wound healing", ru: "стадии заживления раны" },
+  { en: "signs of inflammation", ru: "признаки воспаления" },
+  { en: "causes of dermatitis", ru: "причины дерматита" },
+  { en: "symptoms of eczema", ru: "симптомы экземы" },
+  { en: "treatment of psoriasis", ru: "лечение псориаза" },
+    { en: "maintenance of skin health", ru: "поддержание здоровья кожи" }
+],
+
+   text: [
+  "The integumentary system consists of the skin and its accessory structures, including hair, nails, and glands. It is the largest organ of the body and serves as a protective barrier against the environment. The skin also helps regulate body temperature, prevents water loss, and contains sensory receptors for touch, pressure, pain, and temperature.",
+
+  "The skin has three main layers. The outermost layer is the epidermis, which is composed of stratified squamous epithelium. The epidermis contains several layers: the stratum basale (deepest), stratum spinosum, stratum granulosum, stratum lucidum (only in thick skin), and stratum corneum (most superficial). The stratum corneum consists of dead, flattened keratinocytes filled with keratin. Keratin is a tough protein that protects the skin from mechanical damage and water loss.",
+
+  "The epidermis also contains melanocytes, which produce melanin, the pigment that gives skin its colour and protects against UV radiation. Langerhans cells are immune cells that help defend against pathogens, and Merkel cells are involved in the sensation of light touch.",
+
+  "Below the epidermis is the dermis, a thicker layer of connective tissue that contains blood vessels, nerves, hair follicles, sebaceous (oil) glands, and sweat (sudoriferous) glands. The dermis provides the skin with strength and elasticity. The deepest layer is the hypodermis (subcutaneous layer), which consists of fat and connective tissue. It insulates the body and anchors the skin to underlying structures.",
+
+  "Hair is produced by hair follicles, which are found in the dermis. Each hair has a root (below the skin) and a shaft (above the skin). Sebaceous glands secrete sebum, an oily substance that lubricates the hair and skin. Sweat glands help regulate body temperature and excrete waste. Eccrine glands are found all over the body and produce watery sweat, while apocrine glands are located in the armpits and groin and produce thicker sweat.",
+
+  "Nails are hard plates of keratin that protect the fingertips and toes. The nail plate is the visible part, and the nail bed is the skin beneath it. The lunula is the white, crescent‑shaped area at the base of the nail, and the cuticle is the thin fold of skin at the nail base.",
+
+  "The skin has remarkable healing abilities. Wound healing involves several stages: inflammation, tissue formation, and remodelling. Inflammation is the initial response to injury, characterised by redness, heat, swelling, and pain. Common skin disorders include dermatitis (inflammation of the skin), eczema (a chronic condition with dry, itchy patches), psoriasis (a condition with red, scaly patches), and skin cancers such as melanoma and basal cell carcinoma. Sun protection, good hygiene, and a healthy diet are important for maintaining skin health."
+],
+
+ trueFalse: [
+  { s: "The skin is the largest organ of the body.", correct: true },
+  { s: "The epidermis is the thickest layer of the skin.", correct: false },
+  { s: "Keratin is a protein that helps protect the skin from mechanical damage.", correct: true },
+  { s: "Melanocytes produce melanin, which gives skin its colour.", correct: true },
+  { s: "Langerhans cells are responsible for the sensation of light touch.", correct: false },
+  { s: "The dermis contains blood vessels, nerves, hair follicles, and glands.", correct: true },
+  { s: "The hypodermis is also called the subcutaneous layer and contains fat tissue.", correct: true },
+  { s: "Apocrine sweat glands are found all over the body and produce watery sweat.", correct: false },
+  { s: "The lunula is the white, crescent‑shaped area at the base of the nail.", correct: true },
+  { s: "Psoriasis is a type of skin cancer.", correct: false }
+],
+
+    translateToEnglish: [
+     { ru: "самый большой орган тела", en: "largest organ of the body" },
+     { ru: "потеря воды", en: "water loss" },
+     { ru: "многослойный плоский эпителий", en: "stratified squamous epithelium" },
+     { ru: "мертвые, сплющенные кератиноциты", en: "dead, flattened keratinocytes" },
+     { ru: "ощущение легкого прикосновения", en: "sensation of light touch" },
+     { ru: "прочность и эластичность", en: "strength and elasticity" },
+     { ru: "маслянистое вещество", en: "oily substance" },
+     { ru: "кончики рук и ног", en: "fingertips and toes" },
+     { ru: "низкое количество сперматозоидов", en: "low sperm count" },
+{ ru: "заживляющие способности", en: "healing abilities" },
+{ ru: "первоначальный ответ", en: "initial response" }
+   ],
+
+ matching: [
+  { term: "epidermis", def: "the outer layer of the skin." },
+  { term: "dermis", def: "the middle layer of the skin." },
+  { term: "hypodermis", def: "the deepest layer of the skin." },
+  { term: "stratum corneum", def: "the top layer of the epidermis." },
+  { term: "keratin", def: "a protein that protects the skin." },
+  { term: "melanin", def: "a pigment that gives skin its colour." },
+  { term: "melanocyte", def: "a cell that produces melanin." },
+  { term: "hair follicle", def: "a structure that produces hair." },
+  { term: "apocrine gland", def: "a sweat gland in the armpits and groin." },
+  { term: "nail plate", def: "the hard part of the nail." },
+  { term: "lunula", def: "the white crescent at the base of the nail." }
+],
+
+ matchPicture: [
+  { image: "skin.png", def: "skin", word: "skin" },
+ 
+  { image: "hair_follicle.png", def: "hair follicle", word: "hair follicle" },
+  { image: "sebaceous_gland.png", def: "sebaceous gland", word: "sebaceous gland" },
+  { image: "sweat_gland.png", def: "sweat gland", word: "sweat gland" },
+  { image: "melanoma.png", def: "melanoma", word: "melanoma" },
+  { image: "psoriasis.png", def: "psoriasis", word: "psoriasis" },
+  
+  { image: "nail.png", def: "nail", word: "nail" }
+],
+
+mindMap: {
+  center: "Integumentary System",
+  branches: [
+    { id: "b1", label: "Layers of the skin", answer: "epidermis, dermis, hypodermis" },
+    { id: "b2", label: "Cells in the epidermis", answer: "keratinocytes, melanocytes, Langerhans cells, Merkel cells" },
+    { id: "b3", label: "Structure of hair", answer: "hair follicle, hair root, hair shaft, hair bulb, papilla" },
+    { id: "b4", label: "Functions of the skin", answer: "protection, temperature regulation, sensation, vitamin D synthesis, excretion" },
+    { id: "b5", label: "Physiological processes", answer: "keratinisation, melanin production, wound healing, inflammation" },
+    { id: "b6", label: "Common skin disorders", answer: "dermatitis, eczema, psoriasis, melanoma, basal cell carcinoma" }
+  ],
+  options: [
+    "epidermis, dermis, hypodermis",
+    "keratinocytes, melanocytes, Langerhans cells, Merkel cells",
+    "hair follicle, hair root, hair shaft, hair bulb, papilla",
+    "protection, temperature regulation, sensation, vitamin D synthesis, excretion",
+    "keratinisation, melanin production, wound healing, inflammation",
+    "dermatitis, eczema, psoriasis, melanoma, basal cell carcinoma",
+    "stratum corneum, stratum basale, stratum spinosum",
+    "collagen, elastin, fibroblasts"
+    
+  ]
+},
+
+ logicalSequence: {
+  title: "Integumentary System – Layers & Clinical Case",
+  sequences: [
+    {
+      title: "layers of the epidermis (from deep to superficial)",
+      steps: [
+        { position: 1, text: "stratum basale (deepest layer)", fixed: true },
+        { position: 2, text: "", fixed: false, answer: "stratum spinosum" },
+        { position: 3, text: "", fixed: false, answer: "stratum granulosum" },
+        { position: 4, text: "", fixed: false, answer: "stratum lucidum (only in thick skin)" },
+        { position: 5, text: "", fixed: false, answer: "stratum corneum (most superficial)" }
+      ]
+    },
+    {
+      title: "development of melanoma (clinical case)",
+      steps: [
+        { position: 1, text: "excessive exposure to UV radiation damages DNA in melanocytes", fixed: true },
+        { position: 2, text: "", fixed: false, answer: "mutated melanocytes grow uncontrollably" },
+        { position: 3, text: "", fixed: false, answer: "a dark, irregular mole (lesion) appears on the skin" },
+        { position: 4, text: "", fixed: false, answer: "the lesion changes in size, shape, or colour" },
+        { position: 5, text: "", fixed: false, answer: "biopsy confirms melanoma; treatment involves surgical removal and possibly chemotherapy" }
+      ]
+    }
+  ],
+  options: [
+    "stratum spinosum",
+    "stratum granulosum",
+    "stratum lucidum (only in thick skin)",
+    "stratum corneum (most superficial)",
+    "mutated melanocytes grow uncontrollably",
+    "a dark, irregular mole (lesion) appears on the skin",
+    "the lesion changes in size, shape, or colour",
+    "biopsy confirms melanoma; treatment involves surgical removal and possibly chemotherapy"
+  ]
+},
+
+ /*labelDiagram: {
+  title: "Label the Male Reproductive System",
+  image: "MRS.png",   // ваше изображение
+  markers: [
+    { id: "m1", label: "1", x: 83, y: 18, answer: "ureter" },
+   
+    { id: "m2", label: "2", x: 17, y: 28, answer: "vas deferens" },
+    { id: "m3", label: "3", x: 83, y: 38, answer: "seminal vesicle" },
+    { id: "m4", label: "4", x: 17, y: 45, answer: "prostate gland" },
+    { id: "m5", label: "5", x: 83, y: 56, answer: "erectile tissue" },
+    { id: "m6", label: "6", x: 17, y: 61, answer: "urethra" },
+    { id: "m7", label: "7", x: 17, y: 83, answer: "penis" },
+    { id: "m8", label: "8", x: 83, y: 67, answer: "scrotum" },
+    { id: "m9", label: "9", x: 17, y: 71, answer: "epididymis" },
+    { id: "m10", label: "10", x: 83, y: 83, answer: "testis" }
+  ],
+  options: [
+    
+    "epididymis",
+    "erectile tissue",
+    "penis",
+    "prostate gland",
+    "scrotum",
+    "seminal vesicle",
+    "testis",
+    "ureter",
+    "urethra",
+    "vas deferens"
+  ]
+},*/
+
+fillTable: {
+  title: "Anatomical Terminology — Integumentary System (Core)",
+  caption: "Enter the professional English term and Russian translation for each Latin term",
+  columns: [
+    { header: "Latin term", key: "latin" },
+    { header: "Professional English term", key: "english" },
+    { header: "Russian translation", key: "russian" }
+  ],
+  rows: [
+    { latin: "Cutis", english: "", russian: "" },
+    
+    { latin: "Folliculus pili", english: "", russian: "" },
+    { latin: "Glandula sebacea", english: "", russian: "" },
+    { latin: "Glandula sudorifera", english: "", russian: "" },
+    { latin: "Unguis", english: "", russian: "" },
+    { latin: "Melanocytus", english: "", russian: "" },
+    { latin: "Keratina", english: "", russian: "" },
+    { latin: "Melanina", english: "", russian: "" },
+  
+  ],
+  answers: [
+    { latin: "Cutis", english: "skin", russian: "кожа" },
+       { latin: "Folliculus pili", english: "hair follicle", russian: "волосяной фолликул" },
+    { latin: "Glandula sebacea", english: "sebaceous gland", russian: "сальная железа" },
+    { latin: "Glandula sudorifera", english: "sweat gland", russian: "потовая железа" },
+    { latin: "Unguis", english: "nail", russian: "ноготь" },
+    { latin: "Melanocytus", english: "melanocyte", russian: "меланоцит" },
+    { latin: "Keratina", english: "keratin", russian: "кератин" },
+    { latin: "Melanina", english: "melanin", russian: "меланин" },
+      ]
+},
+
+
+fillBlanks: [
+  { before: "The skin is the largest ___ of the body.", answer: "organ", after: "" },
+  { before: "The outer layer of the skin is the ___.", answer: "epidermis", after: "" },
+  { before: "The middle layer of the skin is the ___.", answer: "dermis", after: "" },
+  { before: "The deepest layer of the skin is the ___.", answer: "hypodermis", after: "" },
+  { before: "___ is a protein that protects the skin.", answer: "Keratin", after: "" },
+  { before: "___ gives the skin its colour.", answer: "Melanin", after: "" },
+  { before: "Hair grows from a structure called a ___.", answer: "hair follicle", after: "" },
+  { before: "___ glands produce oil for the skin and hair.", answer: "Sebaceous", after: "" },
+  { before: "___ glands produce sweat.", answer: "Sweat", after: "" },
+  { before: "The hard part of a nail is called the nail ___.", answer: "plate", after: "" },
+  { before: "A ___ is a dark spot on the skin caused by melanocytes.", answer: "mole", after: "" },
+  { before: "Skin cancer caused by melanocytes is called ___.", answer: "melanoma", after: "" }
+],
+
+jumble: [
+  { words: ["Keratin", "makes", "skin", "tough", "and", "waterproof"], correct: "Keratin makes skin tough and waterproof." },
+  { words: ["Melanocytes", "are", "found", "in", "the", "stratum", "basale"], correct: "Melanocytes are found in the stratum basale." },
+  { words: ["Langerhans", "cells", "help", "fight", "infections", "in", "the", "skin"], correct: "Langerhans cells help fight infections in the skin." },
+  { words: ["The", "dermis", "contains", "collagen", "and", "elastin", "fibres"], correct: "The dermis contains collagen and elastin fibres." },
+  { words: ["Apocrine", "glands", "are", "found", "in", "the", "armpits", "and", "groin"], correct: "Apocrine glands are found in the armpits and groin." },
+  { words: ["The", "nail", "plate", "is", "made", "of", "hard", "keratin"], correct: "The nail plate is made of hard keratin." },
+  { words: ["The", "lunula", "is", "the", "white", "crescent"], correct: "The lunula is the white crescent" },
+  { words: ["Psoriasis", "causes", "red", "scaly", "patches", "on", "the", "skin"], correct: "Psoriasis causes red scaly patches on the skin." }
+],
+
+listeningGapFill: {
+  audio: "audio/32.mp3",
+  gaps: [
+    { id: 1, answer: "eczema", options: ["eczema", "psoriasis", "dermatitis", "melanoma"] },
+    { id: 2, answer: "itchy", options: ["itchy", "painful", "swollen", "blistered"] },
+    { id: 3, answer: "dry", options: ["dry", "oily", "scaly", "smooth"] },
+    { id: 4, answer: "red", options: ["red", "white", "yellow", "blue"] },
+    { id: 5, answer: "inflammation", options: ["inflammation", "infection", "allergy", "irritation"] },
+    { id: 6, answer: "moisturising", options: ["moisturising", "drying", "scrubbing", "cooling"] },
+    { id: 7, answer: "steroid", options: ["steroid", "antibiotic", "antifungal", "antihistamine"] },
+    { id: 8, answer: "triggers", options: ["triggers", "symptoms", "signs", "causes"] }
+  ],
+  textTemplate: "A 10-year-old boy presents with {2} and {3} patches on his elbows and knees. The skin is also {4} and cracked. The doctor diagnoses {1}, a chronic condition caused by {5} of the skin. Treatment includes {6} creams to hydrate the skin and topical {7} creams to reduce inflammation. The patient is advised to avoid {8} such as harsh soaps and certain foods."
+},
+
+readingPractice: {
+  text: "The skin is the largest organ. It has three layers: epidermis, dermis, and hypodermis. Hair, nails, and glands are part of the skin. Hair grows from follicles. Glands produce oil and sweat. Nails protect the fingers. The skin protects the body and helps control temperature. Common skin problems include eczema and skin cancer. Good skin care keeps the skin healthy."
+},
+
+video: "video/32.mp4",
+};
+
+/* ================================================================
+   🔧 ENGINE BELOW — DO NOT EDIT
+   ================================================================ */
+</script>
+</head>
+<body>
+
+  <header>
+    <div class="hdr-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+        <span class="logo-text">Medical English</span>
+      </a>
+      <div class="hdr-actions">
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+        </button>
+        <a href="index.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back to course
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-tag" id="heroTag"></div>
+    <h1 id="heroTitle"></h1>
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="pFill"></div></div>
+      <div class="progress-lbl" id="pLbl">0 / 0</div>
+    </div>
+  </div>
+
+  <main id="main"></main>
+
+
+  <button class="scroll-top" id="scrollTop" title="Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <div class="popup" id="popup"></div>
+
+  <div class="test-modal" id="testModal">
+    <div class="test-overlay"></div>
+    <div class="test-container">
+      <div class="test-header">
+        <div class="test-title" id="testTitle">TEST</div>
+        <div class="test-info">
+          <span id="testProgress">Question 1/30</span>
+          <span id="testTimer">⏱ 0:00</span>
+        </div>
+        <div class="test-bar"><div class="test-bar-fill" id="testBar"></div></div>
+      </div>
+      <div class="test-body" id="testBody"></div>
+      <div class="test-footer">
+        <button class="test-btn test-btn-prev" id="testPrev" style="visibility:hidden">← Previous</button>
+        <button class="test-btn test-btn-next" id="testNext">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+/* Основные стили темы (оставлены без изменений) */
+:root,[data-theme="dark"]{--bg:#0b0f1a;--surface:#111827;--s2:#1a2236;--b1:rgba(255,255,255,.07);--b2:rgba(99,210,255,.2);--ac:#63d2ff;--ac2:#a78bfa;--pink:#f472b6;--green:#34d399;--red:#fb7185;--text:#e2e8f0;--muted:#64748b;--header-bg:rgba(11,15,26,.85);--shadow:rgba(0,0,0,.15);--shadow-lg:rgba(0,0,0,.25);--grid-lines:rgba(99,210,255,.02);--table-stripe:rgba(255,255,255,.015);--table-hover:rgba(99,210,255,.03);--row-hover:rgba(255,255,255,.01)}
+[data-theme="light"]{--bg:#f1f5f9;--surface:#ffffff;--s2:#f8fafc;--b1:rgba(0,0,0,.06);--b2:rgba(59,130,246,.25);--ac:#2563eb;--ac2:#7c3aed;--pink:#db2777;--green:#059669;--red:#dc2626;--text:#1e293b;--muted:#64748b;--header-bg:rgba(255,255,255,.9);--shadow:rgba(0,0,0,.06);--shadow-lg:rgba(0,0,0,.1);--grid-lines:rgba(0,0,0,.02);--table-stripe:rgba(0,0,0,.015);--table-hover:rgba(59,130,246,.04);--row-hover:rgba(0,0,0,.01)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.9;transition:background .3s,color .3s}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid-lines) 1px,transparent 1px),linear-gradient(90deg,var(--grid-lines) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--muted);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--ac)}
+header{position:sticky;top:0;z-index:200;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:var(--header-bg);border-bottom:1px solid var(--b1);transition:background .3s}
+.hdr-inner{max-width:1500px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.hdr-actions{display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--ac),var(--ac2));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;transition:transform .3s}
+.logo:hover .logo-icon{transform:scale(1.1)}
+.logo-text{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--text);transition:color .3s}
+.theme-toggle{width:40px;height:40px;border-radius:12px;background:var(--s2);border:1px solid var(--b1);cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative;transition:all .3s;color:var(--text)}
+.theme-toggle:hover{background:var(--surface);border-color:var(--ac);transform:scale(1.05)}
+.theme-toggle:active{transform:scale(.95)}
+.theme-toggle .fa-sun,.theme-toggle .fa-moon{font-size:1rem;position:absolute;transition:all .4s cubic-bezier(.4,0,.2,1)}
+[data-theme="dark"] .theme-toggle .fa-sun{opacity:1;transform:rotate(0) scale(1)}
+[data-theme="dark"] .theme-toggle .fa-moon{opacity:0;transform:rotate(90deg) scale(0)}
+[data-theme="light"] .theme-toggle .fa-sun{opacity:0;transform:rotate(-90deg) scale(0)}
+[data-theme="light"] .theme-toggle .fa-moon{opacity:1;transform:rotate(0) scale(1);color:#6366f1}
+.back-btn{display:flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:.88rem;transition:all .2s}
+.back-btn:hover{color:var(--ac);gap:12px}
+.hero{position:relative;z-index:1;max-width:1500px;margin:0 auto;padding:52px 24px 36px;border-bottom:1px solid var(--b1);transition:border-color .3s}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ac);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;animation:fadeIn .6s ease}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;color:var(--text);line-height:1.15;margin-bottom:14px;animation:fadeIn .6s ease .1s backwards;position:relative;display:inline-block;transition:color .3s}
+.hero h1::after{content:'';position:absolute;bottom:-6px;left:0;width:60px;height:3px;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:99px;animation:expandLine .8s ease .3s backwards}
+.hero h1 em{font-style:italic;color:var(--ac)}
+.progress-wrap{display:flex;align-items:center;gap:14px;margin-top:20px;animation:fadeIn .6s ease .2s backwards}
+.progress-track{flex:1;height:6px;background:var(--s2);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:99px;width:0%;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.progress-lbl{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);white-space:nowrap}
+main{position:relative;z-index:1;max-width:1500px;margin:0 auto;padding:32px 24px 100px}
+.block{background:var(--surface);border:1px solid var(--b1);border-radius:24px;margin-bottom:24px;overflow:hidden;transition:border-color .3s,box-shadow .3s,transform .3s,background .3s;box-shadow:0 2px 16px var(--shadow);animation:blockIn .5s ease backwards}
+.block:hover{border-color:var(--b2);box-shadow:0 4px 24px var(--shadow-lg);transform:translateY(-1px)}
+.bh{padding:18px 24px;border-bottom:1px solid var(--b1);display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.bnum{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,rgba(99,210,255,.12),rgba(167,139,250,.12));border:1px solid rgba(99,210,255,.2);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--ac);flex-shrink:0;font-weight:500}
+.btitle{font-weight:500;font-size:.98rem;color:var(--text);transition:color .3s}
+.btitle small{font-weight:300;color:var(--muted);font-size:.83rem;margin-left:8px}
+.bb{padding:24px}
+/* Прокрутка для указанных упражнений */
+.scroll-area {
+  max-height: 450px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+/* Остальные стили (не касающиеся matching) оставлены без изменений */
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.vi{display:flex;align-items:center;gap:8px;padding:12px 14px;background:var(--s2);border:1px solid var(--b1);border-radius:13px;transition:all .3s;min-width:0;flex-wrap:wrap}
+.vi:hover{border-color:var(--b2);transform:translateY(-2px);box-shadow:0 4px 12px var(--shadow)}
+.vw{font-weight:600;font-size:.88rem;color:var(--ac);flex-shrink:0;transition:color .3s}
+.vt{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);flex-shrink:0;transition:color .3s}
+.vr{font-size:.8rem;color:var(--pink);font-weight:500;white-space:nowrap;flex-shrink:0;transition:color .3s}
+.sbtn{width:30px;height:30px;min-width:30px;border-radius:8px;background:rgba(99,210,255,.08);border:1px solid rgba(99,210,255,.15);color:var(--ac);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;margin-left:auto;transition:all .2s}
+.sbtn:hover{background:rgba(99,210,255,.2);transform:scale(1.15);border-color:var(--ac)}
+.sbtn:active{transform:scale(.95)}
+.tblock p{margin-bottom:16px;font-size:.98rem;color:var(--text);font-weight:300;line-height:1.9;transition:color .3s}
+.tblock p:last-child{margin-bottom:0}
+.qi{border:1px solid var(--b1);border-radius:13px;margin-bottom:8px;overflow:hidden;cursor:pointer;transition:all .3s}
+.qi:hover,.qi.open{border-color:var(--b2);box-shadow:0 2px 8px var(--shadow)}
+.qh{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:.92rem;font-weight:500;user-select:none;color:var(--text);transition:color .3s}
+.qh i{color:var(--muted);font-size:.72rem;transition:transform .3s,color .2s;flex-shrink:0}
+.qi.open .qh i{transform:rotate(90deg);color:var(--ac)}
+.qa{display:none;padding:14px 18px;font-size:.88rem;color:var(--muted);border-top:1px solid var(--b1);animation:fadeIn .3s ease}
+.qi.open .qa{display:block}
+.tfi{background:var(--s2);border:1px solid var(--b1);border-radius:13px;padding:14px 16px;margin-bottom:12px;transition:all .3s}
+.tfi:hover{box-shadow:0 2px 8px var(--shadow)}
+.tfs{font-size:.92rem;margin-bottom:10px;color:var(--text);transition:color .3s}
+.tfb{display:flex;gap:10px}
+.tfbtn{padding:7px 22px;border-radius:10px;border:1px solid var(--b1);background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;cursor:pointer;transition:all .2s}
+.tfbtn:hover:not(:disabled){border-color:var(--ac);color:var(--ac);transform:translateY(-1px)}
+.tfbtn:active:not(:disabled){transform:scale(.96)}
+.tfbtn.correct{background:rgba(52,211,153,.12);border-color:var(--green);color:var(--green)}
+.tfbtn.wrong{background:rgba(251,113,133,.12);border-color:var(--red);color:var(--red)}
+.tfbtn:disabled{opacity:.7;cursor:not-allowed}
+/* СТИЛИ ДЛЯ НОВОГО MATCHING (переопределяем старые) */
+.mlayout {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.terms-col {
+  flex: 0 0 auto;
+  max-width: 280px;
+  min-width: 180px;
+  max-height: 580px;
+  overflow-y: auto;
+  padding: 12px;
+  background: var(--s2);
+  border-radius: 24px;
+  border: 1px solid var(--b1);
+}
+.defs-col {
+  flex: 1;
+  min-width: 260px;
+  max-height: 580px;
+  overflow-y: auto;
+  padding: 12px;
+  background: var(--s2);
+  border-radius: 24px;
+  border: 1px solid var(--b1);
+}
+.colh {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: var(--ac);
+}
+.dterm {
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  background: rgba(99,210,255,0.08);
+  border: 1px solid rgba(99,210,255,0.2);
+  border-radius: 14px;
+  cursor: grab;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+.dterm:hover {
+  background: rgba(99,210,255,0.16);
+  transform: translateX(4px);
+  border-color: var(--ac);
+}
+.dterm:active { cursor: grabbing; }
+.ddrop {
+  background: rgba(255,255,255,0.02);
+  border: 1.5px dashed var(--b1);
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 14px;
+  min-height: 80px;
+  transition: all 0.2s;
+}
+.ddrop.over {
+  border-color: var(--ac);
+  background: rgba(99,210,255,0.05);
+  border-style: solid;
+}
+.placed {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 14px;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(52,211,153,0.12);
+  color: var(--green);
+  border: 1px solid var(--green);
+  cursor: pointer;
+}
+.placed.wrong {
+  background: rgba(251,113,133,0.12);
+  color: var(--red);
+  border-color: var(--red);
+}
+.placed.correct {
+  background: rgba(52,211,153,0.12);
+  color: var(--green);
+  border-color: var(--green);
+}
+/* Скролл для колонок */
+.terms-col::-webkit-scrollbar, .defs-col::-webkit-scrollbar {
+  width: 6px;
+}
+.terms-col::-webkit-scrollbar-track {
+  background: var(--s2);
+  border-radius: 10px;
+}
+.terms-col::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 10px;
+}
+/* Кнопки сброса и проверки для matching */
+.matching-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+.cbtn {
+  padding: 8px 24px;
+  background: rgba(99,210,255,0.08);
+  border: 1px solid rgba(99,210,255,0.2);
+  border-radius: 40px;
+  color: var(--ac);
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cbtn:hover {
+  background: rgba(99,210,255,0.18);
+  transform: translateY(-1px);
+}
+.cbtn:active { transform: scale(0.96); }
+.check-btn {
+  background: rgba(52,211,153,0.12);
+  border-color: var(--green);
+  color: var(--green);
+}
+.check-btn:hover {
+  background: rgba(52,211,153,0.2);
+}
+/* Остальные стили (не касающиеся matching) оставлены без изменений */
+.fi{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:13px 16px;background:var(--s2);border:1px solid var(--b1);border-radius:13px;margin-bottom:8px;font-size:.92rem;transition:all .3s;color:var(--text)}
+.fi:hover{box-shadow:0 2px 8px var(--shadow)}
+.vhl{background:rgba(99,210,255,.13);border-bottom:1px dotted var(--ac);border-radius:3px;cursor:pointer;color:var(--ac);padding:0 3px;transition:background .15s}
+.vhl:hover{background:rgba(99,210,255,.28)}
+.vtip{position:absolute;background:var(--surface);border:1px solid var(--b2);border-radius:12px;padding:10px 15px;font-size:.83rem;color:var(--text);z-index:999;pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,.5);max-width:250px;animation:fadeIn .2s ease}
+.vtip b{color:var(--ac)}
+.vtip .vtt{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.73rem}
+.fbpop{position:absolute;background:var(--surface);border:1px solid var(--b2);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.6);z-index:1000;min-width:180px;overflow:hidden;animation:fadeIn .2s ease}
+.fbpop button{display:block;width:100%;padding:12px 18px;border:none;background:none;text-align:left;cursor:pointer;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;transition:background .15s}
+.fbpop button:hover{background:rgba(99,210,255,.1);color:var(--ac)}
+.finp{padding:7px 12px;border:1px solid var(--b1);border-radius:10px;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;width:150px;outline:none;transition:all .2s;cursor:pointer}
+.finp:hover{border-color:var(--b2)}
+.finp:focus{box-shadow:0 0 0 3px rgba(99,210,255,.12)}
+.finp.inp-ok{border-color:var(--green);background:rgba(52,211,153,.08);color:var(--green)}
+.finp.inp-err{border-color:var(--red);background:rgba(251,113,133,.08);color:var(--red)}
+.fres{font-size:.85rem;font-weight:600}
+.ok{color:var(--green)}.err{color:var(--red)}
+.ji{background:var(--s2);border:1px solid var(--b1);border-radius:15px;padding:17px 19px;margin-bottom:10px;transition:all .3s}
+.ji:hover{box-shadow:0 2px 8px var(--shadow)}
+.jnum{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);margin-bottom:10px}
+.jwords{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}
+.jword{padding:7px 15px;background:rgba(99,210,255,.07);border:1px solid rgba(99,210,255,.2);border-radius:10px;font-size:.86rem;color:var(--ac);cursor:grab;user-select:none;transition:all .2s}
+.jword:hover{background:rgba(99,210,255,.16);transform:translateY(-1px)}
+.jword:active{cursor:grabbing;transform:scale(.95)}
+.dzone{min-height:50px;border:1px dashed var(--muted);border-radius:12px;padding:9px 13px;display:flex;flex-wrap:wrap;gap:7px;align-items:center;transition:all .2s}
+.dzone.over{border-color:var(--ac);background:rgba(99,210,255,.05);box-shadow:inset 0 0 0 1px rgba(99,210,255,.1)}
+.dslot{padding:7px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:9px;font-size:.86rem;cursor:grab;user-select:none}
+.jact{display:flex;align-items:center;gap:10px;margin-top:11px}
+.jres{font-size:.86rem;font-weight:600}
+video,audio{width:100%;border-radius:15px;margin-top:15px;box-shadow:0 4px 16px var(--shadow)}
+video{max-height:480px}
+.lg-text{font-size:.98rem;color:var(--text);font-weight:300;line-height:2.1;transition:color .3s}
+.lg-gap{display:inline-block;padding:3px 10px;background:rgba(99,210,255,.08);border:1px solid rgba(99,210,255,.25);border-radius:7px;color:var(--ac);cursor:pointer;font-weight:500;transition:all .2s;min-width:90px;text-align:center}
+.lg-gap:hover{background:rgba(99,210,255,.18);border-color:var(--ac);transform:translateY(-1px)}
+.lg-gap.filled-ok{background:rgba(52,211,153,.12);border-color:var(--green);color:var(--green)}
+.lg-gap.filled-err{background:rgba(251,113,133,.12);border-color:var(--red);color:var(--red)}
+.lg-popup{position:absolute;background:var(--surface);border:1px solid var(--b2);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.6);z-index:1000;min-width:180px;overflow:hidden;animation:fadeIn .2s ease}
+.lg-popup button{display:block;width:100%;padding:12px 18px;border:none;background:none;text-align:left;cursor:pointer;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;transition:background .15s}
+.lg-popup button:hover{background:rgba(99,210,255,.1);color:var(--ac)}
+.tp-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--b1);transition:background .2s}
+.tp-row:hover{background:var(--row-hover)}
+.tp-en{flex:1;font-size:.92rem;color:var(--text);font-weight:500;transition:color .3s}
+.tp-right{display:flex;align-items:center;gap:10px;flex:1}
+.tp-inp{padding:8px 14px;border:1px solid var(--b1);border-radius:10px;background:var(--s2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;width:100%;outline:none;transition:all .2s}
+.tp-inp:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(99,210,255,.12)}
+.tp-inp.tp-ok{border-color:var(--green);background:rgba(52,211,153,.08);color:var(--green)}
+.tp-inp.tp-err{border-color:var(--red);background:rgba(251,113,133,.08);color:var(--red)}
+.tp-res{font-size:.84rem;font-weight:600;min-width:85px}
+.ft-table{width:100%;border-collapse:collapse;background:var(--s2);border-radius:14px;overflow:hidden;box-shadow:0 2px 12px var(--shadow);transition:background .3s}
+.ft-table th{padding:14px 18px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--ac);text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid var(--b2);background:rgba(99,210,255,.05);position:sticky;top:0}
+.ft-table td{padding:12px 18px;border-bottom:1px solid var(--b1);transition:background .2s}
+.ft-table tbody tr:nth-child(even){background:var(--table-stripe)}
+.ft-table tbody tr:hover{background:var(--table-hover)}
+.ft-table tr:last-child td{border-bottom:none}
+.ft-txt{color:var(--text);font-size:.9rem;transition:color .3s}
+.ft-inp{width:100%;padding:8px 14px;border:1px solid var(--b1);border-radius:10px;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:all .2s}
+.ft-inp:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(99,210,255,.12)}
+.ft-inp.ft-ok{border-color:var(--green)!important;background:rgba(52,211,153,.08)!important;color:var(--green)!important}
+.ft-inp.ft-err{border-color:var(--red)!important;background:rgba(251,113,133,.08)!important;color:var(--red)!important}
+.ft-check-btn{padding:7px 16px;background:rgba(99,210,255,.08);border:1px solid rgba(99,210,255,.2);border-radius:10px;color:var(--ac);font-family:'DM Sans',sans-serif;font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
+.ft-check-btn:hover{background:rgba(99,210,255,.18);transform:translateY(-1px)}
+.ft-check-btn:active{transform:scale(.95)}
+.scroll-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:14px;background:var(--surface);border:1px solid var(--b1);color:var(--ac);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;z-index:300;opacity:0;transform:translateY(20px);transition:all .3s;box-shadow:0 4px 16px var(--shadow)}
+.scroll-top.visible{opacity:1;transform:translateY(0)}
+.scroll-top:hover{background:var(--s2);border-color:var(--ac);transform:translateY(-2px);box-shadow:0 6px 20px var(--shadow-lg)}
+
+@keyframes gentleSway{0%,100%{transform:rotate(-2deg) scale(1.15)}50%{transform:rotate(2deg) scale(1.15)}}
+.image-modal{display:none;position:fixed;inset:0;z-index:1001;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);cursor:pointer;align-items:center;justify-content:center}
+.image-modal.active{display:flex}
+.image-modal img{max-width:70%;max-height:85vh;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:imageZoom .4s cubic-bezier(.34,1.56,.64,1)}
+.image-modal .close-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:.9rem}
+@keyframes imageZoom{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+.mp-grid{display:flex;gap:24px;flex-wrap:wrap}
+.mp-images{display:flex;flex-wrap:wrap;gap:10px;flex:1;min-width:250px}
+.mp-image-card{width:100px;height:100px;border:2px dashed var(--b1);border-radius:14px;display:flex;align-items:center;justify-content:center;cursor:grab;transition:all .2s;background:var(--s2);padding:8px}
+.mp-image-card:hover{border-color:var(--ac);background:rgba(99,210,255,.05)}.mp-image-card:active{cursor:grabbing;transform:scale(.95)}
+.mp-image-card img{width:100%;height:100%;object-fit:contain}
+.mp-image-card.placed{opacity:.3;cursor:default;pointer-events:none}
+.mp-defs{flex:1;min-width:300px;display:flex;flex-direction:column;gap:10px}
+.mp-def-zone{border:2px dashed var(--b1);border-radius:14px;padding:14px;min-height:70px;display:flex;align-items:center;gap:12px;transition:all .2s;background:var(--s2)}
+.mp-def-zone.over{border-color:var(--ac);background:rgba(99,210,255,.05);box-shadow:inset 0 0 0 2px rgba(99,210,255,.1)}
+.mp-def-zone.correct{border-color:var(--green)!important;background:rgba(52,211,153,.05)!important}
+.mp-def-zone.wrong{border-color:var(--red)!important;background:rgba(251,113,133,.05)!important}
+.mp-def-text{flex:1;font-size:.9rem;color:var(--text);line-height:1.5}
+.mp-def-zone .mp-placed-img{width:60px;height:60px;object-fit:contain;cursor:pointer;border-radius:8px;transition:all .2s}
+.mp-def-zone .mp-placed-img:hover{transform:scale(1.1)}
+.mm-wrap{display:flex;flex-direction:column;align-items:center;gap:20px}
+.mm-center{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--ac2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:.95rem;text-align:center;box-shadow:0 4px 20px rgba(99,210,255,.3)}
+.mm-branches{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;margin-top:10px}
+.mm-branch{display:flex;flex-direction:column;align-items:center;gap:8px}
+.mm-branch-label{font-size:.82rem;color:var(--muted)}
+.mm-branch-slot{width:130px;min-height:44px;border:2px dashed var(--b1);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:6px;transition:all .2s;background:var(--s2);font-size:.85rem;color:var(--text)}
+.mm-branch-slot.over{border-color:var(--ac);background:rgba(99,210,255,.05)}
+.mm-branch-slot.correct{border-color:var(--green)!important;background:rgba(52,211,153,.05)!important;color:var(--green)!important}
+.mm-branch-slot.wrong{border-color:var(--red)!important;background:rgba(251,113,133,.05)!important;color:var(--red)!important}
+.mm-options{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px}
+.mm-option{padding:8px 16px;border:1px solid rgba(99,210,255,.2);border-radius:10px;background:rgba(99,210,255,.06);color:var(--ac);cursor:grab;font-size:.85rem;transition:all .2s}
+.mm-option:hover{background:rgba(99,210,255,.15)}.mm-option:active{cursor:grabbing}
+.mm-option.placed{opacity:.3;cursor:default;pointer-events:none}
+.ls-wrap{display:flex;flex-direction:column;gap:30px}
+.ls-chain{display:flex;flex-direction:column;gap:10px}
+.ls-chain-title{font-weight:600;color:var(--ac);font-size:.9rem;margin-bottom:4px}
+.ls-steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ls-step{padding:10px 16px;border-radius:10px;background:var(--s2);border:1px solid var(--b1);font-size:.85rem;color:var(--text);min-width:80px;text-align:center}
+.ls-step.fixed{border-color:var(--ac);background:rgba(99,210,255,.08);color:var(--ac)}
+.ls-slot{width:140px;min-height:48px;border:2px dashed var(--b1);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:6px;transition:all .2s;background:var(--s2);font-size:.85rem;color:var(--text);text-align:center}
+.ls-slot.over{border-color:var(--ac);background:rgba(99,210,255,.05)}
+.ls-slot.correct{border-color:var(--green)!important;background:rgba(52,211,153,.05)!important;color:var(--green)!important}
+.ls-slot.wrong{border-color:var(--red)!important;background:rgba(251,113,133,.05)!important;color:var(--red)!important}
+.ls-arrow{color:var(--muted);font-size:1.2rem}
+.ls-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.ls-option{padding:8px 16px;border:1px solid rgba(99,210,255,.2);border-radius:10px;background:rgba(99,210,255,.06);color:var(--ac);cursor:grab;font-size:.85rem;transition:all .2s}
+.ls-option:hover{background:rgba(99,210,255,.15)}.ls-option:active{cursor:grabbing}
+.ls-option.placed{opacity:.3;cursor:default;pointer-events:none}
+.ld-wrap{position: relative; overflow-x: auto; width:100%;max-width:1000px;}
+.ld-image{width:100%;border-radius:14px; max-width: none;}
+.ld-marker{position:absolute;width:36px;height:36px;border-radius:50%;border:2px dashed var(--ac);background:rgba(99,210,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;transform:translate(-50%,-50%);font-size:.7rem;color:var(--ac);font-weight:600;z-index:2}
+.ld-marker.over{border-color:var(--ac);background:rgba(99,210,255,.25);box-shadow:0 0 0 4px rgba(99,210,255,.2)}
+.ld-marker.filled{background:rgba(99,210,255,.2);border-color:var(--ac);border-style:solid}
+.ld-marker.correct{background:rgba(52,211,153,.15)!important;border-color:var(--green)!important;color:var(--green);border-style:solid}
+.ld-marker.wrong{background:rgba(251,113,133,.15)!important;border-color:var(--red)!important;color:var(--red);border-style:solid}
+.ld-marker-label{position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--b1);padding:2px 8px;border-radius:6px;font-size:.72rem;color:var(--text);white-space:nowrap;pointer-events:none}
+.ld-options{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px}
+.ld-option{padding:8px 16px;border:1px solid rgba(99,210,255,.2);border-radius:10px;background:rgba(99,210,255,.06);color:var(--ac);cursor:grab;font-size:.85rem;transition:all .2s}
+.ld-option:hover{background:rgba(99,210,255,.15)}.ld-option:active{cursor:grabbing}
+.ld-option.placed{opacity:.3;cursor:default;pointer-events:none}
+.rp-text{font-size:1.05rem;line-height:2;color:var(--text);padding:18px;background:var(--s2);border-radius:14px;margin-bottom:16px;letter-spacing:.01em}
+.rp-score-wrap{display:flex;align-items:center;gap:14px;margin:16px 0}
+.rp-score-circle{width:70px;height:70px;border-radius:50%;border:4px solid var(--ac);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--ac);flex-shrink:0}
+.rp-bar{flex:1;height:8px;background:var(--s2);border-radius:99px;overflow:hidden}
+.rp-bar-fill{height:100%;border-radius:99px;transition:width .5s}
+.rp-transcript{font-size:.9rem;line-height:1.8;padding:14px;background:var(--s2);border-radius:12px;color:var(--muted);margin-top:12px;min-height:60px}
+.rp-transcript .rp-missed{color:var(--pink);border-bottom:2px dotted var(--pink)}
+.rp-mistakes{margin-top:14px;font-size:.88rem;color:var(--muted);line-height:1.8}
+.rp-mistakes li span{color:var(--red)}
+.test-modal{display:none;position:fixed;inset:0;z-index:999}.test-modal.active{display:block}
+.test-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
+.test-container{position:relative;z-index:1;max-width:700px;margin:40px auto;background:var(--surface);border:1px solid var(--b1);border-radius:20px;overflow:hidden;max-height:calc(100vh - 80px);display:flex;flex-direction:column}
+.test-header{padding:20px 24px;border-bottom:1px solid var(--b1)}
+.test-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--text);margin-bottom:10px}
+.test-info{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:10px}
+.test-bar{height:5px;background:var(--s2);border-radius:99px;overflow:hidden}
+.test-bar-fill{height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:99px;transition:width .3s}
+.test-body{flex:1;padding:24px;overflow-y:auto;min-height:200px}
+.test-body h3{font-size:.88rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px}
+.test-body .test-question{font-size:1.05rem;color:var(--text);margin-bottom:20px;line-height:1.6}
+.test-body input[type="text"]{width:100%;padding:12px 16px;border:1px solid var(--b1);border-radius:10px;background:var(--s2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.92rem;outline:none;transition:border-color .2s}
+.test-body input[type="text"]:focus{border-color:var(--ac)}
+.test-body .test-options{display:flex;flex-direction:column;gap:8px}
+.test-body .test-option{padding:12px 16px;border:1px solid var(--b1);border-radius:10px;background:var(--s2);cursor:pointer;transition:all .2s;font-size:.9rem}
+.test-body .test-option:hover{border-color:var(--ac);background:rgba(99,210,255,.05)}
+.test-body .test-option.selected{border-color:var(--ac);background:rgba(99,210,255,.1)}
+.test-result{text-align:center;padding:20px}
+.test-result .result-circle{width:120px;height:120px;border-radius:50%;border:6px solid var(--ac);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'DM Serif Display',serif;font-size:2rem;color:var(--ac)}
+@keyframes blockIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes expandLine{from{width:0}to{width:60px}}
+@media(max-width:660px){
+  .mlayout{flex-direction:column}.vgrid{grid-template-columns:1fr}
+  .fi{flex-direction:column;align-items:flex-start}.finp{width:100%}
+  .tp-row{flex-direction:column;align-items:flex-start}.tp-right{width:100%}
+  .mp-grid{flex-direction:column}.mp-images{justify-content:center}.mp-image-card{width:80px;height:80px}
+  .scroll-top{bottom:16px;right:16px;width:40px;height:40px}
+  main{padding:18px 14px 60px}.hero{padding:36px 14px 28px}.bb{padding:18px 14px}.bh{padding:14px}
+  .hdr-actions{gap:8px}.back-btn{font-size:.8rem}
+  .test-container{margin:10px;max-height:calc(100vh - 20px)}
+  .illustration{width:100px;height:100px;opacity:.2!important}
+  .illustration.left-1{left:5px;top:8%}.illustration.left-2{left:15px;top:30%}.illustration.right-1{right:5px;top:12%}.illustration.right-2{right:15px;top:35%}
+  .illustration.left-3,.illustration.right-3{display:none}
+  .image-modal img{max-width:90%}
+  .ld-wrap{max-width:100%}
+}
+.test-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--b1);
+  background: var(--surface);
+}
+.test-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 12px 28px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: 1px solid var(--b1);
+  color: var(--text);
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(4px);
+}
+.test-btn-prev {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--b1);
+}
+.test-btn-prev:hover:not(:disabled) {
+  background: var(--ac);
+  color: #0b0f1a;
+  border-color: var(--ac);
+  transform: translateX(-2px);
+  box-shadow: 0 6px 14px rgba(99,210,255,0.2);
+}
+.test-btn-next {
+  background: linear-gradient(135deg, var(--ac), var(--ac2));
+  border: none;
+  color: #0b0f1a;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(99,210,255,0.3);
+}
+.test-btn-next:hover {
+  transform: translateX(2px);
+  box-shadow: 0 6px 18px rgba(99,210,255,0.5);
+  filter: brightness(1.05);
+}
+.test-btn:active {
+  transform: scale(0.96);
+}
+[data-theme="light"] .test-btn-prev {
+  background: rgba(0,0,0,0.03);
+}
+[data-theme="light"] .test-btn-next {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}
+</style>
+
+<script>
+// вспомогательные функции
+  const mk = (t,c,h) => { const e = document.createElement(t); if(c) e.className = c; if(h != null) e.innerHTML = h; return e; };
+  const $ = id => document.getElementById(id);
+  const spk = t => { if('speechSynthesis' in window) { const u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; u.rate = 0.92; speechSynthesis.speak(u); } };
+  const shuf = a => [...a].sort(() => Math.random() - 0.5);
+
+// тема
+  (function() {
+    const html = document.documentElement;
+    const toggle = $('themeToggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', saved);
+    toggle.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+
+  let total = 0, done = {};
+  function markDone(id) { if(done[id]) return; done[id] = true; const n = Object.keys(done).length; $('pFill').style.width = (n / total * 100) + '%'; $('pLbl').textContent = n + ' / ' + total; }
+
+  function block(num, title, sub) { const b = mk('div','block'); const h = mk('div','bh'); h.appendChild(Object.assign(mk('div','bnum'),{textContent:num})); h.appendChild(mk('div','btitle',title+(sub?`<small>· ${sub}</small>`:''))); b.appendChild(h); const bb = mk('div','bb'); b.appendChild(bb); return {b,bb}; }
+
+  function vocab(data) {
+    const {b,bb}=block('01','Vocabulary','new words and terms');
+    const g=mk('div','vgrid');
+    data.forEach(({word,trans,ru})=>{
+      const i=mk('div','vi');
+      i.innerHTML=`<span class="vw">${word}</span><span class="vt">${trans}</span><span class="vr">${ru}</span>`;
+      const s=mk('button','sbtn','<i class="fas fa-volume-up"></i>');
+      s.onclick=e=>{e.stopPropagation(); spk(word);};
+      i.appendChild(s);
+      g.appendChild(i);
+    });
+    bb.appendChild(g);
+    return b;
+  }
+
+  function text(data,n) {
+    const {b,bb}=block(n,'Read & Translate','read and translate');
+    const w=mk('div','tblock');
+    const vocabMap={};
+    if(LESSON.vocabulary){
+      LESSON.vocabulary.forEach(item=>{
+        const base=item.word.toLowerCase().trim();
+        const entry={trans:item.trans||'',ru:item.ru||'',original:item.word};
+        vocabMap[base]=entry;
+        vocabMap[base+'s']=entry;
+        vocabMap[base+'es']=entry;
+        vocabMap[base+'ed']=entry;
+        vocabMap[base+'ing']=entry;
+      });
+    }
+    function ht(raw){
+      if(!Object.keys(vocabMap).length) return raw;
+      const terms=Object.keys(vocabMap).sort((a,b)=>b.length-a.length);
+      const escaped=terms.map(t=>t.replace(/[.*+?^${}()|[\]\\-]/g,'\\$&'));
+      const re=new RegExp('\\b('+escaped.join('|')+')\\b','gi');
+      return raw.replace(re,match=>{
+        const lower=match.toLowerCase();
+        const v=vocabMap[lower];
+        if(!v||!v.ru) return match;
+        return `<span class="vhl" data-word="${v.original}" data-trans="${v.trans}" data-ru="${v.ru}">${match}</span>`;
+      });
+    }
+    data.forEach(p=>{ const el=mk('p'); el.innerHTML=ht(p); w.appendChild(el); });
+    bb.appendChild(w);
+    const tip=mk('div','vtip'); tip.style.display='none'; document.body.appendChild(tip);
+    w.addEventListener('mouseover',e=>{
+      const t=e.target.closest('.vhl');
+      if(!t) return;
+      tip.innerHTML=`<b>${t.dataset.word}</b><br><span class="vtt">${t.dataset.trans}</span><br>${t.dataset.ru}`;
+      const r=t.getBoundingClientRect();
+      tip.style.left=Math.min(r.left,window.innerWidth-270)+'px';
+      tip.style.top=(r.bottom+window.scrollY+10)+'px';
+      tip.style.display='block';
+    });
+    w.addEventListener('mouseout',()=>tip.style.display='none');
+    return b;
+  }
+
+  function trueFalse(data,n,id) {
+    const {b,bb}=block(n,'True / False','true or false');
+    const scrollDiv = mk('div','scroll-area');
+    data.forEach(({s,correct})=>{
+      const item=mk('div','tfi');
+      item.appendChild(mk('div','tfs',s));
+      const btns=mk('div','tfb');
+      ['True','False'].forEach(lbl=>{
+        const isOk=(lbl==='True')===correct;
+        const btn=mk('button','tfbtn',lbl);
+        btn.onclick=()=>{
+          btns.querySelectorAll('button').forEach(b=>b.disabled=true);
+          btn.classList.add(isOk?'correct':'wrong');
+          markDone(id);
+        };
+        btns.appendChild(btn);
+      });
+      item.appendChild(btns);
+      scrollDiv.appendChild(item);
+    });
+    bb.appendChild(scrollDiv);
+    return b;
+  }
+
+// НОВАЯ ФУНКЦИЯ matching (с прокруткой, узкой колонкой, кнопками)
+  function matching(data,n,id) {
+    const {b,bb}=block(n,'Match Terms & Definitions','drag term to definition');
+
+  // Создаём контейнер для двух колонок
+    const layout = mk('div','mlayout');
+
+  // Левая колонка: термины
+    const termsDiv = mk('div','terms-col');
+    const termsHeader = mk('div','colh',' TERMS (drag from here)');
+    termsDiv.appendChild(termsHeader);
+    const termsList = mk('div','','');
+    termsDiv.appendChild(termsList);
+
+  // Правая колонка: определения
+    const defsDiv = mk('div','defs-col');
+    const defsHeader = mk('div','colh',' DEFINITIONS (drop here)');
+    defsDiv.appendChild(defsHeader);
+    const defsList = mk('div','','');
+    defsDiv.appendChild(defsList);
+
+    layout.appendChild(termsDiv);
+    layout.appendChild(defsDiv);
+    bb.appendChild(layout);
+
+  // Кнопки управления
+    const controls = mk('div','matching-controls');
+    const resetBtn = mk('button','cbtn','↺ Reset');
+    const checkBtn = mk('button','cbtn check-btn','✓ Check');
+    controls.appendChild(resetBtn);
+    controls.appendChild(checkBtn);
+    bb.appendChild(controls);
+
+  // Сообщение о результате
+    const msgDiv = mk('div','','');
+    msgDiv.style.marginTop = '16px';
+    msgDiv.style.textAlign = 'center';
+    msgDiv.style.fontSize = '0.9rem';
+    bb.appendChild(msgDiv);
+
+  // Получаем данные из LESSON.matching
+  const matchData = data; // это уже массив {term, def}
+  
+  // Функция для создания элемента термина (перетаскиваемый)
+  function makeTermElement(termText) {
+    const el = mk('div','dterm',termText);
+    el.setAttribute('data-term', termText);
+    el.draggable = true;
+    el.addEventListener('dragstart', handleDragStart);
+    el.addEventListener('dragend', handleDragEnd);
+    return el;
+  }
+  
+  // Заполняем левую колонку перемешанными терминами
+  const shuffledTerms = shuf([...matchData.map(item => item.term)]);
+  shuffledTerms.forEach(term => {
+    termsList.appendChild(makeTermElement(term));
+  });
+  
+  // Заполняем правую колонку определениями
+  matchData.forEach(item => {
+    const zone = mk('div','ddrop','');
+    zone.setAttribute('data-correct', item.term);
+    const defText = mk('div','',` ${item.def}`);
+    defText.style.fontSize = '0.9rem';
+    defText.style.marginBottom = '6px';
+    zone.appendChild(defText);
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+    zone.addEventListener('drop', handleDrop);
+    defsList.appendChild(zone);
+  });
+  
+  let draggedTermElement = null;
+  
+  function handleDragStart(e) {
+    draggedTermElement = e.target.closest('.dterm');
+    if (!draggedTermElement) return;
+    e.dataTransfer.setData('text/plain', draggedTermElement.getAttribute('data-term'));
+    draggedTermElement.style.opacity = '0.4';
+  }
+  
+  function handleDragEnd(e) {
+    if (draggedTermElement) draggedTermElement.style.opacity = '';
+    draggedTermElement = null;
+  }
+  
+  function handleDrop(e) {
+    e.preventDefault();
+    const zone = e.currentTarget;
+    zone.classList.remove('over');
+    
+    const term = e.dataTransfer.getData('text/plain');
+    if (!term) return;
+    
+    const correctAnswer = zone.getAttribute('data-correct');
+    const existingPlaced = zone.querySelector('.placed');
+    if (existingPlaced) {
+      // возвращаем старый термин обратно в левую колонку
+      const oldTerm = existingPlaced.getAttribute('data-term');
+      termsList.appendChild(makeTermElement(oldTerm));
+      existingPlaced.remove();
+    }
+    
+    // удаляем исходный термин из левой колонки (если он там ещё есть)
+    const sourceTerm = Array.from(termsList.querySelectorAll('.dterm')).find(el => el.getAttribute('data-term') === term);
+    if (sourceTerm) sourceTerm.remove();
+    
+    const isCorrect = (term === correctAnswer);
+    const placedSpan = mk('span',`placed ${isCorrect ? 'correct' : 'wrong'}`, term);
+    placedSpan.setAttribute('data-term', term);
+    placedSpan.style.cursor = 'pointer';
+    placedSpan.addEventListener('dblclick', (ev) => {
+      const termText = ev.target.getAttribute('data-term');
+      termsList.appendChild(makeTermElement(termText));
+      ev.target.remove();
+    });
+    zone.appendChild(placedSpan);
+  }
+  
+  // Сброс
+  resetBtn.onclick = () => {
+    // Очищаем обе колонки
+    termsList.innerHTML = '';
+    defsList.innerHTML = '';
+    // Пересоздаём левую колонку с перемешанными терминами
+    const freshTerms = shuf([...matchData.map(item => item.term)]);
+    freshTerms.forEach(term => termsList.appendChild(makeTermElement(term)));
+    // Пересоздаём правую колонку с определениями
+    matchData.forEach(item => {
+      const zone = mk('div','ddrop','');
+      zone.setAttribute('data-correct', item.term);
+      const defText = mk('div','',` ${item.def}`);
+      defText.style.fontSize = '0.9rem';
+      defText.style.marginBottom = '6px';
+      zone.appendChild(defText);
+      zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+      zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+      zone.addEventListener('drop', handleDrop);
+      defsList.appendChild(zone);
+    });
+    msgDiv.innerHTML = '';
+  };
+  
+  // Проверка
+  checkBtn.onclick = () => {
+    const allZones = defsList.querySelectorAll('.ddrop');
+    let allCorrect = true;
+    let anyEmpty = false;
+    allZones.forEach(zone => {
+      const placed = zone.querySelector('.placed');
+      const expected = zone.getAttribute('data-correct');
+      if (!placed) {
+        anyEmpty = true;
+        allCorrect = false;
+        return;
+      }
+      const term = placed.getAttribute('data-term');
+      if (term === expected) {
+        placed.classList.add('correct');
+        placed.classList.remove('wrong');
+      } else {
+        placed.classList.add('wrong');
+        placed.classList.remove('correct');
+        allCorrect = false;
+      }
+    });
+    const leftTerms = termsList.querySelectorAll('.dterm').length;
+    if (leftTerms > 0) allCorrect = false;
+    
+    if (allCorrect && !anyEmpty && leftTerms === 0) {
+      msgDiv.innerHTML = '<span style="color:var(--green)">✅ Perfect! All terms matched correctly.</span>';
+      markDone(id);
+    } else {
+      msgDiv.innerHTML = '<span style="color:var(--red)">❌ Not all pairs are correct. Try again (double-click a word to return it).</span>';
+    }
+  };
+  
+  return b;
+}
+
+function matchPicture(data,n,id){
+  const {b,bb}=block(n,' Match the Picture','drag picture to definition');
+  const lessonNum=LESSON.number.replace(/^0/,'');
+  const grid=mk('div','mp-grid');
+  const imagesCol=mk('div','mp-images');
+  const defsCol=mk('div','mp-defs');
+  const sDefs=shuf([...data]);
+  data.forEach(item=>{
+    const card=mk('div','mp-image-card');
+    card.draggable=true;
+    card.dataset.image=item.image;
+    const img=mk('img','');
+    img.src=`images/${lessonNum}/${item.image}`;
+    img.alt=item.word;
+    img.draggable=false;
+    // 👇 ДОБАВЛЕНО: клик по картинке для увеличения
+    img.style.cursor = 'pointer';
+    img.onclick = (e) => {
+      e.stopPropagation();
+      openImage(img);
+    };
+    img.onerror=()=>{ card.style.display='none'; };
+    card.appendChild(img);
+    card.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',item.image); card.style.opacity='.4'; });
+    card.addEventListener('dragend',()=>{ card.style.opacity='1'; });
+    imagesCol.appendChild(card);
+  });
+  sDefs.forEach(item=>{
+    const zone=mk('div','mp-def-zone');
+    zone.dataset.answer=item.image;
+    zone.appendChild(mk('div','mp-def-text',item.def));
+    zone.addEventListener('dragover',e=>{ e.preventDefault(); zone.classList.add('over'); });
+    zone.addEventListener('dragleave',()=>{ zone.classList.remove('over'); });
+    zone.addEventListener('drop',e=>{
+      e.preventDefault(); zone.classList.remove('over');
+      const di=e.dataTransfer.getData('text/plain');
+      const sc=imagesCol.querySelector(`[data-image="${di}"]`);
+      const ex=zone.querySelector('.mp-placed-img');
+      if(ex){ const es=ex.dataset.image; const ec=imagesCol.querySelector(`[data-image="${es}"]`); if(ec) ec.classList.remove('placed'); ex.remove(); }
+      if(sc) sc.classList.add('placed');
+      const pi=mk('img','mp-placed-img');
+      pi.src=`images/${lessonNum}/${di}`;
+      pi.dataset.image=di;
+      pi.addEventListener('click',()=>{ const c=imagesCol.querySelector(`[data-image="${di}"]`); if(c) c.classList.remove('placed'); pi.remove(); });
+      zone.appendChild(pi);
+    });
+    defsCol.appendChild(zone);
+  });
+  grid.appendChild(imagesCol); grid.appendChild(defsCol);
+  bb.appendChild(grid);
+  const bw=mk('div',''); bw.style.cssText='display:flex;gap:10px;margin-top:18px';
+  const rb=mk('button','cbtn','↺ Reset');
+  rb.onclick=()=>{
+    imagesCol.querySelectorAll('.mp-image-card').forEach(c=>c.classList.remove('placed'));
+    defsCol.querySelectorAll('.mp-placed-img').forEach(i=>i.remove());
+    defsCol.querySelectorAll('.mp-def-zone').forEach(z=>z.classList.remove('correct','wrong'));
+  };
+  const cb=mk('button','cbtn','✓ Check');
+  cb.style.cssText+='background:rgba(52,211,153,.12);border-color:var(--green);color:var(--green)';
+  cb.onclick=()=>{
+    let ac=true;
+    defsCol.querySelectorAll('.mp-def-zone').forEach(z=>{
+      z.classList.remove('correct','wrong');
+      const pi=z.querySelector('.mp-placed-img');
+      if(pi && pi.dataset.image===z.dataset.answer){ z.classList.add('correct'); }
+      else { z.classList.add('wrong'); ac=false; }
+    });
+    if(ac) markDone(id);
+  };
+  bw.appendChild(rb); bw.appendChild(cb);
+  bb.appendChild(bw);
+  return b;
+}
+
+function mindMap(data,n,id){
+  const {b,bb}=block(n,' Mind Map','drag words to branches');
+  const wrap=mk('div','mm-wrap');
+  wrap.appendChild(mk('div','mm-center',data.center));
+  const branches=mk('div','mm-branches');
+  const slots=[];
+  data.branches.forEach(br=>{
+    const branch=mk('div','mm-branch');
+    branch.appendChild(mk('div','mm-branch-label',br.label));
+    const slot=mk('div','mm-branch-slot','');
+    slot.dataset.answer=br.answer;
+    slot.addEventListener('dragover',e=>{ e.preventDefault(); slot.classList.add('over'); });
+    slot.addEventListener('dragleave',()=>slot.classList.remove('over'));
+    slot.addEventListener('drop',e=>{
+      e.preventDefault(); slot.classList.remove('over');
+      const word=e.dataTransfer.getData('text/plain');
+      const existing=slot.querySelector('.mm-placed');
+      if(existing){ const opt=optionsDiv.querySelector(`.mm-option[data-word="${existing.dataset.word}"]`); if(opt) opt.classList.remove('placed'); existing.remove(); }
+      const placed=mk('span','mm-placed',word);
+      placed.dataset.word=word;
+      placed.addEventListener('dblclick',()=>{ const opt=optionsDiv.querySelector(`.mm-option[data-word="${word}"]`); if(opt) opt.classList.remove('placed'); placed.remove(); });
+      slot.appendChild(placed);
+      const opt=optionsDiv.querySelector(`.mm-option[data-word="${word}"]`);
+      if(opt) opt.classList.add('placed');
+    });
+    slots.push(slot);
+    branch.appendChild(slot);
+    branches.appendChild(branch);
+  });
+  wrap.appendChild(branches);
+  const optionsDiv=mk('div','mm-options');
+  shuf(data.options).forEach(word=>{
+    const opt=mk('div','mm-option',word);
+    opt.draggable=true;
+    opt.dataset.word=word;
+    opt.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',word); opt.style.opacity='.4'; });
+    opt.addEventListener('dragend',()=>{ opt.style.opacity='1'; });
+    optionsDiv.appendChild(opt);
+  });
+  wrap.appendChild(optionsDiv);
+  bb.appendChild(wrap);
+  const bw=mk('div',''); bw.style.cssText='display:flex;gap:10px;margin-top:18px';
+  const rb=mk('button','cbtn','↺ Reset');
+  rb.onclick=()=>{
+    slots.forEach(s=>{ const p=s.querySelector('.mm-placed'); if(p){ const opt=optionsDiv.querySelector(`.mm-option[data-word="${p.dataset.word}"]`); if(opt) opt.classList.remove('placed'); p.remove(); } s.classList.remove('correct','wrong'); });
+  };
+  const cb=mk('button','cbtn','✓ Check');
+  cb.style.cssText+='background:rgba(52,211,153,.12);border-color:var(--green);color:var(--green)';
+  cb.onclick=()=>{
+    let ac=true;
+    slots.forEach(s=>{
+      s.classList.remove('correct','wrong');
+      const p=s.querySelector('.mm-placed');
+      if(p && p.dataset.word===s.dataset.answer){ s.classList.add('correct'); }
+      else { s.classList.add('wrong'); ac=false; }
+    });
+    if(ac) markDone(id);
+  };
+  bw.appendChild(rb); bw.appendChild(cb);
+  bb.appendChild(bw);
+  return b;
+}
+
+function logicalSequence(data,n,id){
+  const {b,bb}=block(n,' Logical Sequence','complete sequences');
+  const wrap=mk('div','ls-wrap');
+  const allSlots=[];
+  data.sequences.forEach(seq=>{
+    const chain=mk('div','ls-chain');
+    chain.appendChild(mk('div','ls-chain-title',seq.title));
+    const steps=mk('div','ls-steps');
+    seq.steps.forEach((step,i)=>{
+      if(i>0){ const arrow=mk('span','ls-arrow','→'); steps.appendChild(arrow); }
+      if(step.fixed){ steps.appendChild(mk('div','ls-step fixed',step.text)); }
+      else{
+        const slot=mk('div','ls-slot','');
+        slot.dataset.answer=step.answer;
+        slot.addEventListener('dragover',e=>{ e.preventDefault(); slot.classList.add('over'); });
+        slot.addEventListener('dragleave',()=>slot.classList.remove('over'));
+        slot.addEventListener('drop',e=>{
+          e.preventDefault(); slot.classList.remove('over');
+          const word=e.dataTransfer.getData('text/plain');
+          const existing=slot.querySelector('.ls-placed');
+          if(existing){ const opt=optsDiv.querySelector(`.ls-option[data-word="${existing.dataset.word}"]`); if(opt) opt.classList.remove('placed'); existing.remove(); }
+          const placed=mk('span','ls-placed',word);
+          placed.dataset.word=word;
+          slot.appendChild(placed);
+          const opt=optsDiv.querySelector(`.ls-option[data-word="${word}"]`);
+          if(opt) opt.classList.add('placed');
+        });
+        allSlots.push(slot);
+        steps.appendChild(slot);
+      }
+    });
+    chain.appendChild(steps);
+    wrap.appendChild(chain);
+  });
+  const optsDiv=mk('div','ls-options');
+  shuf(data.options).forEach(word=>{
+    const opt=mk('div','ls-option',word);
+    opt.draggable=true;
+    opt.dataset.word=word;
+    opt.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',word); opt.style.opacity='.4'; });
+    opt.addEventListener('dragend',()=>{ opt.style.opacity='1'; });
+    optsDiv.appendChild(opt);
+  });
+  wrap.appendChild(optsDiv);
+  bb.appendChild(wrap);
+  const bw=mk('div',''); bw.style.cssText='display:flex;gap:10px;margin-top:18px';
+  const rb=mk('button','cbtn','↺ Reset');
+  rb.onclick=()=>{
+    allSlots.forEach(s=>{ const p=s.querySelector('.ls-placed'); if(p){ const opt=optsDiv.querySelector(`.ls-option[data-word="${p.dataset.word}"]`); if(opt) opt.classList.remove('placed'); p.remove(); } s.classList.remove('correct','wrong'); });
+  };
+  const cb=mk('button','cbtn','✓ Check');
+  cb.style.cssText+='background:rgba(52,211,153,.12);border-color:var(--green);color:var(--green)';
+  cb.onclick=()=>{
+    let ac=true;
+    allSlots.forEach(s=>{
+      s.classList.remove('correct','wrong');
+      const p=s.querySelector('.ls-placed');
+      if(p && p.dataset.word===s.dataset.answer){ s.classList.add('correct'); }
+      else { s.classList.add('wrong'); ac=false; }
+    });
+    if(ac) markDone(id);
+  };
+  bw.appendChild(rb); bw.appendChild(cb);
+  bb.appendChild(bw);
+  return b;
+}
+
+function labelDiagram(data,n,id){
+  const {b,bb}=block(n,' Label the Diagram','drag the names to the correct places');
+  const lessonNum=LESSON.number.replace(/^0/,'');
+  const wrap=mk('div','ld-wrap');
+  const img=mk('img','ld-image');
+  img.src=`images/${lessonNum}/${data.image}`;
+  img.alt=data.title;
+  img.onerror=()=>{ img.style.display='none'; };
+  wrap.appendChild(img);
+  const markers=[];
+  data.markers.forEach(m=>{
+    const marker=mk('div','ld-marker',m.label);
+    marker.style.left=m.x+'%';
+    marker.style.top=m.y+'%';
+    marker.dataset.answer=m.answer;
+    const label=mk('div','ld-marker-label',m.label);
+    marker.appendChild(label);
+    marker.addEventListener('dragover',e=>{ e.preventDefault(); marker.classList.add('over'); });
+    marker.addEventListener('dragleave',()=>marker.classList.remove('over'));
+    marker.addEventListener('drop',e=>{
+      e.preventDefault(); marker.classList.remove('over');
+      const word=e.dataTransfer.getData('text/plain');
+      const existing=marker.querySelector('.ld-placed');
+      if(existing){ const opt=optsDiv.querySelector(`.ld-option[data-word="${existing.dataset.word}"]`); if(opt) opt.classList.remove('placed'); existing.remove(); }
+      marker.classList.add('filled');
+      const placed=mk('span','ld-placed',word);
+      placed.dataset.word=word;
+      placed.style.cssText='position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--surface);padding:2px 6px;border-radius:4px;font-size:.7rem;white-space:nowrap;color:var(--text);margin-top:2px';
+      placed.addEventListener('dblclick',()=>{ const opt=optsDiv.querySelector(`.ld-option[data-word="${word}"]`); if(opt) opt.classList.remove('placed'); placed.remove(); marker.classList.remove('filled'); });
+      marker.appendChild(placed);
+      const opt=optsDiv.querySelector(`.ld-option[data-word="${word}"]`);
+      if(opt) opt.classList.add('placed');
+    });
+    markers.push(marker);
+    wrap.appendChild(marker);
+  });
+  bb.appendChild(wrap);
+  const optsDiv=mk('div','ld-options');
+  shuf(data.options).forEach(word=>{
+    const opt=mk('div','ld-option',word);
+    opt.draggable=true;
+    opt.dataset.word=word;
+    opt.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',word); opt.style.opacity='.4'; });
+    opt.addEventListener('dragend',()=>{ opt.style.opacity='1'; });
+    optsDiv.appendChild(opt);
+  });
+  bb.appendChild(optsDiv);
+  const bw=mk('div',''); bw.style.cssText='display:flex;gap:10px;margin-top:18px';
+  const rb=mk('button','cbtn','↺ Reset');
+  rb.onclick=()=>{
+    markers.forEach(m=>{ const p=m.querySelector('.ld-placed'); if(p){ const opt=optsDiv.querySelector(`.ld-option[data-word="${p.dataset.word}"]`); if(opt) opt.classList.remove('placed'); p.remove(); m.classList.remove('filled'); } m.classList.remove('correct','wrong'); });
+  };
+  const cb=mk('button','cbtn','✓ Check');
+  cb.style.cssText+='background:rgba(52,211,153,.12);border-color:var(--green);color:var(--green)';
+  cb.onclick=()=>{
+    let ac=true;
+    markers.forEach(m=>{
+      m.classList.remove('correct','wrong');
+      const p=m.querySelector('.ld-placed');
+      if(p && p.dataset.word===m.dataset.answer){ m.classList.add('correct'); }
+      else { m.classList.add('wrong'); ac=false; }
+    });
+    if(ac) markDone(id);
+  };
+  bw.appendChild(rb); bw.appendChild(cb);
+  bb.appendChild(bw);
+  return b;
+}
+
+function fillTable(data,n,id){
+  const {b,bb}=block(n,data.title||'Fill in the Table',data.caption||'fill the table');
+  const scrollDiv = mk('div','scroll-area');
+  const table=mk('table','ft-table');
+  const thead=mk('thead','');
+  const hr=mk('tr','');
+  data.columns.forEach(col=>{ const th=mk('th',''); th.textContent=col.header; hr.appendChild(th); });
+  const thBtn=mk('th',''); thBtn.textContent=''; thBtn.style.cssText='width:90px;'; hr.appendChild(thBtn);
+  thead.appendChild(hr); table.appendChild(thead);
+  const tbody=mk('tbody','');
+  data.rows.forEach((row,ri)=>{
+    const tr=mk('tr','');
+    const inputsInRow=[];
+    data.columns.forEach(col=>{
+      const td=mk('td','');
+      const cv=row[col.key];
+      if(cv && cv!==''){
+        const txt=mk('span','ft-txt'); txt.textContent=cv; td.appendChild(txt);
+        inputsInRow.push({input:null,answer:cv.toString(),isText:true});
+      } else {
+        const inp=mk('input','ft-inp');
+        inp.type='text';
+        inp.placeholder='...';
+        if(data.answers && data.answers[ri] && data.answers[ri][col.key]){
+          inp.dataset.answer=data.answers[ri][col.key].toLowerCase().trim();
+        }
+        td.appendChild(inp);
+        inputsInRow.push({input:inp,answer:inp.dataset.answer||'',isText:false});
+      }
+      tr.appendChild(td);
+    });
+    const tdB=mk('td',''); tdB.style.cssText='text-align:center;';
+    const chk=mk('button','ft-check-btn','Check');
+    let rc=false;
+    chk.addEventListener('click',function(){
+      if(rc) return;
+      let ac=true, he=false;
+      inputsInRow.forEach(item=>{
+        if(!item.isText && item.input){
+          const uv=item.input.value.trim();
+          if(uv===''){ he=true; ac=false; item.input.style.borderColor='var(--red)'; item.input.style.background='rgba(251,113,133,.08)'; }
+          else if(item.answer && uv.toLowerCase()===item.answer){ item.input.style.borderColor='var(--green)'; item.input.style.background='rgba(52,211,153,.08)'; item.input.style.color='var(--green)'; }
+          else if(item.answer){ ac=false; item.input.style.borderColor='var(--red)'; item.input.style.background='rgba(251,113,133,.08)'; item.input.style.color='var(--red)'; }
+          else { item.input.style.borderColor='var(--ac)'; item.input.style.background='rgba(99,210,255,.08)'; }
+        }
+      });
+      if(ac && !he){
+        chk.textContent='✓'; chk.style.background='rgba(52,211,153,.12)'; chk.style.borderColor='var(--green)'; chk.style.color='var(--green)'; chk.style.cursor='default';
+        rc=true; markDone(id);
+      } else if(he){
+        chk.textContent='Fill all'; chk.style.background='rgba(251,113,133,.12)'; chk.style.borderColor='var(--red)'; chk.style.color='var(--red)';
+        setTimeout(()=>{ if(!rc){ chk.textContent='Check'; chk.style.background='rgba(99,210,255,.08)'; chk.style.borderColor='rgba(99,210,255,.2)'; chk.style.color='var(--ac)'; } },1500);
+      } else {
+        chk.textContent='Retry'; chk.style.background='rgba(251,113,133,.12)'; chk.style.borderColor='var(--red)'; chk.style.color='var(--red)';
+        setTimeout(()=>{ if(!rc){ chk.textContent='Check'; chk.style.background='rgba(99,210,255,.08)'; chk.style.borderColor='rgba(99,210,255,.2)'; chk.style.color='var(--ac)'; } },2000);
+      }
+    });
+    tdB.appendChild(chk);
+    tr.appendChild(tdB);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  scrollDiv.appendChild(table);
+  bb.appendChild(scrollDiv);
+  return b;
+}
+
+function fillBlanks(data,n,id){
+  const {b,bb}=block(n,'Fill in the Gaps','insert a word from the dictionary');
+  const scrollDiv = mk('div','scroll-area');
+  data.forEach(({before,answer,after},i)=>{
+    const fi=mk('div','fi');
+    const inp=mk('input','finp');
+    inp.type='text';
+    inp.placeholder='…';
+    inp.dataset.a=answer;
+    const res=mk('span','fres');
+    const btn=mk('button','cbtn','Check');
+    btn.onclick=()=>{
+      const ok=inp.value.trim().toLowerCase()===answer.toLowerCase();
+      res.className='fres '+(ok?'ok':'err');
+      res.textContent=ok?'✓ Correct':'✗ Wrong';
+      inp.classList.toggle('inp-ok',ok);
+      inp.classList.toggle('inp-err',!ok);
+      if(ok) markDone(id);
+    };
+    inp.addEventListener('keydown',e=>{ if(e.key==='Enter') btn.click(); });
+    if(before) fi.appendChild(mk('span','',`${i+1}. ${before} `));
+    else fi.appendChild(mk('span','',`${i+1}. `));
+    fi.appendChild(inp);
+    if(after) fi.appendChild(mk('span','',' '+after));
+    fi.appendChild(btn);
+    fi.appendChild(res);
+    scrollDiv.appendChild(fi);
+  });
+  bb.appendChild(scrollDiv);
+  return b;
+}
+
+function jumble(data,n,id){
+  const {b,bb}=block(n,'Word Order','click words to make a sentence');
+  const scrollDiv = mk('div','scroll-area');
+  data.forEach(({words,correct},i)=>{
+    const ji=mk('div','ji');
+    ji.dataset.c=correct;
+    ji.appendChild(mk('div','jnum',`SENTENCE ${i+1}`));
+    const jw=mk('div','jwords'), dz=mk('div','dzone'), res=mk('span','jres');
+    function atz(w){
+      const sl=mk('div','dslot',w);
+      sl.onclick=()=>{
+        sl.remove();
+        const c=mk('div','jword',w);
+        c.onclick=()=>{ c.remove(); atz(w); };
+        jw.appendChild(c);
+      };
+      dz.appendChild(sl);
+    }
+    function rw(sh){
+      jw.innerHTML=''; dz.innerHTML=''; res.textContent=''; res.className='jres';
+      sh.forEach(w=>{
+        const c=mk('div','jword',w);
+        c.onclick=()=>{ c.remove(); atz(w); };
+        jw.appendChild(c);
+      });
+    }
+    rw(shuf(words));
+    const rst=mk('button','cbtn','↺ Reset'); rst.style.marginRight='6px';
+    rst.onclick=()=>rw(shuf(words));
+    const chk=mk('button','cbtn','Check');
+    chk.onclick=()=>{
+      const s=[...dz.querySelectorAll('.dslot')].map(x=>x.textContent.trim()).filter(Boolean).join(' ')+'.';
+      const ok=s.toLowerCase()===correct.toLowerCase();
+      res.className='jres '+(ok?'ok':'err');
+      res.textContent=ok?'✓ Correct!':'✗ Try again';
+      if(ok) markDone(id);
+    };
+    const act=mk('div','jact');
+    act.appendChild(rst); act.appendChild(chk); act.appendChild(res);
+    ji.appendChild(jw); ji.appendChild(dz); ji.appendChild(act);
+    scrollDiv.appendChild(ji);
+  });
+  bb.appendChild(scrollDiv);
+  return b;
+}
+
+function translatePhrases(data,n,id){
+  const {b,bb}=block(n,'Translate Word Combinations','translate phrases');
+  const scrollDiv = mk('div','scroll-area');
+  data.forEach(({en,ru})=>{
+    const row=mk('div','tp-row');
+    const enCol=mk('div','tp-en'); enCol.textContent=en;
+    const rs=mk('div','tp-right');
+    const inp=mk('input','tp-inp');
+    inp.type='text';
+    inp.placeholder='enter translation...';
+    inp.dataset.answer=ru.toLowerCase().trim();
+    const res=mk('span','tp-res');
+    inp.addEventListener('input',function(){
+      const ua=this.value.trim();
+      if(ua===''){ this.classList.remove('tp-ok','tp-err'); res.textContent=''; return; }
+      const ic=ua.toLowerCase()===this.dataset.answer;
+      if(ic){ this.classList.add('tp-ok'); this.classList.remove('tp-err'); res.textContent='✓ Correct'; res.style.color='var(--green)'; markDone(id); }
+      else{ this.classList.add('tp-err'); this.classList.remove('tp-ok'); res.textContent='✗ Wrong'; res.style.color='var(--red)'; }
+    });
+    rs.appendChild(inp); rs.appendChild(res);
+    row.appendChild(enCol); row.appendChild(rs);
+    scrollDiv.appendChild(row);
+  });
+  bb.appendChild(scrollDiv);
+  return b;
+}
+
+function translateToEnglish(data,n,id){
+  const {b,bb}=block(n,'Translate into English','translate into english');
+  const scrollDiv = mk('div','scroll-area');
+  data.forEach(({ru,en})=>{
+    const row=mk('div','tp-row');
+    const ruCol=mk('div','tp-en'); ruCol.textContent=ru;
+    const rs=mk('div','tp-right');
+    const inp=mk('input','tp-inp');
+    inp.type='text';
+    inp.placeholder='type in English...';
+    inp.dataset.answer=en.toLowerCase().trim();
+    const res=mk('span','tp-res');
+    inp.addEventListener('input',function(){
+      const ua=this.value.trim();
+      if(ua===''){ this.classList.remove('tp-ok','tp-err'); res.textContent=''; return; }
+      const ic=ua.toLowerCase()===this.dataset.answer;
+      if(ic){ this.classList.add('tp-ok'); this.classList.remove('tp-err'); res.textContent='✓ Correct'; res.style.color='var(--green)'; markDone(id); }
+      else{ this.classList.add('tp-err'); this.classList.remove('tp-ok'); res.textContent='✗ Wrong'; res.style.color='var(--red)'; }
+    });
+    rs.appendChild(inp); rs.appendChild(res);
+    row.appendChild(ruCol); row.appendChild(rs);
+    scrollDiv.appendChild(row);
+  });
+  bb.appendChild(scrollDiv);
+  return b;
+}
+
+function video(src,n){
+  const {b,bb}=block(n,'Video','educational video');
+  const v=mk('video'); v.controls=true;
+  const s=mk('source'); s.src=src; s.type='video/mp4';
+  v.appendChild(s);
+  bb.appendChild(v);
+  return b;
+}
+
+function audioBlock(src,n){
+  const {b,bb}=block(n,'Audio','audio recording');
+  const a=mk('audio'); a.controls=true;
+  const s=mk('source'); s.src=src; s.type='audio/mpeg';
+  a.appendChild(s);
+  bb.appendChild(a);
+  return b;
+}
+
+function listeningGapFill(data,n,id){
+  const {b,bb}=block(n,'Listening: Gap Fill','listen and fill in the gaps');
+  if(data.audio){
+    const a=mk('audio'); a.controls=true;
+    const s=mk('source'); s.src=data.audio; s.type='audio/mpeg';
+    a.appendChild(s);
+    bb.appendChild(a);
+  }
+  const tw=mk('div','lg-text');
+  if(data.textTemplate && data.gaps){
+    const gm={}; data.gaps.forEach(g=>{ gm[g.id]=g; });
+    const parts=data.textTemplate.split(/(\{\d+\})/g);
+    parts.forEach(part=>{
+      const m=part.match(/\{(\d+)\}/);
+      if(m){
+        const gid=parseInt(m[1]);
+        const gd=gm[gid];
+        if(gd){
+          const span=mk('span','lg-gap','________');
+          span.dataset.gapId=gid;
+          span.dataset.answer=gd.answer;
+          span.dataset.options=JSON.stringify(gd.options);
+          span.addEventListener('click',function(e){
+            if(this.classList.contains('filled-ok')) return;
+            const old=document.querySelector('.lg-popup'); if(old) old.remove();
+            const popup=mk('div','lg-popup');
+            const opts=JSON.parse(this.dataset.options);
+            const sho=[...opts].sort(()=>Math.random()-0.5);
+            sho.forEach(opt=>{
+              const btn=mk('button','',opt);
+              btn.addEventListener('click',(ev)=>{
+                ev.stopPropagation();
+                this.textContent=opt;
+                this.classList.remove('filled-ok','filled-err');
+                if(opt===this.dataset.answer){ this.classList.add('filled-ok'); markDone(id); }
+                else{ this.classList.add('filled-err'); }
+                popup.remove();
+              });
+              popup.appendChild(btn);
+            });
+            const rect=this.getBoundingClientRect();
+            popup.style.position='fixed';
+            popup.style.left=Math.min(rect.left,window.innerWidth-180)+'px';
+            popup.style.top=(rect.bottom+5)+'px';
+            document.body.appendChild(popup);
+            const ch=(ev2)=>{ if(!popup.contains(ev2.target) && ev2.target!==span){ popup.remove(); document.removeEventListener('click',ch); } };
+            setTimeout(()=>document.addEventListener('click',ch),10);
+          });
+          tw.appendChild(span);
+        } else { tw.appendChild(document.createTextNode(part)); }
+      } else { tw.appendChild(document.createTextNode(part)); }
+    });
+  }
+  bb.appendChild(tw);
+  return b;
+}
+
+// иллюстрации
+(function(){
+  const ln=LESSON.number.replace(/^0/,'');
+  document.querySelectorAll('.illustration').forEach(img=>{
+    const fn=img.dataset.src;
+    img.src=`images/${ln}/${fn}`;
+    img.onerror=()=>{ img.style.display='none'; };
+  });
+})();
+function openImage(el){ const modal=$('imageModal'); const img=$('modalImage'); img.src=el.src; modal.classList.add('active'); document.body.style.overflow='hidden'; }
+function closeImage(){ $('imageModal').classList.remove('active'); document.body.style.overflow=''; }
+document.addEventListener('keydown',function(e){ if(e.key==='Escape' && $('imageModal').classList.contains('active')){ closeImage(); } });
+
+function readingPractice(data,n,id){
+  const {b,bb}=block(n,'🎤 Reading Practice','read aloud');
+  const td=mk('div','rp-text',data.text);
+  bb.appendChild(td);
+  bb.appendChild(mk('p','','Press the button and read the text clearly.'));
+  const bw=mk('div',''); bw.style.cssText='display:flex;gap:10px;margin:14px 0;flex-wrap:wrap';
+  
+  const sb=mk('button','cbtn','🎤 Start reading');
+  sb.style.cssText+='padding:12px 24px;font-size:.9rem;width:auto';
+  
+  const stb=mk('button','cbtn','⏹ Stop mic');
+  stb.style.cssText+='padding:12px 24px;font-size:.9rem;width:auto;display:none';
+  
+  const lb=mk('button','cbtn','🎧 Listen to sample');
+  lb.style.cssText+='padding:12px 24px;font-size:.9rem;width:auto';
+  
+  const stopSpeakerBtn=mk('button','cbtn','⏹ Stop speaker');
+  stopSpeakerBtn.style.cssText+='padding:12px 24px;font-size:.9rem;width:auto';
+  stopSpeakerBtn.onclick=()=>{
+    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  };
+  
+  bw.appendChild(sb); bw.appendChild(stb); bw.appendChild(lb); bw.appendChild(stopSpeakerBtn);
+  bb.appendChild(bw);
+  
+  const trd=mk('div','rp-transcript','Press "Start reading" and speak...');
+  bb.appendChild(trd);
+  const sw=mk('div','rp-score-wrap'); sw.style.display='none';
+  sw.innerHTML=`<div class="rp-score-circle" id="rpScoreCircle">-</div><div class="rp-score-info"><div id="rpScoreLabel">Waiting...</div><div class="rp-bar"><div class="rp-bar-fill" id="rpBarFill" style="width:0%;background:var(--ac)"></div></div></div>`;
+  bb.appendChild(sw);
+  const md=mk('div','rp-mistakes'); md.style.display='none';
+  bb.appendChild(md);
+  
+  let rec=null, ft='';
+  if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    rec=new SR();
+    rec.lang='en-US';
+    rec.continuous=true;
+    rec.interimResults=true;
+    rec.maxAlternatives=1;
+    rec.onresult=(event)=>{
+      let im='';
+      for(let i=event.resultIndex;i<event.results.length;i++){
+        const r=event.results[i];
+        if(r.isFinal) ft+=r[0].transcript+' ';
+        else im+=r[0].transcript;
+      }
+      trd.textContent=ft+im || 'Listening...';
+    };
+    rec.onerror=(event)=>{ trd.textContent='Error: '+event.error; stb.style.display='none'; sb.style.display='inline-block'; };
+    rec.onend=()=>{ stb.style.display='none'; sb.style.display='inline-block'; if(ft.trim()) checkReading(ft.trim()); };
+  } else {
+    sb.disabled=true; sb.textContent='⚠ Browser not supported'; sb.style.opacity='0.5';
+    trd.textContent='Your browser does not support speech recognition. Use Chrome or Edge.';
+  }
+  
+  sb.addEventListener('click',()=>{
+    ft=''; trd.textContent='Listening...'; sw.style.display='none'; md.style.display='none';
+    try{ rec.start(); }catch(e){}
+    sb.style.display='none'; stb.style.display='inline-block';
+  });
+  stb.addEventListener('click',()=>{ rec.stop(); stb.style.display='none'; sb.style.display='inline-block'; });
+  lb.addEventListener('click',()=>{
+    if('speechSynthesis' in window){
+      const u=new SpeechSynthesisUtterance(data.text);
+      u.lang='en-US'; u.rate=0.85;
+      speechSynthesis.speak(u);
+    }
+  });
+  
+  function checkReading(spoken){
+    const orig=data.text.toLowerCase().replace(/[.,!?;:]/g,'');
+    const spClean=spoken.toLowerCase().replace(/[.,!?;:]/g,'');
+    const ows=orig.split(/\s+/).filter(w=>w.length>0);
+    const sSet=new Set(spClean.split(/\s+/).filter(w=>w.length>0));
+    let correct=0;
+    const missed=[];
+    ows.forEach(word=>{
+      if(sSet.has(word)){ correct++; }
+      else{
+        let found=false;
+        for(const sw of sSet){
+          if(levSim(word,sw)>.75){ correct++; found=true; break; }
+        }
+        if(!found) missed.push(word);
+      }
+    });
+    const pct=Math.round((correct/ows.length)*100);
+    const score=Math.round((correct/ows.length)*10);
+    const circle=document.getElementById('rpScoreCircle');
+    const label=document.getElementById('rpScoreLabel');
+    const bar=document.getElementById('rpBarFill');
+    circle.textContent=score;
+    label.textContent=`${score} / 10 points · ${correct}/${ows.length} words`;
+    bar.style.width=pct+'%';
+    if(score>=8) bar.style.background='var(--green)';
+    else if(score>=5) bar.style.background='var(--ac)';
+    else bar.style.background='var(--red)';
+    sw.style.display='flex';
+    if(missed.length>0){
+      let html='<b>❌ Missed or unrecognized:</b><ul>';
+      missed.forEach(w=>{ html+=`<li><span>${w}</span></li>`; });
+      html+='</ul>';
+      md.innerHTML=html; md.style.display='block';
+    } else if(pct>=95){
+      md.innerHTML='<b style="color:var(--green)">🎯 Great pronunciation!</b>';
+      md.style.display='block';
+      markDone(id);
+    }
+    let hl=data.text;
+    missed.forEach(w=>{ const regex=new RegExp(`\\b${w}\\b`,'gi'); hl=hl.replace(regex,`<span class="rp-missed">${w}</span>`); });
+    trd.innerHTML=hl || spoken;
+  }
+  function levSim(a,b){
+    if(a.length===0) return b.length===0?1:0;
+    if(b.length===0) return 0;
+    const matrix=[];
+    for(let i=0;i<=b.length;i++) matrix[i]=[i];
+      for(let j=0;j<=a.length;j++) matrix[0][j]=j;
+        for(let i=1;i<=b.length;i++){
+          for(let j=1;j<=a.length;j++){
+            if(b.charAt(i-1)===a.charAt(j-1)) matrix[i][j]=matrix[i-1][j-1];
+            else matrix[i][j]=Math.min(matrix[i-1][j-1]+1, matrix[i][j-1]+1, matrix[i-1][j]+1);
+          }
+        }
+        return 1-matrix[b.length][a.length]/Math.max(a.length,b.length);
+      }
+      return b;
+    }
+
+// ========== ТЕСТ (30 MCQ) ==========
+    function shuffleArray(arr){
+      for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+        return arr;
+    }
+
+    function gTQ(){
+      const all=[];
+      if(LESSON.vocabulary && LESSON.vocabulary.length){
+        LESSON.vocabulary.forEach(item=>{
+          const correct=item.ru;
+          let others=LESSON.vocabulary.filter(v=>v.ru!==correct).map(v=>v.ru);
+          others=[...new Set(others)];
+          while(others.length<3) others.push("???");
+          const options=[correct, ...others.slice(0,3)];
+          all.push({type:'mcq',question:`What is the Russian translation of "${item.word}"?`, options:shuffleArray(options), answer:correct});
+        });
+      }
+      if(LESSON.translatePhrases && LESSON.translatePhrases.length){
+        LESSON.translatePhrases.forEach(phrase=>{
+          const correct=phrase.ru;
+          let others=LESSON.translatePhrases.filter(p=>p.ru!==correct).map(p=>p.ru);
+          others=[...new Set(others)];
+          while(others.length<3) others.push("???");
+          const options=[correct, ...others.slice(0,3)];
+          all.push({type:'mcq',question:`Translate into Russian: "${phrase.en}"`, options:shuffleArray(options), answer:correct});
+        });
+      }
+      if(LESSON.matching && LESSON.matching.length){
+        LESSON.matching.forEach(m=>{
+          const correct=m.term;
+          let others=LESSON.matching.filter(t=>t.term!==correct).map(t=>t.term);
+          others=[...new Set(others)];
+          while(others.length<3) others.push("???");
+          const options=[correct, ...others.slice(0,3)];
+          all.push({type:'mcq',question:`Which term matches this definition? "${m.def}"`, options:shuffleArray(options), answer:correct});
+        });
+      }
+      if(LESSON.fillBlanks && LESSON.fillBlanks.length){
+        LESSON.fillBlanks.forEach(fb=>{
+          if(fb.answer.includes("first gap")) return;
+          const correct=fb.answer;
+          let others=LESSON.fillBlanks.filter(f=>f.answer!==correct && !f.answer.includes("first gap")).map(f=>f.answer);
+          others=[...new Set(others)];
+          if(others.length<3 && LESSON.vocabulary){
+            const vocabWords=LESSON.vocabulary.map(v=>v.word);
+            const additional=vocabWords.filter(w=>w!==correct && !others.includes(w));
+            others.push(...additional.slice(0,3-others.length));
+          }
+          while(others.length<3) others.push("???");
+          const options=[correct, ...others.slice(0,3)];
+          const sentence=`${fb.before} ______ ${fb.after}`;
+          all.push({type:'mcq',question:`Fill in the blank: "${sentence.trim()}"`, options:shuffleArray(options), answer:correct});
+        });
+      }
+      const shuffled=shuffleArray(all);
+      return shuffled.slice(0,30);
+    }
+
+    let tQ=[], tI=0, tA=[], tST=0, tTI=null;
+    function startTest(){ tQ=gTQ(); if(tQ.length===0){ alert('Not enough data for test.'); return; } tI=0; tA=new Array(tQ.length).fill(null); tST=Date.now(); $('testModal').classList.add('active'); $('testTitle').textContent=`TEST — Lesson ${LESSON.number}`; document.body.style.overflow='hidden'; showTQ(); startTT(); }
+    function startTT(){ if(tTI) clearInterval(tTI); tTI=setInterval(()=>{ const e=Math.floor((Date.now()-tST)/1000); $('testTimer').textContent=`⏱ ${Math.floor(e/60)}:${(e%60).toString().padStart(2,'0')}`; },1000); }
+    function stopTT(){ if(tTI){ clearInterval(tTI); tTI=null; } }
+
+    function showTQ(){
+      const q=tQ[tI];
+      const body=$('testBody');
+      body.innerHTML='';
+      $('testProgress').textContent=`Question ${tI+1}/${tQ.length}`;
+      $('testBar').style.width=((tI/tQ.length)*100)+'%';
+      $('testPrev').style.visibility=tI>0?'visible':'hidden';
+      $('testNext').textContent=tI===tQ.length-1?'Finish →':'Answer →';
+      body.appendChild(mk('h3','',gTTL(q.type)));
+      body.appendChild(mk('div','test-question',q.question));
+      const optsDiv=mk('div','test-options');
+      q.options.forEach(opt=>{
+        const optDiv=mk('div','test-option',opt);
+        if(tA[tI]===opt) optDiv.classList.add('selected');
+        optDiv.addEventListener('click',()=>{ tA[tI]=opt; showTQ(); });
+        optsDiv.appendChild(optDiv);
+      });
+      body.appendChild(optsDiv);
+    }
+
+    function gTTL(type){ return type==='mcq'?' Multiple choice':'❓ Question'; }
+
+    function nextTQ(){
+      if(tI<tQ.length-1){ tI++; showTQ(); }
+      else{ showTR(); }
+    }
+    function prevTQ(){ if(tI>0){ tI--; showTQ(); } }
+
+    function showTR(){
+      stopTT();
+      const e=Math.floor((Date.now()-tST)/1000), m=Math.floor(e/60), s=e%60;
+      let c=0; const mkks=[];
+      tQ.forEach((q,i)=>{
+        const ua=(tA[i]||'').trim();
+        let ok=false;
+        if(q.type==='mcq') ok=ua===q.answer;
+        if(ok) c++; else mkks.push({q,userAnswer:ua});
+      });
+      const pct=Math.round((c/tQ.length)*100);
+      $('testTitle').textContent='🎉 TEST COMPLETED';
+      $('testProgress').textContent='';
+      $('testTimer').textContent=`⏱ ${m}:${s.toString().padStart(2,'0')}`;
+      $('testBar').style.width='100%';
+      $('testPrev').style.visibility='hidden';
+      $('testNext').textContent='🔄 Retake';
+      $('testNext').onclick=()=>{ closeTest(); startTest(); };
+      let html=`<div class="test-result"><div class="result-circle">${pct}%</div><h2 style="color:var(--text);margin-bottom:10px">${c}/${tQ.length}</h2><div class="result-details">Time: <b>${m} min ${s} sec</b></div>`;
+      if(mkks.length>0){
+        html+=`<div class="result-details" style="margin-top:16px;text-align:left"><b>❌ Errors:</b><br>`;
+        mkks.forEach((mk,i)=>{
+          html+=`<br>${i+1}. `;
+          if(mk.q.type==='mcq') html+=`${mk.q.question}<br> → correct: <b>${mk.q.answer}</b>`;
+          else html+=`${mk.q.question} → <b>${mk.q.answer}</b>`;
+          html+=` | Your answer: <span style="color:var(--red)">${mk.userAnswer||'(no answer)'}</span>`;
+        });
+        html+=`</div>`;
+      } else { html+=`<div class="result-details" style="color:var(--green);margin-top:16px">🎯 All answers correct!</div>`; }
+      html+=`</div>`;
+      $('testBody').innerHTML=html;
+    }
+    function closeTest(){ stopTT(); $('testModal').classList.remove('active'); document.body.style.overflow=''; $('testNext').onclick=nextTQ; }
+    document.querySelector('.test-overlay').addEventListener('click',closeTest);
+    document.addEventListener('keydown',function(e){ if(!$('testModal').classList.contains('active')) return; if(e.key==='Enter') nextTQ(); if(e.key==='ArrowLeft') prevTQ(); if(e.key==='Escape') closeTest(); });
+    $('testPrev').addEventListener('click',prevTQ);
+    $('testNext').addEventListener('click',nextTQ);
+    window.addEventListener('scroll',function(){ const btn=$('scrollTop'); if(window.scrollY>300) btn.classList.add('visible'); else btn.classList.remove('visible'); });
+    $('scrollTop').addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+/* ── RENDER ── */
+    function render(L){
+      document.title=`Lesson ${L.number} — ${L.title}`;
+      $('heroTag').textContent=`Lesson ${L.number}`;
+      $('heroTitle').innerHTML=L.title.replace(/(\S+)$/,'<em>$1</em>');
+      const M=$('main'); const add=el=>M.appendChild(el);
+      const EX=['questions','trueFalse','matching','matchPicture','mindMap','logicalSequence','labelDiagram','fillTable','fillBlanks','jumble','translatePhrases','translateToEnglish','readingPractice','listeningGapFill','video','audio'];
+      total=EX.filter(k=>L[k]!=null).length;
+      $('pLbl').textContent='0 / '+total;
+      if(L.vocabulary) add(vocab(L.vocabulary));
+      let n=1; const pad=x=>x.toString().padStart(2,'0');
+      if(L.translatePhrases){ add(translatePhrases(L.translatePhrases,pad(n),'tp')); n++; }
+      if(L.text){ add(text(L.text,pad(n))); n++; }
+      if(L.questions){ add(questions(L.questions,pad(n),'q')); n++; }
+      if(L.trueFalse){ add(trueFalse(L.trueFalse,pad(n),'tf')); n++; }
+      if(L.translateToEnglish){ add(translateToEnglish(L.translateToEnglish,pad(n),'te')); n++; }
+      if(L.matching){ add(matching(L.matching,pad(n),'m')); n++; }
+      if(L.matchPicture){ add(matchPicture(L.matchPicture,pad(n),'mp')); n++; }
+      if(L.mindMap){ add(mindMap(L.mindMap,pad(n),'mm')); n++; }
+      if(L.logicalSequence){ add(logicalSequence(L.logicalSequence,pad(n),'ls')); n++; }
+      if(L.labelDiagram){ add(labelDiagram(L.labelDiagram,pad(n),'ld')); n++; }
+      if(L.fillTable){ add(fillTable(L.fillTable,pad(n),'ft')); n++; }
+      if(L.fillBlanks){ add(fillBlanks(L.fillBlanks,pad(n),'fb')); n++; }
+      if(L.jumble){ add(jumble(L.jumble,pad(n),'j')); n++; }
+      if(L.listeningGapFill){ add(listeningGapFill(L.listeningGapFill,pad(n),'lg')); n++; }
+      if(L.readingPractice){ add(readingPractice(L.readingPractice,pad(n),'rp')); n++; }
+      if(L.video){ add(video(L.video,pad(n))); n++; }
+      if(L.audio){ add(audioBlock(L.audio,pad(n))); n++; }
+      const{b:tB,bb:tBB}=block(pad(n),'The final test','');
+      tBB.innerHTML=`<p style="color:var(--muted);font-size:.92rem;margin-bottom:16px">Test your knowledge. The test contains <b>up to 30 random questions</b> from this lesson.</p><button class="cbtn" style="padding:12px 28px;font-size:.9rem;width:auto" onclick="startTest()"> Start test</button>`;
+      add(tB);
+    }
+
+    render(LESSON);
+  </script>
+</body>
+</html>

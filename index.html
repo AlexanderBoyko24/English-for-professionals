@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional English</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        /* ===================== ТЕМЫ ===================== */
+        :root,
+        [data-theme="dark"] {
+            --bg: #0b0f1a;
+            --surface: #111827;
+            --surface2: #1a2236;
+            --border: rgba(255,255,255,0.07);
+            --border2: rgba(99,210,255,0.18);
+            --accent: #63d2ff;
+            --accent2: #a78bfa;
+            --pink: #f472b6;
+            --green: #34d399;
+            --red: #fb7185;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --card-glow: rgba(99,210,255,0.06);
+            --header-bg: rgba(11,15,26,0.85);
+            --grid-lines: rgba(99,210,255,0.03);
+            --shadow: rgba(0,0,0,0.3);
+            --select-bg: #1e293b;
+            --input-bg: rgba(255,255,255,0.04);
+            --modal-overlay: rgba(0,0,0,0.7);
+            --radio-checked: rgba(99,210,255,0.15);
+        }
+
+        [data-theme="light"] {
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --surface2: #f8fafc;
+            --border: rgba(0,0,0,0.06);
+            --border2: rgba(59,130,246,0.25);
+            --accent: #2563eb;
+            --accent2: #7c3aed;
+            --pink: #db2777;
+            --green: #059669;
+            --red: #dc2626;
+            --text: #1e293b;
+            --muted: #64748b;
+            --card-glow: rgba(59,130,246,0.04);
+            --header-bg: rgba(255,255,255,0.9);
+            --grid-lines: rgba(0,0,0,0.02);
+            --shadow: rgba(0,0,0,0.08);
+            --select-bg: #ffffff;
+            --input-bg: rgba(0,0,0,0.02);
+            --modal-overlay: rgba(0,0,0,0.5);
+            --radio-checked: rgba(59,130,246,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--grid-lines) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-lines) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 500px;
+            background: radial-gradient(ellipse, var(--card-glow) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px) saturate(180%);
+            background: var(--header-bg);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover .logo-icon {
+            transform: scale(1.1);
+        }
+
+        .logo-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            transition: color 0.3s;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* THEME TOGGLE */
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s;
+            color: var(--text);
+        }
+
+        .theme-toggle:hover {
+            background: var(--surface);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .theme-toggle .fa-sun,
+        .theme-toggle .fa-moon {
+            font-size: 1rem;
+            position: absolute;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] .theme-toggle .fa-sun {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+        [data-theme="dark"] .theme-toggle .fa-moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0);
+        }
+        [data-theme="light"] .theme-toggle .fa-sun {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0);
+        }
+        [data-theme="light"] .theme-toggle .fa-moon {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+            color: #6366f1;
+        }
+
+        /* AUTH BUTTONS */
+        .auth-btn {
+            padding: 8px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--surface2);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .auth-btn:hover {
+            border-color: var(--accent);
+            background: var(--surface);
+            transform: translateY(-1px);
+        }
+
+        .auth-btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-color: transparent;
+            color: #fff;
+        }
+
+        .auth-btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(99, 210, 255, 0.25);
+        }
+
+        .header-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 100px;
+            letter-spacing: 0.05em;
+        }
+
+        /* USER PROFILE IN HEADER (после входа) */
+        .user-profile-mini {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 16px 6px 12px;
+            border-radius: 100px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .user-profile-mini:hover {
+            border-color: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px var(--shadow);
+        }
+
+        .user-avatar-mini {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .user-name-mini {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .user-role-badge-mini {
+            font-size: 0.55rem;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .user-role-badge-mini.student {
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--green);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+        }
+
+        .user-role-badge-mini.teacher {
+            background: rgba(167, 139, 250, 0.15);
+            color: var(--accent2);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 80px 32px 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 560px;
+            margin: 0 auto 48px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+        .stat-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--text);
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+        }
+
+        .search-wrap {
+            max-width: 480px;
+            margin: 0 auto 64px;
+            position: relative;
+        }
+        .search-wrap i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 14px 18px 14px 44px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .search-input:focus {
+            border-color: var(--border2);
+        }
+
+        .section-label {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .section-label h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .grid-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px 100px;
+        }
+
+        .professions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .prof-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 24px;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+        .prof-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--card-glow);
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .prof-card:hover {
+            border-color: var(--border2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+        .prof-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .card-icon-large {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            background: var(--icon-bg, rgba(99, 210, 255, 0.12));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--card-accent, var(--accent));
+            transition: transform 0.2s;
+        }
+        .prof-card:hover .card-icon-large {
+            transform: scale(1.05);
+        }
+        .card-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: var(--text);
+        }
+        .card-desc {
+            color: var(--muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .card-medical {
+            --card-accent: #63d2ff;
+            --icon-bg: rgba(99, 210, 255, 0.12);
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--border);
+            padding: 32px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 300;
+        }
+
+        /* ============================================================
+           MODAL — LOGIN & REGISTER
+           ============================================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: var(--modal-overlay);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 40px;
+            max-width: 440px;
+            width: 92%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 32px 80px var(--shadow);
+            animation: slideUp 0.35s ease;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .modal-sub {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: 6px;
+            letter-spacing: 0.03em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 210, 255, 0.08);
+        }
+
+        .form-group input::placeholder {
+            color: var(--muted);
+            opacity: 0.5;
+        }
+
+        /* ===== ROLE SELECTOR (RADIO BUTTONS) ===== */
+        .role-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+
+        .role-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .role-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .role-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            background: var(--input-bg);
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .role-label i {
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .role-option input[type="radio"]:checked+.role-label {
+            border-color: var(--accent);
+            background: var(--radio-checked);
+            color: var(--accent);
+        }
+
+        .role-option input[type="radio"]:checked+.role-label i {
+            color: var(--accent);
+        }
+
+        .role-option:hover .role-label {
+            border-color: var(--border2);
+            transform: translateY(-1px);
+        }
+
+        .role-option input[type="radio"]:checked+.role-label .fa-chalkboard-teacher {
+            color: var(--accent2);
+        }
+
+        .role-option input[type="radio"]:checked+.role-label .fa-user-graduate {
+            color: var(--green);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .form-options label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        .form-options label input[type="checkbox"] {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+        }
+
+        .forgot-link {
+            font-size: 0.82rem;
+            color: var(--accent);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 210, 255, 0.25);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 24px 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .btn-google {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface2);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s;
+        }
+
+        .btn-google:hover {
+            border-color: var(--accent);
+            background: var(--surface);
+            transform: translateY(-1px);
+        }
+
+        .btn-google i {
+            font-size: 1.1rem;
+            color: #ea4335;
+        }
+
+        .modal-footer-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+
+        .modal-footer-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .modal-footer-link a:hover {
+            text-decoration: underline;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal {
+                padding: 28px 20px;
+                width: 95%;
+            }
+            .modal-title {
+                font-size: 1.3rem;
+            }
+            .header-inner {
+                padding: 0 16px;
+            }
+            .header-badge {
+                display: none;
+            }
+            .role-selector {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .role-label {
+                padding: 10px 12px;
+                font-size: 0.82rem;
+            }
+            .user-name-mini {
+                display: none;
+            }
+            .user-role-badge-mini {
+                display: none;
+            }
+            .auth-btn {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
+            .auth-btn span {
+                display: none;
+            }
+        }
+
+        .prof-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardIn 0.5s forwards;
+        }
+
+        @keyframes cardIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo" id="logoLink">
+                <div class="logo-icon"><i class="fas fa-globe"></i></div>
+                <span class="logo-text">Professional <span>English</span></span>
+            </a>
+            <div class="header-right">
+                <!-- КОНТЕЙНЕР ДЛЯ КНОПОК АВТОРИЗАЦИИ / ПРОФИЛЯ -->
+                <div id="authContainer">
+                    <!-- По умолчанию показываем кнопки входа/регистрации -->
+                    <div class="auth-buttons" id="authButtons">
+                        <button class="auth-btn" id="loginBtn">
+                            <i class="fas fa-sign-in-alt"></i> <span>Войти</span>
+                        </button>
+                        <button class="auth-btn auth-btn-primary" id="registerBtn">
+                            <i class="fas fa-user-plus"></i> <span>Регистрация</span>
+                        </button>
+                    </div>
+                    <!-- Профиль пользователя (скрыт по умолчанию) -->
+                    <a href="#" class="user-profile-mini hidden" id="userProfileLink">
+                        <div class="user-avatar-mini" id="userAvatarMini">А</div>
+                        <span class="user-name-mini" id="userNameMini">Анна</span>
+                        <span class="user-role-badge-mini student" id="userRoleBadgeMini">Студент</span>
+                    </a>
+                </div>
+                <button class="theme-toggle" id="themeToggle" title="Switch theme">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="header-badge">CAREER TRACKS</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>English for<br><em>professionals</em></h1>
+        <div class="stats-row">
+            <div class="stat"><span class="stat-num">6+</span><span class="stat-label">courses</span></div>
+            <div class="stat"><span class="stat-num">80+</span><span class="stat-label">divisions</span></div>
+            <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">availability</span></div>
+        </div>
+        <div class="search-wrap">
+            <i class="fas fa-search"></i>
+            <input type="text" class="search-input" placeholder="Find a course/division" id="searchInput">
+        </div>
+    </section>
+
+    <div class="section-label">
+        <h2>Courses</h2>
+    </div>
+
+    <div class="grid-wrap">
+        <div class="professions-grid" id="professionsGrid">
+            <div class="prof-card card-medical" data-name="medical">
+                <div class="card-header">
+                    <div class="card-icon-large"><i class="fas fa-heartbeat"></i></div>
+                    <div class="card-title">Medical English</div>
+                </div>
+                <div class="card-desc">
+                    For medical professionals.
+                </div>
+                <select class="course-select" id="medicalSelect">
+                    <option value="">📚 Choose a course</option>
+                    <option value="medical/anatomy/index.html">🧬 Anatomy (go to lessons)</option>
+                    <option value="pathology">🩺 Pathology (in progress)</option>
+                    <option value="obstetrics">🤰 Obstetrics (in progress)</option>
+                    <option value="pharmacy">💊 Pharmacy (in progress)</option>
+                </select>
+                <div class="select-hint">
+                    <i class="fas fa-chevron-circle-right"></i> Choose a course to start
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Professional English Interactive Platform · 6 направлений · Адаптивное обучение
+    </footer>
+
+    <!-- ============================================================
+    МОДАЛЬНОЕ ОКНО ВХОДА/РЕГИСТРАЦИИ
+    ============================================================ -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- ===== ВХОД ===== -->
+            <div id="loginForm">
+                <div class="modal-title">Добро пожаловать</div>
+                <div class="modal-sub">Войдите в свой аккаунт</div>
+
+                <div class="form-group">
+                    <label>Email или логин</label>
+                    <input type="text" placeholder="Введите email или логин" id="loginEmail">
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" placeholder="Введите пароль" id="loginPassword">
+                </div>
+
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" checked> Запомнить меня
+                    </label>
+                    <a class="forgot-link">Забыли пароль?</a>
+                </div>
+
+                <button class="btn-primary" id="loginSubmitBtn">Войти</button>
+
+                <div class="divider">или</div>
+
+                <button class="btn-google">
+                    <i class="fab fa-google"></i> Войти через Google
+                </button>
+
+                <div class="modal-footer-link">
+                    Нет аккаунта? <a id="switchToRegister">Зарегистрироваться</a>
+                </div>
+            </div>
+
+            <!-- ===== РЕГИСТРАЦИЯ ===== -->
+            <div id="registerForm" class="hidden">
+                <div class="modal-title">Создать аккаунт</div>
+                <div class="modal-sub">Начните учиться прямо сейчас</div>
+
+                <div class="form-group">
+                    <label>Имя</label>
+                    <input type="text" placeholder="Ваше имя" id="registerName">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Введите email" id="registerEmail">
+                </div>
+
+                <!-- ===== ВЫБОР РОЛИ ===== -->
+                <div class="form-group">
+                    <label>Кто вы?</label>
+                    <div class="role-selector">
+                        <label class="role-option">
+                            <input type="radio" name="role" value="teacher">
+                            <span class="role-label">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                Преподаватель
+                            </span>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="role" value="student" checked>
+                            <span class="role-label">
+                                <i class="fas fa-user-graduate"></i>
+                                Студент
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" placeholder="Придумайте пароль" id="registerPassword">
+                </div>
+                <div class="form-group">
+                    <label>Подтверждение пароля</label>
+                    <input type="password" placeholder="Повторите пароль" id="registerConfirm">
+                </div>
+
+                <button class="btn-primary" id="registerSubmitBtn">Зарегистрироваться</button>
+
+                <div class="divider">или</div>
+
+                <button class="btn-google">
+                    <i class="fab fa-google"></i> Зарегистрироваться через Google
+                </button>
+
+                <div class="modal-footer-link">
+                    Уже есть аккаунт? <a id="switchToLogin">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ================================================================
+        //   КЛЮЧИ ХРАНИЛИЩА
+        // ================================================================
+        const USER_KEY = 'profeng_user';          // текущий активный пользователь
+        const USERS_KEY = 'profeng_users';        // список всех пользователей
+
+        // ================================================================
+        //   РАБОТА С ПОЛЬЗОВАТЕЛЯМИ
+        // ================================================================
+
+        function getUsers() {
+            try {
+                const data = localStorage.getItem(USERS_KEY);
+                return data ? JSON.parse(data) : [];
+            } catch { return []; }
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem(USERS_KEY, JSON.stringify(users));
+        }
+
+        function getCurrentUser() {
+            try {
+                const data = localStorage.getItem(USER_KEY);
+                return data ? JSON.parse(data) : null;
+            } catch { return null; }
+        }
+
+        function setCurrentUser(user) {
+            localStorage.setItem(USER_KEY, JSON.stringify(user));
+        }
+
+        function clearCurrentUser() {
+            localStorage.removeItem(USER_KEY);
+        }
+
+        function findUserByEmail(email) {
+            const users = getUsers();
+            return users.find(u => u.email.toLowerCase() === email.toLowerCase()) || null;
+        }
+
+        function addUser(userData) {
+            const users = getUsers();
+            // Проверяем, нет ли уже такого email
+            if (users.some(u => u.email.toLowerCase() === userData.email.toLowerCase())) {
+                return false;
+            }
+            users.push(userData);
+            saveUsers(users);
+            return true;
+        }
+
+        // ================================================================
+        //   ИНИЦИАЛИЗАЦИЯ ДЕМО-ПОЛЬЗОВАТЕЛЕЙ (если их нет)
+        // ================================================================
+
+        function initDemoUsers() {
+            const users = getUsers();
+            if (users.length === 0) {
+                const demos = [
+                    { name: 'Анна Смирнова', email: 'student@mail.ru', role: 'student', registeredAt: new Date().toISOString() },
+                    { name: 'Иван Петров', email: 'ivan@mail.ru', role: 'student', registeredAt: new Date().toISOString() },
+                    { name: 'Преподаватель', email: 'teacher@mail.ru', role: 'teacher', registeredAt: new Date().toISOString() }
+                ];
+                demos.forEach(u => addUser(u));
+                console.log('✅ Добавлены демо-пользователи');
+            }
+        }
+
+        // ================================================================
+        //   ОБНОВЛЕНИЕ ШАПКИ
+        // ================================================================
+
+        function updateHeader(user) {
+            const authButtons = document.getElementById('authButtons');
+            const userProfile = document.getElementById('userProfileLink');
+
+            if (user) {
+                authButtons.classList.add('hidden');
+                userProfile.classList.remove('hidden');
+
+                const initials = user.name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+                document.getElementById('userAvatarMini').textContent = initials || user.name[0].toUpperCase();
+                document.getElementById('userNameMini').textContent = user.name;
+
+                const badge = document.getElementById('userRoleBadgeMini');
+                if (user.role === 'teacher') {
+                    badge.textContent = 'Преподаватель';
+                    badge.className = 'user-role-badge-mini teacher';
+                    document.getElementById('userProfileLink').href = 'страница преподавателя.html';
+                } else {
+                    badge.textContent = 'Студент';
+                    badge.className = 'user-role-badge-mini student';
+                    document.getElementById('userProfileLink').href = 'страница студента.html';
+                }
+            } else {
+                authButtons.classList.remove('hidden');
+                userProfile.classList.add('hidden');
+            }
+        }
+
+        // ================================================================
+        //   ТЕМА
+        // ================================================================
+
+        (function() {
+            const html = document.documentElement;
+            const toggle = document.getElementById('themeToggle');
+            const saved = localStorage.getItem('theme') || 'dark';
+            html.setAttribute('data-theme', saved);
+
+            if (toggle) {
+                toggle.addEventListener('click', () => {
+                    const current = html.getAttribute('data-theme');
+                    const next = current === 'dark' ? 'light' : 'dark';
+                    html.setAttribute('data-theme', next);
+                    localStorage.setItem('theme', next);
+                });
+            }
+        })();
+
+        // ================================================================
+        //   ЗАПУСК
+        // ================================================================
+
+        initDemoUsers();
+
+        const currentUser = getCurrentUser();
+        updateHeader(currentUser);
+
+        // ================================================================
+        //   МОДАЛЬНОЕ ОКНО
+        // ================================================================
+
+        const modal = document.getElementById('authModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const closeBtn = document.getElementById('modalClose');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showLogin() {
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        }
+
+        function showRegister() {
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+        }
+
+        if (loginBtn) loginBtn.addEventListener('click', () => { showLogin(); openModal(); });
+        if (registerBtn) registerBtn.addEventListener('click', () => { showRegister(); openModal(); });
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        if (switchToRegister) {
+            switchToRegister.addEventListener('click', (e) => {
+                e.preventDefault();
+                showRegister();
+            });
+        }
+
+        if (switchToLogin) {
+            switchToLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                showLogin();
+            });
+        }
+
+        // ================================================================
+        //   РЕГИСТРАЦИЯ
+        // ================================================================
+
+        document.getElementById('registerSubmitBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+            const confirm = document.getElementById('registerConfirm').value;
+            const roleRadio = document.querySelector('input[name="role"]:checked');
+            const role = roleRadio ? roleRadio.value : 'student';
+
+            if (!name || !email || !password || !confirm) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+            if (password !== confirm) {
+                alert('Пароли не совпадают');
+                return;
+            }
+            if (password.length < 6) {
+                alert('Пароль должен содержать минимум 6 символов');
+                return;
+            }
+
+            // Проверяем, не занят ли email
+            if (findUserByEmail(email)) {
+                alert('Этот email уже зарегистрирован. Пожалуйста, войдите.');
+                return;
+            }
+
+            const newUser = {
+                name: name,
+                email: email,
+                role: role,
+                registeredAt: new Date().toISOString()
+            };
+
+            // Сохраняем в общий список
+            if (addUser(newUser)) {
+                setCurrentUser(newUser);
+                updateHeader(newUser);
+                const roleLabel = role === 'teacher' ? 'Преподаватель' : 'Студент';
+                alert(`✅ Регистрация успешна!\n\nИмя: ${name}\nEmail: ${email}\nРоль: ${roleLabel}\n\nТеперь вы можете перейти в свой профиль.`);
+                closeModal();
+                // Очищаем форму
+                document.getElementById('registerName').value = '';
+                document.getElementById('registerEmail').value = '';
+                document.getElementById('registerPassword').value = '';
+                document.getElementById('registerConfirm').value = '';
+            } else {
+                alert('Ошибка при регистрации. Попробуйте ещё раз.');
+            }
+        });
+
+        // ================================================================
+        //   ВХОД
+        // ================================================================
+
+        document.getElementById('loginSubmitBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+
+            // Ищем пользователя в общем списке
+            const user = findUserByEmail(email);
+
+            if (user) {
+                // В реальном проекте здесь проверяли бы пароль
+                setCurrentUser(user);
+                updateHeader(user);
+                alert(`✅ Вход выполнен!\n\nДобро пожаловать, ${user.name}!`);
+                closeModal();
+                document.getElementById('loginEmail').value = '';
+                document.getElementById('loginPassword').value = '';
+            } else {
+                alert('❌ Пользователь с таким email не найден.\n\nПожалуйста, зарегистрируйтесь.');
+            }
+        });
+
+        // ================================================================
+        //   ПОИСК КУРСОВ
+        // ================================================================
+
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.prof-card');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+                cards.forEach(card => {
+                    const cardText = card.innerText.toLowerCase();
+                    card.style.display = cardText.includes(query) ? '' : 'none';
+                });
+            });
+        }
+
+        // ================================================================
+        //   ВЫБОР КУРСА
+        // ================================================================
+
+        const medicalSelect = document.getElementById('medicalSelect');
+        if (medicalSelect) {
+            medicalSelect.addEventListener('change', (e) => {
+                const selected = e.target.value;
+                if (selected && selected.includes('.html')) {
+                    window.location.href = selected;
+                } else if (selected === 'pathology') {
+                    alert('Курс «Патология» в разработке. Скоро появится!');
+                    medicalSelect.value = '';
+                } else if (selected === 'obstetrics') {
+                    alert('Курс «Акушерство» в разработке. Следите за обновлениями.');
+                    medicalSelect.value = '';
+                } else if (selected === 'pharmacy') {
+                    alert('Курс «Фармация» готовится к запуску.');
+                    medicalSelect.value = '';
+                } else {
+                    if (selected !== '') medicalSelect.value = '';
+                }
+            });
+        }
+
+        // ================================================================
+        //   ЛОГОТИП
+        // ================================================================
+
+        document.getElementById('logoLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            location.reload();
+        });
+
+        console.log('✅ Стартовая страница загружена');
+        console.log('👤 Текущий пользователь:', getCurrentUser());
+        console.log('📋 Все пользователи:', getUsers());
+    </script>
+
+</body>
+</html>
