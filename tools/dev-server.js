@@ -11,7 +11,6 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const url = require('url');
 
 const ROOT = path.resolve(__dirname, '..');
 const PORT = Number(process.env.PORT) || 5173;
@@ -39,7 +38,7 @@ const TYPES = {
 const server = http.createServer((req, res) => {
   let pathname;
   try {
-    pathname = decodeURIComponent(url.parse(req.url).pathname);
+    pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
   } catch (e) {
     res.writeHead(400);
     res.end('Bad request');
