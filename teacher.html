@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кабинет преподавателя — Professional English</title>
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark');}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .profile-card{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .profile-info{flex:1;min-width:220px}
+  .profile-name{font-family:'DM Serif Display',serif;font-size:1.7rem;line-height:1.2;margin-bottom:6px}
+  .profile-mail{font-size:.85rem;color:var(--muted);word-break:break-all}
+  .create-row{display:flex;gap:10px;flex-wrap:wrap}
+  .create-row .input{flex:1;min-width:200px}
+  .group-card{border:1px solid var(--b1);border-radius:18px;background:var(--s2);margin-bottom:14px;overflow:hidden}
+  .group-head{display:flex;align-items:center;gap:12px;padding:14px 16px;flex-wrap:wrap}
+  .group-name{font-size:1rem;font-weight:600;flex:1;min-width:150px}
+  .group-count{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted)}
+  .group-body{padding:0 16px 14px}
+  .member{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;flex-wrap:wrap}
+  .member:hover{background:var(--row-hover)}
+  .member-main{flex:1;min-width:170px}
+  .member-name{font-size:.9rem;font-weight:500}
+  .member-mail{font-size:.75rem;color:var(--muted);word-break:break-all}
+  .member-stat{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);margin-top:3px}
+  .member .pbar{flex:0 0 150px}
+  .add-panel{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .add-panel select{min-width:160px}
+  .name-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .name-form .input{flex:1;min-width:200px}
+</style>
+</head>
+<body class="page-bg">
+
+<header class="app-header">
+  <div class="app-header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-icon"><i class="fas fa-globe"></i></div>
+      <span class="brand-text">Professional <span>English</span></span>
+    </a>
+    <div class="header-right">
+      <a class="btn btn-ghost" href="index.html"><i class="fas fa-book-open"></i> Каталог</a>
+      <button class="theme-toggle" data-theme-toggle title="Сменить тему">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="btn btn-ghost" id="logoutBtn"><i class="fas fa-right-from-bracket"></i> Выйти</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="panel">
+      <div class="profile-card">
+        <span class="avatar avatar-lg" id="profileAvatar">—</span>
+        <div class="profile-info">
+          <div class="profile-name" id="profileName">Загрузка…</div>
+          <div class="profile-mail" id="profileMail"></div>
+          <span class="role-badge role-teacher" style="margin-top:8px;display:inline-block">Преподаватель</span>
+        </div>
+      </div>
+      <div class="name-form" id="nameForm" style="display:none">
+        <input class="input" id="nameInput" placeholder="Укажите ФИО">
+        <button class="btn btn-primary" id="nameSave">Сохранить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- Поиск студентов ---------- -->
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title"><i class="fas fa-user-magnifying-glass"></i> Поиск студентов</div>
+    </div>
+    <div class="search-field">
+      <i class="fas fa-search"></i>
+      <input class="input" id="studentSearch" placeholder="Имя или почта студента" autocomplete="off">
+    </div>
+    <div id="searchResults" style="margin-top:14px"></div>
+  </div>
+
+  <!-- ---------- Группы ---------- -->
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">
+        <i class="fas fa-users"></i> Группы
+        <span class="count" id="groupCount"></span>
+      </div>
+    </div>
+    <div class="create-row">
+      <input class="input" id="groupName" placeholder="Название новой группы, например «ЛД-201»">
+      <button class="btn btn-primary" id="createGroup"><i class="fas fa-plus"></i> Создать группу</button>
+    </div>
+    <div id="groupList" style="margin-top:18px"></div>
+  </div>
+</div>
+
+<footer class="app-footer">Professional English · кабинет преподавателя</footer>
+
+<script>window.APP_ROOT = '';</script>
+<script src="assets/config.js"></script>
+<script src="assets/api.js"></script>
+<script src="assets/catalog.js"></script>
+<script src="assets/ui.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var currentUser = null;
+  var groups = [];
+  var searchTimer = null;
+
+  /* Сколько всего тем в готовых подкурсах — база для общего процента студента. */
+  function totalTopics() {
+    var count = 0;
+    CATALOG.courses.forEach(function (course) {
+      course.subcourses.forEach(function (sub) {
+        if (sub.ready) count += sub.topics.length;
+      });
+    });
+    return count || 1;
+  }
+
+  /* ---------------- поиск ---------------- */
+
+  function renderSearch(students) {
+    var host = document.getElementById('searchResults');
+    host.innerHTML = '';
+
+    if (!students.length) {
+      host.appendChild(App.el('div', 'empty', 'Студенты не найдены.'));
+      return;
+    }
+
+    students.forEach(function (student) {
+      var row = App.el('div', 'row');
+      var main = App.el('div', 'row-main');
+      main.innerHTML =
+        '<div class="row-name">' + App.escape(App.displayName(student)) + '</div>' +
+        '<div class="row-sub">' + App.escape(student.email) + '</div>';
+      row.appendChild(main);
+
+      var actions = App.el('div', 'row-actions add-panel');
+
+      if (!groups.length) {
+        actions.appendChild(App.el('span', 'row-sub', 'Сначала создайте группу'));
+      } else {
+        var select = App.el('select', 'input btn-sm');
+        select.style.cssText = 'padding:7px 10px;font-size:.8rem;width:auto';
+        groups.forEach(function (g) {
+          var opt = App.el('option', '', App.escape(g.name));
+          opt.value = g.id;
+          select.appendChild(opt);
+        });
+
+        var addBtn = App.el('button', 'btn btn-sm btn-primary', '<i class="fas fa-user-plus"></i> В группу');
+        addBtn.addEventListener('click', async function () {
+          addBtn.disabled = true;
+          try {
+            await API.groups.addStudent(select.value, student.id);
+            App.toast('Студент добавлен в группу.', 'ok');
+            await loadGroups();
+          } catch (e) {
+            App.toast('Не удалось добавить: ' + e.message, 'error');
+          } finally {
+            addBtn.disabled = false;
+          }
+        });
+
+        actions.appendChild(select);
+        actions.appendChild(addBtn);
+      }
+
+      row.appendChild(actions);
+      host.appendChild(row);
+    });
+  }
+
+  async function runSearch() {
+    var query = document.getElementById('studentSearch').value.trim();
+    var host = document.getElementById('searchResults');
+    host.innerHTML = '<div class="empty">Ищем…</div>';
+    try {
+      var students = await API.students.search(query);
+      renderSearch(students);
+    } catch (e) {
+      console.error(e);
+      host.innerHTML = '';
+      host.appendChild(App.el('div', 'empty', 'Ошибка поиска: ' + App.escape(e.message)));
+    }
+  }
+
+  document.getElementById('studentSearch').addEventListener('input', function () {
+    if (searchTimer) clearTimeout(searchTimer);
+    searchTimer = setTimeout(runSearch, 350);
+  });
+
+  /* ---------------- группы ---------------- */
+
+  function groupCard(group) {
+    var card = App.el('div', 'group-card');
+
+    var head = App.el('div', 'group-head');
+    head.innerHTML =
+      '<i class="fas fa-chevron-right chev" style="color:var(--muted);font-size:.75rem;transition:transform .25s"></i>' +
+      '<span class="group-name">' + App.escape(group.name) + '</span>' +
+      '<span class="group-count">' + group.students.length + ' студ.</span>';
+
+    var actions = App.el('div', 'row-actions');
+
+    var renameBtn = App.el('button', 'btn btn-sm', '<i class="fas fa-pen"></i>');
+    renameBtn.title = 'Переименовать';
+    renameBtn.addEventListener('click', async function (e) {
+      e.stopPropagation();
+      var name = prompt('Новое название группы:', group.name);
+      if (!name || !name.trim()) return;
+      try {
+        await API.groups.rename(group.id, name.trim());
+        await loadGroups();
+      } catch (err) {
+        App.toast('Не удалось переименовать: ' + err.message, 'error');
+      }
+    });
+
+    var deleteBtn = App.el('button', 'btn btn-sm btn-danger', '<i class="fas fa-trash"></i>');
+    deleteBtn.title = 'Удалить группу';
+    deleteBtn.addEventListener('click', async function (e) {
+      e.stopPropagation();
+      if (!confirm('Удалить группу «' + group.name + '»? Студенты останутся в системе, но потеряют привязку к группе.')) return;
+      try {
+        await API.groups.remove(group.id);
+        App.toast('Группа удалена.', 'ok');
+        await loadGroups();
+      } catch (err) {
+        App.toast('Не удалось удалить: ' + err.message, 'error');
+      }
+    });
+
+    actions.appendChild(renameBtn);
+    actions.appendChild(deleteBtn);
+    head.appendChild(actions);
+
+    var body = App.el('div', 'group-body');
+    body.style.display = 'none';
+
+    if (!group.students.length) {
+      body.appendChild(App.el('div', 'empty', 'В группе пока никого нет. Найдите студента через поиск выше.'));
+    } else {
+      group.students.forEach(function (student) {
+        var member = App.el('div', 'member');
+        var main = App.el('div', 'member-main');
+        main.innerHTML =
+          '<div class="member-name">' + App.escape(App.displayName(student)) + '</div>' +
+          '<div class="member-mail">' + App.escape(student.email) + '</div>' +
+          '<div class="member-stat" data-stat>&nbsp;</div>';
+        member.appendChild(main);
+
+        var barHost = App.el('div', 'pbar is-empty');
+        barHost.innerHTML =
+          '<div class="pbar-track"><div class="pbar-fill" style="width:0%"></div></div>' +
+          '<div class="pbar-label">…</div>';
+        member.appendChild(barHost);
+
+        var removeBtn = App.el('button', 'btn btn-sm btn-danger', '<i class="fas fa-user-minus"></i>');
+        removeBtn.title = 'Убрать из группы';
+        removeBtn.addEventListener('click', async function () {
+          if (!confirm('Убрать ' + App.displayName(student) + ' из группы «' + group.name + '»?')) return;
+          try {
+            await API.groups.removeStudent(group.id, student.id);
+            App.toast('Студент убран из группы.', 'ok');
+            await loadGroups();
+          } catch (err) {
+            App.toast('Не удалось убрать: ' + err.message, 'error');
+          }
+        });
+        member.appendChild(removeBtn);
+
+        member.dataset.studentId = student.id;
+        body.appendChild(member);
+      });
+    }
+
+    var loaded = false;
+    head.addEventListener('click', function () {
+      var open = body.style.display === 'none';
+      body.style.display = open ? 'block' : 'none';
+      head.querySelector('.chev').style.transform = open ? 'rotate(90deg)' : '';
+      /* Прогресс подтягиваем только когда группу раскрыли. */
+      if (open && !loaded) {
+        loaded = true;
+        loadGroupProgress(group, body);
+      }
+    });
+
+    card.appendChild(head);
+    card.appendChild(body);
+    return card;
+  }
+
+  /* Средний прогресс студента по всем темам готовых подкурсов. */
+  async function loadGroupProgress(group, body) {
+    var base = totalTopics();
+    await Promise.all(group.students.map(async function (student) {
+      var member = body.querySelector('[data-student-id="' + student.id + '"]');
+      if (!member) return;
+      var bar = member.querySelector('.pbar');
+      var stat = member.querySelector('[data-stat]');
+      try {
+        var rows = await API.progress.list(student.id);
+        var sum = rows.reduce(function (acc, r) { return acc + (r.percent || 0); }, 0);
+        var pct = Math.round(sum / base);
+        var started = rows.filter(function (r) { return (r.percent || 0) > 0; }).length;
+        var done = rows.filter(function (r) { return (r.percent || 0) >= 100; }).length;
+
+        bar.className = 'pbar ' + App.progressClass(pct);
+        bar.querySelector('.pbar-fill').style.width = pct + '%';
+        bar.querySelector('.pbar-label').textContent = pct + '%';
+
+        /* Общий процент по всему курсу у активного студента может
+           округляться до нуля, поэтому рядом показываем счётчик тем. */
+        stat.textContent = started
+          ? 'начато тем: ' + started + ' · завершено: ' + done
+          : 'к занятиям ещё не приступал';
+      } catch (e) {
+        console.error(e);
+        bar.querySelector('.pbar-label').textContent = '—';
+        stat.textContent = 'не удалось загрузить прогресс';
+      }
+    }));
+  }
+
+  function renderGroups() {
+    var host = document.getElementById('groupList');
+    host.innerHTML = '';
+    document.getElementById('groupCount').textContent = groups.length ? groups.length + ' шт.' : '';
+
+    if (!groups.length) {
+      host.appendChild(App.el('div', 'empty', 'Групп пока нет. Создайте первую — и добавляйте в неё найденных студентов.'));
+      return;
+    }
+    groups.forEach(function (group) {
+      host.appendChild(groupCard(group));
+    });
+  }
+
+  async function loadGroups() {
+    try {
+      groups = await API.groups.list();
+    } catch (e) {
+      console.error(e);
+      App.toast('Не удалось загрузить группы: ' + e.message, 'error');
+      groups = [];
+    }
+    renderGroups();
+    /* Список групп в поиске тоже надо обновить. */
+    if (document.getElementById('searchResults').children.length) runSearch();
+  }
+
+  document.getElementById('createGroup').addEventListener('click', async function () {
+    var input = document.getElementById('groupName');
+    var name = input.value.trim();
+    if (!name) {
+      App.toast('Введите название группы.', 'error');
+      return;
+    }
+    try {
+      await API.groups.create(name);
+      input.value = '';
+      App.toast('Группа создана.', 'ok');
+      await loadGroups();
+    } catch (e) {
+      App.toast('Не удалось создать группу: ' + e.message, 'error');
+    }
+  });
+
+  document.getElementById('groupName').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') document.getElementById('createGroup').click();
+  });
+
+  /* ---------------- профиль ---------------- */
+
+  function renderProfile(user) {
+    document.getElementById('profileAvatar').textContent = App.initials(user.fullName, user.email);
+    document.getElementById('profileName').textContent = App.displayName(user);
+    document.getElementById('profileMail').textContent = user.email;
+    if (!user.fullName || !user.fullName.trim()) {
+      document.getElementById('nameForm').style.display = 'flex';
+    }
+  }
+
+  document.getElementById('nameSave').addEventListener('click', async function () {
+    var value = document.getElementById('nameInput').value.trim();
+    if (!value) {
+      App.toast('Введите ФИО.', 'error');
+      return;
+    }
+    try {
+      currentUser = await API.auth.updateProfile({ fullName: value });
+      renderProfile(currentUser);
+      document.getElementById('nameForm').style.display = 'none';
+      App.toast('ФИО сохранено.', 'ok');
+    } catch (e) {
+      App.toast('Не удалось сохранить: ' + e.message, 'error');
+    }
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', App.logout);
+
+  /* ---------------- запуск ---------------- */
+
+  document.addEventListener('DOMContentLoaded', async function () {
+    App.theme.bind();
+    await API.ready;
+    App.showModeNotice();
+
+    currentUser = await App.requireAuth('teacher');
+    if (!currentUser) return;
+
+    renderProfile(currentUser);
+    await loadGroups();
+    await runSearch();
+  });
+})();
+</script>
+</body>
+</html>

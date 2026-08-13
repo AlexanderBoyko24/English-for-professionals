@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кабинет студента — Professional English</title>
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark');}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .profile-card{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .profile-info{flex:1;min-width:220px}
+  .profile-name{font-family:'DM Serif Display',serif;font-size:1.7rem;line-height:1.2;margin-bottom:6px}
+  .profile-mail{font-size:.85rem;color:var(--muted);word-break:break-all}
+  .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+  .stat-box{flex:1;min-width:140px;padding:16px 18px;border-radius:18px;background:var(--s2);border:1px solid var(--b1)}
+  .stat-num{font-family:'DM Serif Display',serif;font-size:1.8rem;line-height:1}
+  .stat-cap{font-size:.78rem;color:var(--muted);margin-top:4px}
+  .name-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .name-form .input{flex:1;min-width:200px}
+</style>
+</head>
+<body class="page-bg">
+
+<header class="app-header">
+  <div class="app-header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-icon"><i class="fas fa-globe"></i></div>
+      <span class="brand-text">Professional <span>English</span></span>
+    </a>
+    <div class="header-right">
+      <a class="btn btn-ghost" href="index.html"><i class="fas fa-book-open"></i> Каталог</a>
+      <button class="theme-toggle" data-theme-toggle title="Сменить тему">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="btn btn-ghost" id="logoutBtn"><i class="fas fa-right-from-bracket"></i> Выйти</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="panel">
+      <div class="profile-card">
+        <span class="avatar avatar-lg" id="profileAvatar">—</span>
+        <div class="profile-info">
+          <div class="profile-name" id="profileName">Загрузка…</div>
+          <div class="profile-mail" id="profileMail"></div>
+          <span class="role-badge role-student" style="margin-top:8px;display:inline-block">Студент</span>
+        </div>
+      </div>
+
+      <div class="name-form" id="nameForm" style="display:none">
+        <input class="input" id="nameInput" placeholder="Укажите ФИО, чтобы преподаватель вас нашёл">
+        <button class="btn btn-primary" id="nameSave">Сохранить</button>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-num" id="statOverall">0%</div>
+          <div class="stat-cap">общий прогресс</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="statStarted">0</div>
+          <div class="stat-cap">тем начато</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="statDone">0</div>
+          <div class="stat-cap">тем завершено</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label"><h2>Мои курсы</h2></div>
+  <div class="course-grid" id="courseGrid"></div>
+</div>
+
+<footer class="app-footer">Professional English · кабинет студента</footer>
+
+<script>window.APP_ROOT = '';</script>
+<script src="assets/config.js"></script>
+<script src="assets/api.js"></script>
+<script src="assets/catalog.js"></script>
+<script src="assets/ui.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var progress = {};
+  var currentUser = null;
+
+  /* ---------------- дерево курс → подкурс → темы ---------------- */
+
+  function topicLeaf(course, sub, topic) {
+    var key = CATALOG.topicKey(course.key, sub.key, topic.key);
+    var pct = progress[key] || 0;
+    var leaf = App.el('a', 'tree-leaf');
+    leaf.href = course.key + '/' + sub.key + '/' + topic.key + '.html';
+    leaf.innerHTML =
+      '<span class="leaf-name">' + App.escape(topic.title) + '</span>' +
+      App.progressBar(pct);
+    return leaf;
+  }
+
+  function subcourseNode(course, sub) {
+    var node = App.el('div', 'tree-node');
+    var pct = App.subcourseProgress(progress, course.key, sub);
+
+    var head = App.el('button', 'tree-head');
+    head.type = 'button';
+    head.setAttribute('aria-expanded', 'false');
+    head.innerHTML =
+      '<i class="fas fa-chevron-right chev"></i>' +
+      '<span class="tree-name">' + sub.emoji + ' ' + App.escape(sub.title) + '</span>' +
+      App.progressBar(pct);
+
+    var body = App.el('div', 'tree-body');
+    sub.topics.forEach(function (topic) {
+      body.appendChild(topicLeaf(course, sub, topic));
+    });
+
+    head.addEventListener('click', function () {
+      var open = body.classList.toggle('open');
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    node.appendChild(head);
+    node.appendChild(body);
+    return node;
+  }
+
+  function courseCard(course) {
+    var card = App.el('div', 'course-card theme-' + course.theme);
+    var readySubs = course.subcourses.filter(function (s) { return s.ready && s.topics.length; });
+    var pct = App.courseProgress(progress, course);
+
+    var head = App.el('div', 'card-head');
+    head.innerHTML =
+      '<div class="card-icon"><i class="fas ' + course.icon + '"></i></div>' +
+      '<div style="flex:1;min-width:0">' +
+      '<div class="card-title">' + App.escape(course.title) + '</div>' +
+      '</div>';
+    card.appendChild(head);
+
+    if (readySubs.length) {
+      var bar = App.el('div', '');
+      bar.style.marginBottom = '16px';
+      bar.innerHTML = App.progressBar(pct);
+      card.appendChild(bar);
+    } else {
+      card.appendChild(App.el('div', 'card-desc', 'Курс готовится к запуску.'));
+    }
+
+    var btn = App.el('button', 'disclosure-btn');
+    btn.type = 'button';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.innerHTML =
+      '<span>Направления · ' + course.subcourses.length + '</span>' +
+      '<i class="fas fa-chevron-down chev"></i>';
+
+    var panel = App.el('div', 'disclosure-panel');
+    course.subcourses.forEach(function (sub) {
+      if (sub.ready && sub.topics.length) {
+        panel.appendChild(subcourseNode(course, sub));
+      } else {
+        var soon = App.el('div', 'sub-item is-soon');
+        soon.innerHTML =
+          '<span class="sub-emoji">' + sub.emoji + '</span>' +
+          '<span class="sub-name">' + App.escape(sub.title) + '</span>' +
+          '<span class="sub-note">в разработке</span>';
+        panel.appendChild(soon);
+      }
+    });
+
+    btn.addEventListener('click', function () {
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      /* Первый готовый подкурс раскрываем сразу — так меньше кликов. */
+      if (open) {
+        var firstHead = panel.querySelector('.tree-head');
+        if (firstHead && firstHead.getAttribute('aria-expanded') === 'false') firstHead.click();
+      }
+    });
+
+    card.appendChild(btn);
+    card.appendChild(panel);
+    return card;
+  }
+
+  function renderCourses() {
+    var grid = document.getElementById('courseGrid');
+    grid.innerHTML = '';
+    CATALOG.courses.forEach(function (course) {
+      grid.appendChild(courseCard(course));
+    });
+  }
+
+  /* ---------------- сводка ---------------- */
+
+  function renderStats() {
+    var allTopics = [];
+    CATALOG.courses.forEach(function (course) {
+      course.subcourses.forEach(function (sub) {
+        if (!sub.ready) return;
+        sub.topics.forEach(function (topic) {
+          allTopics.push(progress[CATALOG.topicKey(course.key, sub.key, topic.key)] || 0);
+        });
+      });
+    });
+
+    var overall = App.average(allTopics);
+    document.getElementById('statOverall').textContent = overall + '%';
+    document.getElementById('statStarted').textContent =
+      allTopics.filter(function (p) { return p > 0; }).length;
+    document.getElementById('statDone').textContent =
+      allTopics.filter(function (p) { return p >= 100; }).length;
+  }
+
+  /* ---------------- профиль ---------------- */
+
+  function renderProfile(user) {
+    document.getElementById('profileAvatar').textContent = App.initials(user.fullName, user.email);
+    document.getElementById('profileName').textContent = App.displayName(user);
+    document.getElementById('profileMail').textContent = user.email;
+
+    /* Если ФИО не заполнено (например, вход через Google без имени) — просим указать. */
+    if (!user.fullName || !user.fullName.trim()) {
+      document.getElementById('nameForm').style.display = 'flex';
+    }
+  }
+
+  document.getElementById('nameSave').addEventListener('click', async function () {
+    var value = document.getElementById('nameInput').value.trim();
+    if (!value) {
+      App.toast('Введите ФИО.', 'error');
+      return;
+    }
+    try {
+      currentUser = await API.auth.updateProfile({ fullName: value });
+      renderProfile(currentUser);
+      document.getElementById('nameForm').style.display = 'none';
+      App.toast('ФИО сохранено.', 'ok');
+    } catch (e) {
+      App.toast('Не удалось сохранить: ' + e.message, 'error');
+    }
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', App.logout);
+
+  /* ---------------- запуск ---------------- */
+
+  document.addEventListener('DOMContentLoaded', async function () {
+    App.theme.bind();
+    await API.ready;
+    App.showModeNotice();
+
+    currentUser = await App.requireAuth('student');
+    if (!currentUser) return;
+
+    renderProfile(currentUser);
+
+    try {
+      progress = await App.progressMap();
+    } catch (e) {
+      console.error(e);
+      App.toast('Не удалось загрузить прогресс.', 'error');
+    }
+
+    renderStats();
+    renderCourses();
+  });
+})();
+</script>
+</body>
+</html>

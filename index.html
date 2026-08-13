@@ -1,652 +1,190 @@
 <!DOCTYPE html>
 <html lang="ru" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional English </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    <style>
-        /* ===================== ТЕМЫ ===================== */
-        :root,
-        [data-theme="dark"] {
-            --bg:        #0b0f1a;
-            --surface:   #111827;
-            --surface2:  #1a2236;
-            --border:    rgba(255,255,255,0.07);
-            --border2:   rgba(99,210,255,0.18);
-            --accent:    #63d2ff;
-            --accent2:   #a78bfa;
-            --pink:      #f472b6;
-            --green:     #34d399;
-            --text:      #e2e8f0;
-            --muted:     #64748b;
-            --card-glow: rgba(99,210,255,0.06);
-            --header-bg: rgba(11,15,26,0.85);
-            --grid-lines: rgba(99,210,255,0.03);
-            --shadow: rgba(0,0,0,0.3);
-            --select-bg: #1e293b;
-        }
-
-        [data-theme="light"] {
-            --bg:        #f1f5f9;
-            --surface:   #ffffff;
-            --surface2:  #f8fafc;
-            --border:    rgba(0,0,0,0.06);
-            --border2:   rgba(59,130,246,0.25);
-            --accent:    #2563eb;
-            --accent2:   #7c3aed;
-            --pink:      #db2777;
-            --green:     #059669;
-            --text:      #1e293b;
-            --muted:     #64748b;
-            --card-glow: rgba(59,130,246,0.04);
-            --header-bg: rgba(255,255,255,0.9);
-            --grid-lines: rgba(0,0,0,0.02);
-            --shadow: rgba(0,0,0,0.08);
-            --select-bg: #ffffff;
-        }
-
-        * { margin:0; padding:0; box-sizing:border-box; }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        /* GRID BACKGROUND */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(var(--grid-lines) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-lines) 1px, transparent 1px);
-            background-size: 48px 48px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* AMBIENT GLOW */
-        body::after {
-            content: '';
-            position: fixed;
-            top: -20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 900px;
-            height: 500px;
-            background: radial-gradient(ellipse, var(--card-glow) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* HEADER */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(20px) saturate(180%);
-            background: var(--header-bg);
-            border-bottom: 1px solid var(--border);
-            transition: background 0.3s, border-color 0.3s;
-        }
-
-        .header-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            color: #fff;
-            transition: transform 0.3s;
-        }
-
-        .logo:hover .logo-icon { transform: scale(1.1); }
-
-        .logo-text {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem;
-            color: var(--text);
-            letter-spacing: -0.01em;
-            transition: color 0.3s;
-        }
-
-        .logo-text span { color: var(--accent); }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* THEME TOGGLE */
-        .theme-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: all 0.3s;
-            color: var(--text);
-        }
-
-        .theme-toggle:hover {
-            background: var(--surface);
-            border-color: var(--accent);
-            transform: scale(1.05);
-        }
-
-        .theme-toggle .fa-sun,
-        .theme-toggle .fa-moon {
-            font-size: 1rem;
-            position: absolute;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        [data-theme="dark"] .theme-toggle .fa-sun {
-            opacity: 1;
-            transform: rotate(0) scale(1);
-        }
-
-        [data-theme="dark"] .theme-toggle .fa-moon {
-            opacity: 0;
-            transform: rotate(90deg) scale(0);
-        }
-
-        [data-theme="light"] .theme-toggle .fa-sun {
-            opacity: 0;
-            transform: rotate(-90deg) scale(0);
-        }
-
-        [data-theme="light"] .theme-toggle .fa-moon {
-            opacity: 1;
-            transform: rotate(0) scale(1);
-            color: #6366f1;
-        }
-
-        .header-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            color: var(--muted);
-            border: 1px solid var(--border);
-            padding: 4px 12px;
-            border-radius: 100px;
-            letter-spacing: 0.05em;
-        }
-
-        /* HERO */
-        .hero {
-            position: relative;
-            z-index: 1;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 80px 32px 60px;
-            text-align: center;
-        }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--accent);
-            border: 1px solid rgba(99,210,255,0.3);
-            background: rgba(99,210,255,0.06);
-            padding: 6px 16px;
-            border-radius: 100px;
-            margin-bottom: 28px;
-            letter-spacing: 0.08em;
-        }
-
-        .hero-tag::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.8); }
-        }
-
-        .hero h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 400;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            margin-bottom: 20px;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--muted);
-            max-width: 560px;
-            margin: 0 auto 48px;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        /* STATS */
-        .stats-row {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 64px;
-            flex-wrap: wrap;
-        }
-
-        .stat { text-align: center; }
-        .stat-num {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
-            color: var(--text);
-            display: block;
-        }
-        .stat-label {
-            font-size: 0.82rem;
-            color: var(--muted);
-            font-weight: 300;
-            letter-spacing: 0.04em;
-        }
-
-        /* SEARCH */
-        .search-wrap {
-            max-width: 480px;
-            margin: 0 auto 64px;
-            position: relative;
-        }
-        .search-wrap i {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-        .search-input {
-            width: 100%;
-            padding: 14px 18px 14px 44px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            color: var(--text);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            outline: none;
-            transition: all 0.3s;
-        }
-        .search-input:focus { border-color: var(--border2); }
-
-        /* SECTION LABEL */
-        .section-label {
-            position: relative;
-            z-index: 1;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .section-label h2 {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--muted);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-weight: 400;
-        }
-        .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        /* GRID */
-        .grid-wrap {
-            position: relative;
-            z-index: 1;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px 100px;
-        }
-        .professions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 24px;
-        }
-
-        /* CARD (профессиональная карточка с dropdown) */
-        .prof-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 24px;
-            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-            position: relative;
-            overflow: hidden;
-        }
-        .prof-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--card-glow);
-            opacity: 0;
-            transition: opacity 0.3s;
-            border-radius: inherit;
-            pointer-events: none;
-        }
-        .prof-card:hover {
-            border-color: var(--border2);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px var(--shadow);
-        }
-        .prof-card:hover::before { opacity: 1; }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        .card-icon-large {
-            width: 56px;
-            height: 56px;
-            border-radius: 18px;
-            background: var(--icon-bg, rgba(99,210,255,0.12));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            color: var(--card-accent, var(--accent));
-            transition: transform 0.2s;
-        }
-        .prof-card:hover .card-icon-large { transform: scale(1.05); }
-        .card-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: -0.01em;
-            color: var(--text);
-        }
-        .card-desc {
-            color: var(--muted);
-            font-size: 0.85rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-        /* SELECT CUSTOM */
-        .course-select {
-            width: 100%;
-            padding: 12px 16px;
-            background: var(--select-bg);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text);
-            cursor: pointer;
-            transition: all 0.2s;
-            outline: none;
-        }
-        .course-select:hover, .course-select:focus {
-            border-color: var(--accent);
-        }
-        .select-hint {
-            font-size: 0.7rem;
-            color: var(--muted);
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .select-hint i { font-size: 0.65rem; }
-
-        /* Цветовые темы для карточек */
-        .card-medical   { --card-accent: #63d2ff; --icon-bg: rgba(99,210,255,0.12); }
-        .card-chef      { --card-accent: #fbbf24; --icon-bg: rgba(251,191,36,0.12); }
-        .card-merch     { --card-accent: #34d399; --icon-bg: rgba(52,211,153,0.12); }
-        .card-tech      { --card-accent: #f472b6; --icon-bg: rgba(244,114,182,0.12); }
-        .card-business  { --card-accent: #a78bfa; --icon-bg: rgba(167,139,250,0.12); }
-        .card-law       { --card-accent: #fb923c; --icon-bg: rgba(251,146,60,0.12); }
-
-        /* FOOTER */
-        footer {
-            position: relative;
-            z-index: 1;
-            border-top: 1px solid var(--border);
-            padding: 32px;
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.82rem;
-            font-weight: 300;
-        }
-
-        @media (max-width: 768px) {
-            .hero { padding: 56px 20px 40px; }
-            .grid-wrap { padding: 0 16px 64px; }
-            .section-label { padding: 0 16px; }
-            .header-inner { padding: 0 20px; }
-            .professions-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.2rem; }
-            .header-badge { display: none; }
-            .card-title { font-size: 1.3rem; }
-        }
-
-        /* Анимация появления */
-        .prof-card {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: cardIn 0.5s forwards;
-        }
-        @keyframes cardIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional English — курсы английского для специалистов</title>
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark');}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="assets/app.css">
 </head>
-<body>
+<body class="page-bg">
 
-<header>
-    <div class="header-inner">
-        <a href="#" class="logo">
-            <div class="logo-icon"><i class="fas fa-globe"></i></div>
-            <span class="logo-text">Professional <span>English</span></span>
-        </a>
-        <div class="header-right">
-            <button class="theme-toggle" id="themeToggle" title="Switch a theme">
-                <i class="fas fa-sun"></i>
-                <i class="fas fa-moon"></i>
-            </button>
-            <div class="header-badge">CAREER TRACKS</div>
-        </div>
+<header class="app-header">
+  <div class="app-header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-icon"><i class="fas fa-globe"></i></div>
+      <span class="brand-text">Professional <span>English</span></span>
+    </a>
+    <div class="header-right">
+      <button class="theme-toggle" data-theme-toggle title="Сменить тему">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+      </button>
+      <div class="header-right" id="headerUser"></div>
     </div>
+  </div>
 </header>
 
-<section class="hero">
-    
-    <h1>English for<br><em>professionals</em></h1>
-    
+<div class="wrap">
+  <section class="page-head" style="text-align:center">
+    <h1 class="page-title">English for<br><em>professionals</em></h1>
+    <p class="page-sub" style="max-width:560px;margin:14px auto 0">
+      Профессиональный английский с упражнениями, аудированием и отработкой произношения.
+      Прогресс сохраняется по каждой теме.
+    </p>
 
-    <div class="stats-row">
-        <div class="stat"><span class="stat-num">6+</span><span class="stat-label">courses</span></div>
-        <div class="stat"><span class="stat-num">80+</span><span class="stat-label">divisions</span></div>
-        <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">availability</span></div>
+    <div class="search-field" style="max-width:480px;margin:34px auto 0">
+      <i class="fas fa-search"></i>
+      <input type="text" class="input" id="searchInput" placeholder="Найти курс или направление" autocomplete="off">
     </div>
+  </section>
 
-    <div class="search-wrap">
-        <i class="fas fa-search"></i>
-        <input type="text" class="search-input" placeholder="Find a course/division" id="searchInput">
-    </div>
-</section>
-
-<div class="section-label">
-    <h2>Courses</h2>
+  <div class="section-label"><h2>Курсы</h2></div>
+  <div class="course-grid" id="courseGrid"></div>
+  <div class="empty" id="noResults" style="display:none;margin-bottom:60px">
+    По запросу ничего не нашлось. Попробуйте другое слово.
+  </div>
 </div>
 
-<div class="grid-wrap">
-    <div class="professions-grid" id="professionsGrid">
-        
-        <!-- 1. Медицинский английский (dropdown с анатомией, патологией, акушерством, фармацией) -->
-        <div class="prof-card card-medical" data-name="medical">
-            <div class="card-header">
-                <div class="card-icon-large"><i class="fas fa-heartbeat"></i></div>
-                <div class="card-title">Medical English</div>
-            </div>
-            <div class="card-desc">
-                For medical professionals.
-            </div>
-            <select class="course-select" id="medicalSelect">
-                <option value="">📚 Choose a course</option>
-                <!-- ИСПРАВЛЕНО: теперь ведёт на папку medical/anatomy/ -->
-                <option value="medical/anatomy/index.html">🧬 Anatomy (go to lessons)</option>
-                <option value="pathology">🩺 Pathology (in progress)</option>
-                <option value="obstetrics">🤰 Obstetrics (in progress)</option>
-                <option value="pharmacy">💊 Pharmacy (in progress)</option>
-            </select>
-            <div class="select-hint">
-                <i class="fas fa-chevron-circle-right"></i> Choose a course to start
-            </div>
-        </div>
-
-      
-
-<footer>
-    Professional English Interactive Platform · 6 направлений · Адаптивное обучение
+<footer class="app-footer">
+  Professional English · интерактивная платформа профессионального английского
 </footer>
 
+<script>window.APP_ROOT = '';</script>
+<script src="assets/config.js"></script>
+<script src="assets/api.js"></script>
+<script src="assets/catalog.js"></script>
+<script src="assets/ui.js"></script>
 <script>
-    // ========== ТЕМНАЯ / СВЕТЛАЯ ТЕМА ==========
-    (function() {
-        const html = document.documentElement;
-        const toggle = document.getElementById('themeToggle');
-        const saved = localStorage.getItem('theme') || 'dark';
-        html.setAttribute('data-theme', saved);
+(function () {
+  'use strict';
 
-        if (toggle) {
-            toggle.addEventListener('click', () => {
-                const current = html.getAttribute('data-theme');
-                const next = current === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', next);
-                localStorage.setItem('theme', next);
-            });
-        }
-    })();
+  var grid = document.getElementById('courseGrid');
+  var searchInput = document.getElementById('searchInput');
+  var noResults = document.getElementById('noResults');
+  var progress = {};   // ключ темы -> процент, если пользователь вошёл
 
-    // ========== ПОИСК ПО КАРТОЧКАМ ==========
-    const searchInput = document.getElementById('searchInput');
-    const cards = document.querySelectorAll('.prof-card');
+  /* Адрес страницы подкурса. */
+  function subcourseUrl(course, sub) {
+    return course.key + '/' + sub.key + '/index.html';
+  }
 
-    if (searchInput) {
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.toLowerCase().trim();
-            cards.forEach(card => {
-                const cardText = card.innerText.toLowerCase();
-                if (cardText.includes(query)) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
+  function subcourseRow(course, sub) {
+    var topicsCount = sub.topics.length;
+
+    if (!sub.ready || !topicsCount) {
+      var soon = App.el('div', 'sub-item is-soon');
+      soon.innerHTML =
+        '<span class="sub-emoji">' + sub.emoji + '</span>' +
+        '<span class="sub-name">' + App.escape(sub.title) + '</span>' +
+        '<span class="sub-note">в разработке</span>';
+      return soon;
     }
 
-    // ========== ОБРАБОТКА ВЫПАДАЮЩИХ СПИСКОВ ==========
-    // Медицинский английский – теперь анатомия ведёт на medical/anatomy/index.html
-    const medicalSelect = document.getElementById('medicalSelect');
-    if (medicalSelect) {
-        medicalSelect.addEventListener('change', (e) => {
-            const selected = e.target.value;
-            // Если выбран реальный путь к HTML-файлу (начинается с medical/ или содержит .html) – переходим
-            if (selected && selected.includes('.html')) {
-                window.location.href = selected;
-            } 
-            // Иначе обрабатываем как заглушки (патология, акушерство, фармация)
-            else if (selected === 'pathology') {
-                alert('Курс «Патология» в разработке. Скоро появится!');
-                medicalSelect.value = '';
-            } else if (selected === 'obstetrics') {
-                alert('Курс «Акушерство» в разработке. Следите за обновлениями.');
-                medicalSelect.value = '';
-            } else if (selected === 'pharmacy') {
-                alert('Курс «Фармация» готовится к запуску.');
-                medicalSelect.value = '';
-            } else {
-                if (selected !== '') medicalSelect.value = '';
-            }
-        });
+    var link = App.el('a', 'sub-item');
+    link.href = subcourseUrl(course, sub);
+    var pct = App.subcourseProgress(progress, course.key, sub);
+    var hasProgress = Object.keys(progress).length > 0;
+
+    link.innerHTML =
+      '<span class="sub-emoji">' + sub.emoji + '</span>' +
+      '<span class="sub-name">' + App.escape(sub.title) + '</span>' +
+      (hasProgress
+        ? App.progressBar(pct)
+        : '<span class="sub-note">' + topicsCount + ' тем</span>') +
+      '<i class="fas fa-arrow-right" style="color:var(--muted);font-size:.75rem"></i>';
+    return link;
+  }
+
+  function courseCard(course) {
+    var card = App.el('div', 'course-card theme-' + course.theme);
+    card.dataset.search = (
+      course.title + ' ' + course.desc + ' ' +
+      course.subcourses.map(function (s) { return s.title; }).join(' ')
+    ).toLowerCase();
+
+    var head = App.el('div', 'card-head');
+    head.innerHTML =
+      '<div class="card-icon"><i class="fas ' + course.icon + '"></i></div>' +
+      '<div class="card-title">' + App.escape(course.title) + '</div>';
+    card.appendChild(head);
+    card.appendChild(App.el('div', 'card-desc', App.escape(course.desc)));
+
+    var readyCount = course.subcourses.filter(function (s) { return s.ready && s.topics.length; }).length;
+
+    var btn = App.el('button', 'disclosure-btn');
+    btn.type = 'button';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.innerHTML =
+      '<span>Направления · ' + course.subcourses.length +
+      (readyCount ? ' <span style="color:var(--green)">(' + readyCount + ' доступно)</span>' : '') +
+      '</span><i class="fas fa-chevron-down chev"></i>';
+
+    var panel = App.el('div', 'disclosure-panel');
+    course.subcourses.forEach(function (sub) {
+      panel.appendChild(subcourseRow(course, sub));
+    });
+
+    btn.addEventListener('click', function () {
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    card.appendChild(btn);
+    card.appendChild(panel);
+    return card;
+  }
+
+  function renderCourses() {
+    grid.innerHTML = '';
+    CATALOG.courses.forEach(function (course) {
+      grid.appendChild(courseCard(course));
+    });
+  }
+
+  /* Поиск идёт и по названиям курсов, и по названиям направлений. */
+  searchInput.addEventListener('input', function () {
+    var q = searchInput.value.trim().toLowerCase();
+    var visible = 0;
+    Array.prototype.forEach.call(grid.children, function (card) {
+      var match = !q || card.dataset.search.indexOf(q) !== -1;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    noResults.style.display = visible ? 'none' : '';
+  });
+
+  document.addEventListener('DOMContentLoaded', async function () {
+    renderCourses();
+    App.theme.bind();
+
+    await API.ready;
+    App.showModeNotice();
+
+    var user = null;
+    try {
+      user = await API.auth.currentUser();
+    } catch (e) {
+      console.error(e);
     }
 
-    // Заглушки для остальных направлений
-    const culinarySelect = document.getElementById('culinarySelect');
-    const commoditySelect = document.getElementById('commoditySelect');
-    const techSelect = document.getElementById('techSelect');
-    const businessSelect = document.getElementById('businessSelect');
-    const legalSelect = document.getElementById('legalSelect');
+    App.renderUserBox(document.getElementById('headerUser'), user);
 
-    function setupStubSelect(selectElement, message = 'Этот курс находится в стадии разработки.') {
-        if (!selectElement) return;
-        selectElement.addEventListener('change', (e) => {
-            if (e.target.value !== '') {
-                alert(message);
-                e.target.value = '';
-            }
-        });
+    if (user) {
+      try {
+        progress = await App.progressMap();
+        renderCourses();
+        searchInput.dispatchEvent(new Event('input'));
+      } catch (e) {
+        console.error('Не удалось загрузить прогресс:', e);
+      }
     }
-
-    setupStubSelect(culinarySelect, '🍲 Кулинарный английский появится в следующем семестре. Следите за новостями!');
-    setupStubSelect(commoditySelect, '📦 Курс для товароведов и логистов готовится. Приходите позже!');
-    setupStubSelect(techSelect, '🖥️ Технический английский – в активной разработке. Будет доступен в апреле.');
-    setupStubSelect(businessSelect, '📈 Бизнес-курс запускается в мае. Спасибо за интерес!');
-    setupStubSelect(legalSelect, '⚖️ Юридический английский появится в третьем квартале.');
+  });
+})();
 </script>
 </body>
 </html>

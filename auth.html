@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вход и регистрация — Professional English</title>
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark');}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body class="page-bg">
+
+<header class="app-header">
+  <div class="app-header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-icon"><i class="fas fa-globe"></i></div>
+      <span class="brand-text">Professional <span>English</span></span>
+    </a>
+    <div class="header-right">
+      <button class="theme-toggle" data-theme-toggle title="Сменить тему">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+      </button>
+      <a class="btn btn-ghost" href="index.html"><i class="fas fa-arrow-left"></i> На главную</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" style="max-width:480px">
+  <div class="page-head" style="text-align:center">
+    <h1 class="page-title" style="font-size:2rem" id="pageTitle">Добро пожаловать</h1>
+    <p class="page-sub" id="pageSub">Войдите, чтобы прогресс сохранялся и был доступен с любого устройства.</p>
+  </div>
+
+  <div class="auth-card">
+    <div class="tabs">
+      <button class="tab active" id="tabLogin" type="button">Вход</button>
+      <button class="tab" id="tabRegister" type="button">Регистрация</button>
+    </div>
+
+    <div class="form-msg" id="formMsg"></div>
+
+    <!-- ---------- Вход ---------- -->
+    <form id="loginForm" autocomplete="on">
+      <div class="field">
+        <label class="label" for="loginEmail">Почта</label>
+        <input class="input" type="email" id="loginEmail" required placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <label class="label" for="loginPassword">Пароль</label>
+        <input class="input" type="password" id="loginPassword" required placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button class="btn btn-primary btn-block" type="submit" id="loginSubmit">Войти</button>
+    </form>
+
+    <!-- ---------- Регистрация ---------- -->
+    <form id="registerForm" style="display:none" autocomplete="on">
+      <div class="field">
+        <label class="label" for="regName">ФИО</label>
+        <input class="input" type="text" id="regName" required placeholder="Иванов Иван Иванович" autocomplete="name">
+      </div>
+      <div class="field">
+        <label class="label" for="regEmail">Почта</label>
+        <input class="input" type="email" id="regEmail" required placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <label class="label" for="regPassword">Пароль</label>
+        <input class="input" type="password" id="regPassword" required minlength="6" placeholder="не менее 6 символов" autocomplete="new-password">
+      </div>
+      <div class="field">
+        <span class="label">Роль</span>
+        <div class="seg">
+          <label class="seg-option checked" id="roleStudentLabel">
+            <input type="radio" name="role" value="student" checked>
+            <span><i class="fas fa-user-graduate"></i> Студент</span>
+          </label>
+          <label class="seg-option" id="roleTeacherLabel">
+            <input type="radio" name="role" value="teacher">
+            <span><i class="fas fa-chalkboard-user"></i> Преподаватель</span>
+          </label>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit" id="registerSubmit">Создать аккаунт</button>
+    </form>
+
+    <div class="divider">или</div>
+
+    <button class="google-btn" type="button" id="googleBtn">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+      </svg>
+      <span id="googleBtnText">Войти через Google</span>
+    </button>
+
+    <p class="hint" id="googleHint"></p>
+  </div>
+</div>
+
+<script>window.APP_ROOT = '';</script>
+<script src="assets/config.js"></script>
+<script src="assets/api.js"></script>
+<script src="assets/ui.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var params = new URLSearchParams(location.search);
+  var nextUrl = params.get('next');
+  var mode = params.get('mode') === 'register' ? 'register' : 'login';
+
+  var tabLogin = document.getElementById('tabLogin');
+  var tabRegister = document.getElementById('tabRegister');
+  var loginForm = document.getElementById('loginForm');
+  var registerForm = document.getElementById('registerForm');
+  var msg = document.getElementById('formMsg');
+  var googleBtn = document.getElementById('googleBtn');
+  var googleBtnText = document.getElementById('googleBtnText');
+  var googleHint = document.getElementById('googleHint');
+  var pageTitle = document.getElementById('pageTitle');
+  var pageSub = document.getElementById('pageSub');
+
+  function showMessage(text, kind) {
+    msg.textContent = text;
+    msg.className = 'form-msg show ' + (kind || 'info');
+  }
+
+  function hideMessage() {
+    msg.className = 'form-msg';
+  }
+
+  function setMode(next) {
+    mode = next;
+    var isLogin = mode === 'login';
+    tabLogin.classList.toggle('active', isLogin);
+    tabRegister.classList.toggle('active', !isLogin);
+    loginForm.style.display = isLogin ? '' : 'none';
+    registerForm.style.display = isLogin ? 'none' : '';
+    googleBtnText.textContent = isLogin ? 'Войти через Google' : 'Зарегистрироваться через Google';
+    pageTitle.textContent = isLogin ? 'С возвращением' : 'Создание аккаунта';
+    pageSub.textContent = isLogin
+      ? 'Войдите, чтобы продолжить с того места, где остановились.'
+      : 'Укажите ФИО и роль — от роли зависит, какой кабинет откроется.';
+    googleHint.textContent = isLogin
+      ? ''
+      : 'При входе через Google будет использована выбранная выше роль.';
+    hideMessage();
+  }
+
+  tabLogin.addEventListener('click', function () { setMode('login'); });
+  tabRegister.addEventListener('click', function () { setMode('register'); });
+
+  /* Подсветка выбранной роли. */
+  registerForm.querySelectorAll('input[name="role"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      registerForm.querySelectorAll('.seg-option').forEach(function (opt) {
+        opt.classList.toggle('checked', opt.contains(radio) && radio.checked);
+      });
+    });
+  });
+
+  function selectedRole() {
+    var checked = registerForm.querySelector('input[name="role"]:checked');
+    return checked ? checked.value : 'student';
+  }
+
+  function goAfterAuth(user) {
+    if (nextUrl) {
+      location.href = nextUrl;
+      return;
+    }
+    location.href = App.homeFor(user);
+  }
+
+  /* ---------------- вход ---------------- */
+
+  loginForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var btn = document.getElementById('loginSubmit');
+    btn.disabled = true;
+    showMessage('Проверяем данные…', 'info');
+    try {
+      await API.auth.signIn({
+        email: document.getElementById('loginEmail').value,
+        password: document.getElementById('loginPassword').value
+      });
+      var user = await API.auth.currentUser();
+      showMessage('Готово, открываем кабинет…', 'ok');
+      goAfterAuth(user);
+    } catch (err) {
+      showMessage(translateError(err), 'error');
+      btn.disabled = false;
+    }
+  });
+
+  /* ---------------- регистрация ---------------- */
+
+  registerForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var btn = document.getElementById('registerSubmit');
+    btn.disabled = true;
+    showMessage('Создаём аккаунт…', 'info');
+    try {
+      var result = await API.auth.signUp({
+        fullName: document.getElementById('regName').value,
+        email: document.getElementById('regEmail').value,
+        password: document.getElementById('regPassword').value,
+        role: selectedRole()
+      });
+
+      if (result.needsEmailConfirmation) {
+        showMessage(
+          'Аккаунт создан. Мы отправили письмо для подтверждения почты — откройте ссылку из письма, ' +
+          'после этого можно будет войти.',
+          'ok'
+        );
+        btn.disabled = false;
+        setTimeout(function () { setMode('login'); showMessage('Подтвердите почту и войдите.', 'info'); }, 400);
+        return;
+      }
+
+      var user = await API.auth.currentUser();
+      showMessage('Готово, открываем кабинет…', 'ok');
+      goAfterAuth(user);
+    } catch (err) {
+      showMessage(translateError(err), 'error');
+      btn.disabled = false;
+    }
+  });
+
+  /* ---------------- Google ---------------- */
+
+  googleBtn.addEventListener('click', async function () {
+    hideMessage();
+    try {
+      await API.auth.signInWithGoogle(mode === 'register' ? selectedRole() : null);
+      /* Дальше браузер уходит на страницу Google и возвращается сюда. */
+    } catch (err) {
+      showMessage(translateError(err), 'error');
+    }
+  });
+
+  /* ---------------- понятные тексты ошибок ---------------- */
+
+  function translateError(err) {
+    var text = (err && err.message) ? err.message : String(err);
+    var map = {
+      'Invalid login credentials': 'Неверная почта или пароль.',
+      'Email not confirmed': 'Почта не подтверждена — откройте ссылку из письма.',
+      'User already registered': 'Пользователь с такой почтой уже зарегистрирован.',
+      'Password should be at least 6 characters': 'Пароль должен быть не короче 6 символов.',
+      'Unable to validate email address: invalid format': 'Неверный формат почты.'
+    };
+    return map[text] || text;
+  }
+
+  /* ---------------- запуск ---------------- */
+
+  document.addEventListener('DOMContentLoaded', async function () {
+    setMode(mode);
+    App.theme.bind();
+
+    await API.ready;
+    App.showModeNotice();
+
+    if (API.mode === 'local') {
+      googleBtn.disabled = true;
+      googleBtn.style.opacity = '.5';
+      googleBtn.style.cursor = 'not-allowed';
+      googleHint.textContent =
+        'Вход через Google станет доступен после подключения Supabase (см. SETUP.md). ' +
+        'Сейчас работает локальный режим — регистрация по почте и паролю доступна.';
+    }
+
+    /* Возврат после Google или уже активная сессия. */
+    try {
+      var user = await API.auth.currentUser();
+      if (user) {
+        showMessage('Вы уже вошли как ' + App.displayName(user) + '. Открываем кабинет…', 'ok');
+        setTimeout(function () { goAfterAuth(user); }, 300);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  });
+})();
+</script>
+</body>
+</html>
