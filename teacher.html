@@ -118,7 +118,7 @@
   /* Сколько всего тем в готовых подкурсах — база для общего процента студента. */
   function totalTopics() {
     var count = 0;
-    CATALOG.courses.forEach(function (course) {
+    CATALOG.visibleCourses().forEach(function (course) {
       course.subcourses.forEach(function (sub) {
         if (sub.ready) count += sub.topics.length;
       });

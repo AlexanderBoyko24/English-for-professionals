@@ -141,7 +141,7 @@
 
   function renderCourses() {
     grid.innerHTML = '';
-    CATALOG.courses.forEach(function (course) {
+    CATALOG.visibleCourses().forEach(function (course) {
       grid.appendChild(courseCard(course));
     });
   }

@@ -5,6 +5,9 @@
    Им пользуются стартовая страница, кабинеты студента и
    преподавателя, страница подкурса и движок урока.
 
+   Курс с флагом hidden: true не показывается в каталоге и кабинетах.
+   Чтобы вернуть курс — уберите у него эту строку.
+
    Чтобы добавить тему: положите данные в data/<курс>/<подкурс>/N.js,
    создайте страницу <курс>/<подкурс>/N.html по образцу существующих
    и допишите тему в список topics ниже.
@@ -69,6 +72,7 @@ window.CATALOG = {
     },
     {
       key: 'culinary',
+      hidden: true,
       title: 'Culinary English',
       desc: 'Для поваров, кондитеров и работников общественного питания.',
       icon: 'fa-utensils',
@@ -80,6 +84,7 @@ window.CATALOG = {
     },
     {
       key: 'commodity',
+      hidden: true,
       title: 'Commodity & Logistics',
       desc: 'Для товароведов, логистов и специалистов по снабжению.',
       icon: 'fa-boxes-stacked',
@@ -91,6 +96,7 @@ window.CATALOG = {
     },
     {
       key: 'tech',
+      hidden: true,
       title: 'Technical English',
       desc: 'Для инженеров, техников и специалистов по оборудованию.',
       icon: 'fa-microchip',
@@ -102,6 +108,7 @@ window.CATALOG = {
     },
     {
       key: 'business',
+      hidden: true,
       title: 'Business English',
       desc: 'Переговоры, переписка, презентации и деловая документация.',
       icon: 'fa-chart-line',
@@ -113,6 +120,7 @@ window.CATALOG = {
     },
     {
       key: 'law',
+      hidden: true,
       title: 'Legal English',
       desc: 'Для юристов: договоры, судопроизводство, юридическая лексика.',
       icon: 'fa-scale-balanced',
@@ -126,6 +134,13 @@ window.CATALOG = {
 };
 
 /* ---------------- вспомогательные функции ---------------- */
+
+/* Курсы для показа: скрытые (hidden: true) в каталог не попадают.
+   Поиск по ключу (findCourse и прочее) работает по всем курсам,
+   чтобы прямые ссылки на скрытый курс не ломались. */
+window.CATALOG.visibleCourses = function () {
+  return window.CATALOG.courses.filter(function (c) { return !c.hidden; });
+};
 
 window.CATALOG.findCourse = function (courseKey) {
   return window.CATALOG.courses.filter(function (c) { return c.key === courseKey; })[0] || null;
@@ -151,7 +166,7 @@ window.CATALOG.topicKey = function (courseKey, subKey, topicKey) {
 /* Все готовые подкурсы — для кабинетов студента и преподавателя. */
 window.CATALOG.readySubcourses = function () {
   var out = [];
-  window.CATALOG.courses.forEach(function (course) {
+  window.CATALOG.visibleCourses().forEach(function (course) {
     course.subcourses.forEach(function (sub) {
       if (sub.ready && sub.topics.length) out.push({ course: course, sub: sub });
     });

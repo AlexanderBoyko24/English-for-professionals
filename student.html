@@ -195,7 +195,7 @@
   function renderCourses() {
     var grid = document.getElementById('courseGrid');
     grid.innerHTML = '';
-    CATALOG.courses.forEach(function (course) {
+    CATALOG.visibleCourses().forEach(function (course) {
       grid.appendChild(courseCard(course));
     });
   }
@@ -204,7 +204,7 @@
 
   function renderStats() {
     var allTopics = [];
-    CATALOG.courses.forEach(function (course) {
+    CATALOG.visibleCourses().forEach(function (course) {
       course.subcourses.forEach(function (sub) {
         if (!sub.ready) return;
         sub.topics.forEach(function (topic) {
