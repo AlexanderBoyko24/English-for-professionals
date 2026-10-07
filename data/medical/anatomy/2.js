@@ -69,7 +69,7 @@ window.LESSON = {
   { en: "true rib", ru: "истинное ребро" },
   { en: "straight backbone", ru: "прямой позвоночник" },
   { en: "flexible spinal column", ru: "гибкий позвоночный столб" },
-  { en: "thoracic vertebra", ru: "отдельный позвонок" },
+  { en: "thoracic vertebra", ru: "грудной позвонок" },
   { en: "left hip bone", ru: "левая тазовая кость" },
   { en: "broad pelvis", ru: "широкий таз" },
   { en: "neck of the humerus", ru: "шейка плечевой кости" },
