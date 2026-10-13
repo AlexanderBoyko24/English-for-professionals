@@ -11,7 +11,7 @@ window.LESSON = {
     { word: "leg", trans: "/leɡ/", ru: "нога (от бедра до стопы)" },
     { word: "lower leg", trans: "/ˈləʊə leɡ/", ru: "голень" },
     { word: "hand", trans: "/hænd/", ru: "кисть (руки)" },
-    { word: "foot", trans: "/fʊt/", ru: "ступня,стопа },
+    { word: "foot", trans: "/fʊt/", ru: "ступня, стопа" },
     { word: "chest", trans: "/tʃest/", ru: "грудь, грудная клетка" },
     { word: "back", trans: "/bæk/", ru: "спина" },
     { word: "shoulder", trans: "/ˈʃəʊldə/", ru: "плечо, плечевой сустав" },
