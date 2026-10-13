@@ -65,7 +65,7 @@ window.LESSON = {
   { en: "upper jaw", ru: "верхняя челюсть" },
   { en: "left collarbone", ru: "левая ключица" },
   { en: "right shoulder blade", ru: "правая лопатка" },
-  { en: "base of the breatsbone", ru: "основание грудины" },
+  { en: "base of the breastbone", ru: "основание грудины" },
   { en: "true rib", ru: "истинное ребро" },
   { en: "straight backbone", ru: "прямой позвоночник" },
   { en: "flexible spinal column", ru: "гибкий позвоночный столб" },
