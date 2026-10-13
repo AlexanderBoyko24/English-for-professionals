@@ -69,7 +69,7 @@ window.LESSON = {
     { s: "The lungs are located below the stomach.", correct: false },
     { s: "The spine is made of many small bones.", correct: true },
     { s: "The knee bends when we walk or run.", correct: true },
-    { s: "Without bones, the body would be soft and unable to move.", correct: false },
+    { s: "Without bones, the body would be soft and unable to move.", correct: true },
     { s: "Skin protects internal organs from injury and infection.", correct: true },
     { s: "Blood carries oxygen from the heart to every cell.", correct: false },
     { s: "The shoulders connect the arms to the chest.", correct: true }
