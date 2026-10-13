@@ -30,12 +30,11 @@ window.LESSON = {
   { word: "hand bones", trans: "/hænd bəʊnz/", ru: "пястные кости" },
   { word: "finger bones", trans: "/ˈfɪŋɡə bəʊnz/", ru: "фаланги пальцев" },
   { word: "ankle bones", trans: "/ˈæŋkl bəʊnz/", ru: "кости лодыжки" },
-  { word: "foot bones", trans: "/fʊt bəʊnz/", ru: "плюсневые кости" },
+  { word: "foot bones", trans: "/fʊt bəʊnz/", ru: "кости стопы" },
   { word: "joint", trans: "/dʒɔɪnt/", ru: "сустав" },
   { word: "cartilage", trans: "/ˈkɑːtɪlɪdʒ/", ru: "хрящ" },
   { word: "ligament", trans: "/ˈlɪɡəmənt/", ru: "связка" },
   { word: "bone marrow", trans: "/ˈbəʊn mærəʊ/", ru: "костный мозг" },
-
   { word: "cervical vertebra", trans: "/ˈsɜːvɪkl vɜːˈtiːbrə/", ru: "шейный позвонок" },
   { word: "thoracic vertebra", trans: "/θɔːˈræsɪk vɜːˈtiːbrə/", ru: "грудной позвонок" },
   { word: "lumbar vertebra", trans: "/ˈlʌmbə vɜːˈtiːbrə/", ru: "поясничный позвонок" },
@@ -66,7 +65,6 @@ window.LESSON = {
   { en: "left collarbone", ru: "левая ключица" },
   { en: "right shoulder blade", ru: "правая лопатка" },
   { en: "base of the breastbone", ru: "основание грудины" },
-  { en: "true rib", ru: "истинное ребро" },
   { en: "straight backbone", ru: "прямой позвоночник" },
   { en: "flexible spinal column", ru: "гибкий позвоночный столб" },
   { en: "thoracic vertebra", ru: "грудной позвонок" },
@@ -81,14 +79,11 @@ window.LESSON = {
   { en: "round kneecap", ru: "круглый надколенник" },
   { en: "middle phalanx", ru: "средняя фаланга" },
   { en: "eight wrist bones", ru: "восемь костей запястья" },
-  { en: "five hand bones", ru: "пять пястных костей" },
-  { en: "fourteen finger bones", ru: "четырнадцать фаланг пальцев" },
-  { en: "seven ankle bones", ru: "семь костей лодыжки" },
-  { en: "five foot bones", ru: "пять плюсневых костей" },
+  { en: "five foot bones", ru: "пять  костей стопы" },
   { en: "movable joint", ru: "подвижный сустав" },
   { en: "smooth cartilage", ru: "гладкий хрящ" },
   { en: "tough ligament", ru: "прочная связка" },
-  { en: "yellow bone marrow", ru: "жёлтый костный мозг" }
+  { en: "yellow bone marrow", ru: "желтый костный мозг" }
 ],
 
   text: [
