@@ -27,7 +27,7 @@ window.LESSON = {
   { word: "kneecap", trans: "/ˈniːkæp/", ru: "надколенник" },
   { word: "phalanx", trans: "/ˈfælæŋks/", ru: "фаланга пальца" },
   { word: "wrist bones", trans: "/rɪst bəʊnz/", ru: "кости запястья" },
-  { word: "hand bones", trans: "/hænd bəʊnz/", ru: "пястные кости" },
+  { word: "hand bones", trans: "/hænd bəʊnz/", ru: "пястные кости (кости кисти)" },
   { word: "finger bones", trans: "/ˈfɪŋɡə bəʊnz/", ru: "фаланги пальцев" },
   { word: "ankle bones", trans: "/ˈæŋkl bəʊnz/", ru: "кости лодыжки" },
   { word: "foot bones", trans: "/fʊt bəʊnz/", ru: "кости стопы" },
