@@ -10,11 +10,11 @@ window.LESSON = {
     { word: "arm", trans: "/ɑːm/", ru: "рука (от плеча до кисти)" },
     { word: "leg", trans: "/leɡ/", ru: "нога (от бедра до стопы)" },
     { word: "lower leg", trans: "/ˈləʊə leɡ/", ru: "голень" },
-    { word: "hand", trans: "/hænd/", ru: "кисть руки" },
-    { word: "foot", trans: "/fʊt/", ru: "ступня" },
-    { word: "chest", trans: "/tʃest/", ru: "грудь" },
+    { word: "hand", trans: "/hænd/", ru: "кисть (руки)" },
+    { word: "foot", trans: "/fʊt/", ru: "ступня,стопа },
+    { word: "chest", trans: "/tʃest/", ru: "грудь, грудная клетка" },
     { word: "back", trans: "/bæk/", ru: "спина" },
-    { word: "shoulder", trans: "/ˈʃəʊldə/", ru: "плечо" },
+    { word: "shoulder", trans: "/ˈʃəʊldə/", ru: "плечо, плечевой сустав" },
     { word: "knee", trans: "/niː/", ru: "колено" },
     { word: "face", trans: "/feɪs/", ru: "лицо" },
     { word: "eye", trans: "/aɪ/", ru: "глаз" },
@@ -52,11 +52,11 @@ window.LESSON = {
     { en: "empty stomach", ru: "пустой желудок" },
     { en: "broken bone", ru: "сломанная кость" },
     { en: "dry skin", ru: "сухая кожа" },
-    { en: "high blood pressure", ru: "высокое кровяное давление" }
+    { en: "blood cells", ru: "клетки крови" }
   ],
 
   text: [
-    "The human body is an amazing and complex machine. The head sits at the top of the body and contains the brain, which controls thoughts, movements, and senses. The face is the front part of the head, and it includes two eyes for seeing, two ears for hearing, a nose for breathing and smelling, and a mouth for eating and speaking. The eyes can move in different directions, the ears have inner structures that help with balance, and the nose is connected to the lungs.",
+    "The human body is an amazing and complex machine. The head is located at the top of the body and contains the brain, which controls thoughts, movements, and senses. The face is the front part of the head, and it includes two eyes for seeing, two ears for hearing, a nose for breathing and smelling, and a mouth for eating and speaking. The eyes can move in different directions, the ears have inner structures that help with balance, and the nose is connected to the lungs.",
     "The chest is the upper part of the trunk. Inside the chest, the heart pumps blood every second, sending it to all organs. The lungs are located on both sides of the heart; they take in oxygen and release carbon dioxide. The stomach lies below the chest, in the upper abdomen. It breaks down food so the body can absorb nutrients. The back runs from the neck down to the pelvis. The spine, made of many small bones, is inside the back and gives support.",
     "The shoulders connect the arms to the chest. Each arm has an upper part and a forearm, ending with a hand. The hand has fingers that allow us to hold objects. The legs are attached to the lower body. Each leg has a thigh, a lower leg, and a foot. The knee is the joint between the thigh and the lower leg; it bends when we walk or run. The foot includes the ankle, the heel, and the toes, which help us stand and balance.",
     "All parts of the body are covered by skin, which protects internal organs from injury and infection. Bones give the body its shape and support. Without bones, the body would be soft and unable to move. Blood flows through blood vessels and carries oxygen from the lungs to every cell. The heart, lungs, brain, stomach, bones, skin, and blood work together to keep the human body alive and healthy."
@@ -65,11 +65,11 @@ window.LESSON = {
   trueFalse: [
     { s: "The brain controls thoughts, movements, and senses.", correct: true },
     { s: "The nose is connected to the stomach.", correct: false },
-    { s: "The heart pumps blood every minute.", correct: false },
+    { s: "The heart pumps blood every second.", correct: true },
     { s: "The lungs are located below the stomach.", correct: false },
     { s: "The spine is made of many small bones.", correct: true },
     { s: "The knee bends when we walk or run.", correct: true },
-    { s: "Without bones, the body would be hard and unable to move.", correct: false },
+    { s: "Without bones, the body would be soft and unable to move.", correct: false },
     { s: "Skin protects internal organs from injury and infection.", correct: true },
     { s: "Blood carries oxygen from the heart to every cell.", correct: false },
     { s: "The shoulders connect the arms to the chest.", correct: true }
@@ -80,8 +80,8 @@ window.LESSON = {
     { ru: "содержать мозг", en: "to contain the brain" },
     { ru: "передняя часть головы", en: "the front part of the head" },
     { ru: "разные направления", en: "different directions" },
-    { ru: "перерабатывает пищу", en: "breaks down food" },
-    { ru: "верхняя часть туловища", en: "upper part of the trunk" },
+    { ru: "перерабатывать пищу", en: "to break down food" },
+    { ru: "верхняя часть туловища", en: "the upper part of the trunk" },
     { ru: "качать кровь", en: "to pump blood" },
     { ru: "выделять углекислый газ", en: "to release carbon dioxide" },
     { ru: "всасывать питательные вещества", en: "to absorb nutrients" },
