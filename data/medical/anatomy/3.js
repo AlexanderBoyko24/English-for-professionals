@@ -35,7 +35,7 @@ window.LESSON = {
     { en: "orbital cavity (orbit)", ru: "глазничная полость " },
    { en: "coronal suture", ru: "венечный шов" },
   { en: "sagittal suture", ru: "сагиттальный шов" },
-  { en: "lambdoid suture", ru: "лямбдовидный шов" },
+  { en: "lambdoid suture", ru: "ламбдовидный шов" },
   { en: "squamosal suture", ru: "чешуйчатый шов" },
   { en: "frontal suture", ru: "лобный шов" },
       { en: "temporal fossa", ru: "височная ямка" },
