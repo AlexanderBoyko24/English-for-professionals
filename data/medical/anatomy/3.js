@@ -39,9 +39,7 @@ window.LESSON = {
   { en: "squamosal suture", ru: "чешуйчатый шов" },
   { en: "frontal suture", ru: "лобный шов" },
       { en: "temporal fossa", ru: "височная ямка" },
-  { en: "infratemporal fossa", ru: "подвисочная ямка" },
-  { en: "pterygopalatine fossa", ru: "крылонебная ямка" },
-  { en: "anterior cranial fossa", ru: "передняя черепная ямка" },
+    { en: "anterior cranial fossa", ru: "передняя черепная ямка" },
   { en: "middle cranial fossa", ru: "средняя черепная ямка" },
   { en: "posterior cranial fossa", ru: "задняя черепная ямка" },
     // === Отверстия, каналы, щели (foramina, canals, fissures) ===
